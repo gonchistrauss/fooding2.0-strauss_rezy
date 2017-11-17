@@ -20,7 +20,7 @@ public class Inicio {
             s = new Sistema();
             System.out.println("Archivo no encontrado");
         }
-//        MenuPrincipal menu = new MenuPrincipal(s);
-//        menu.setVisible(true);
+        MenuPrincipal menu = new MenuPrincipal(s);
+        menu.setVisible(true);
     }
 }
