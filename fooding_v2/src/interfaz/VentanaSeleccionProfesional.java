@@ -121,6 +121,11 @@ public class VentanaSeleccionProfesional extends javax.swing.JDialog {
         btnVolver.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
         btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/left-arrow.png"))); // NOI18N
         btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnVolver);
         btnVolver.setBounds(260, 240, 150, 50);
 
@@ -148,6 +153,10 @@ public class VentanaSeleccionProfesional extends javax.swing.JDialog {
     private void comboProfesionalesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboProfesionalesItemStateChanged
         cargarLabels();
     }//GEN-LAST:event_comboProfesionalesItemStateChanged
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;
