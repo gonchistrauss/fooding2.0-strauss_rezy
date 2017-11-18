@@ -1,6 +1,12 @@
 package interfaz;
 
+import dominio.Profesional;
 import dominio.Sistema;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 
 public class VentanaSeleccionProfesional extends javax.swing.JDialog {
 
@@ -11,6 +17,24 @@ public class VentanaSeleccionProfesional extends javax.swing.JDialog {
         modelo = miSis;
         this.setModal(true);
         this.setLocationRelativeTo(null);
+    }
+    
+    public void cargarLabels() {
+        Profesional profesional = (Profesional) comboProfesionales.getSelectedItem();
+        campoNombre.setText(profesional.getNombre());
+        campoApellido.setText(profesional.getApellidos());
+        DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+        campoNacimiento.setText(date.format(profesional.getFechaDeNacimiento()));
+        if (profesional.getPathPerfil().equals("/imagenes/perfil_defecto.png")) {
+            lblFotoPerfil.setIcon(new ImageIcon(this.getClass().getResource(profesional.getPathPerfil())));
+        } else {
+            lblFotoPerfil.setIcon(new ImageIcon(profesional.getPathPerfil()));
+        }
+    }
+    
+    public void cargarLista() {
+        this.comboProfesionales.setModel(new DefaultComboBoxModel(modelo.getListaProfesionales().toArray()));
+        cargarLabels();
     }
 
     @SuppressWarnings("unchecked")
@@ -28,6 +52,9 @@ public class VentanaSeleccionProfesional extends javax.swing.JDialog {
         lblNacimiento = new javax.swing.JLabel();
         btnContinuar = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
+        campoNombre = new javax.swing.JLabel();
+        campoApellido = new javax.swing.JLabel();
+        campoNacimiento = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Seleccion de profesional");
@@ -45,6 +72,11 @@ public class VentanaSeleccionProfesional extends javax.swing.JDialog {
         lblTitulo.setBounds(120, -10, 370, 64);
 
         comboProfesionales.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        comboProfesionales.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboProfesionalesItemStateChanged(evt);
+            }
+        });
         getContentPane().add(comboProfesionales);
         comboProfesionales.setBounds(260, 50, 280, 40);
         getContentPane().add(jSeparator1);
@@ -92,13 +124,38 @@ public class VentanaSeleccionProfesional extends javax.swing.JDialog {
         getContentPane().add(btnVolver);
         btnVolver.setBounds(260, 240, 150, 50);
 
+        campoNombre.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
+        campoNombre.setForeground(new java.awt.Color(0, 153, 255));
+        campoNombre.setText("xxx");
+        getContentPane().add(campoNombre);
+        campoNombre.setBounds(310, 120, 230, 24);
+
+        campoApellido.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
+        campoApellido.setForeground(new java.awt.Color(0, 153, 255));
+        campoApellido.setText("yyy");
+        getContentPane().add(campoApellido);
+        campoApellido.setBounds(310, 160, 230, 24);
+
+        campoNacimiento.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
+        campoNacimiento.setForeground(new java.awt.Color(0, 153, 255));
+        campoNacimiento.setText("zzz");
+        getContentPane().add(campoNacimiento);
+        campoNacimiento.setBounds(310, 200, 230, 24);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void comboProfesionalesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboProfesionalesItemStateChanged
+        cargarLabels();
+    }//GEN-LAST:event_comboProfesionalesItemStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnVolver;
-    private javax.swing.JComboBox<String> comboProfesionales;
+    private javax.swing.JLabel campoApellido;
+    private javax.swing.JLabel campoNacimiento;
+    private javax.swing.JLabel campoNombre;
+    private javax.swing.JComboBox<Object> comboProfesionales;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblApellido;
