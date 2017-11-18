@@ -84,8 +84,6 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
         btnRegistroUsuario.setText("Registrar");
         getContentPane().add(btnRegistroUsuario);
         btnRegistroUsuario.setBounds(250, 340, 190, 50);
-        btnRegistroUsuario.getAccessibleContext().setAccessibleName("Registrar");
-
         getContentPane().add(txtApellido);
         txtApellido.setBounds(290, 120, 270, 40);
         getContentPane().add(txtNombre);
