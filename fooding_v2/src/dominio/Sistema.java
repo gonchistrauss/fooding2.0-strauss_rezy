@@ -31,6 +31,10 @@ public class Sistema implements Serializable {
     public ArrayList<Consulta> getListaPlanAlimenticioPendientes() {
         return listaPlanAlimenticioPendientes;
     }
+    
+    public boolean noHayUsuariosRegistrados(){
+        return this.getListaUsuarios().isEmpty();
+    }
 
     public Sistema() {
         listaUsuarios = new ArrayList<Usuario>();

@@ -4,15 +4,17 @@ import dominio.Sistema;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import utils.*;
 
 public class VentanaRegistroUsuario extends javax.swing.JDialog {
-
+    
     private Sistema modelo;
     private FileNameExtensionFilter filter;
     private ImageIcon perfil;
-
+    private String profilePath;
+    
     public VentanaRegistroUsuario(Sistema miSis) {
         initComponents();
         this.setModal(true);
@@ -21,8 +23,10 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
         this.comboPaises.setModel(new DefaultComboBoxModel(utils.Herramientas.obtenerpaises()));
         dateNacimiento.setDateFormatString("dd/MM/yyyy");
         perfil = new ImageIcon(getClass().getResource("/imagenes/avatar.png"));
+        profilePath = "/imagenes/perfil_defecto.png";
+        
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -82,6 +86,11 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
         btnRegistroUsuario.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         btnRegistroUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add-a-contact-on-phone-interface-symbol-of-a-user-with-a-plus-sign.png"))); // NOI18N
         btnRegistroUsuario.setText("Registrar");
+        btnRegistroUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistroUsuarioActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnRegistroUsuario);
         btnRegistroUsuario.setBounds(250, 340, 190, 50);
         getContentPane().add(txtApellido);
@@ -133,15 +142,25 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarActionPerformed
-          JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser();
         chooser.setFileFilter(filter);
         int opcion = chooser.showOpenDialog(this);
         if (opcion == JFileChooser.APPROVE_OPTION) {
             ImageIcon icono = new ImageIcon(chooser.getSelectedFile().getAbsolutePath());
             perfil = icono;
             lblFotoPerfil.setIcon(perfil);
+            profilePath = chooser.getSelectedFile().getAbsolutePath();
+            
         }
     }//GEN-LAST:event_btnImportarActionPerformed
+
+    private void btnRegistroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroUsuarioActionPerformed
+        modelo.agregarUsuario(this.txtNombre.getText(), this.txtApellido.getText(), this.comboPaises.getSelectedItem().toString(), this.dateNacimiento.getDate(), profilePath);
+        System.out.println(profilePath);
+        JOptionPane.showMessageDialog(null, "Usuario registrado exitosamente.", "Mensaje", 0, new ImageIcon(getClass().getResource("/imagenes/businessman.png")));
+        this.setVisible(false);
+
+    }//GEN-LAST:event_btnRegistroUsuarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
