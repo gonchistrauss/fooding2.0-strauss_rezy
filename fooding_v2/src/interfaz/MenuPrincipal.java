@@ -79,8 +79,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 VentanaRegistroUsuario ventana = new VentanaRegistroUsuario(modelo);
                 ventana.setVisible(true);
             } else {
-                //VentanaRegistroProfesional ventana = new VentanaRegistroProfesional(modelo);
-                //ventana.setVisible(true);
+                VentanaRegistroProfesional ventana = new VentanaRegistroProfesional(modelo);
+                ventana.setVisible(true);
             }
         }
     }//GEN-LAST:event_btnRegistroActionPerformed
