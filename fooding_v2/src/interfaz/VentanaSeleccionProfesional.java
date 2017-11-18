@@ -17,14 +17,15 @@ public class VentanaSeleccionProfesional extends javax.swing.JDialog {
         modelo = miSis;
         this.setModal(true);
         this.setLocationRelativeTo(null);
+        cargarLista();
     }
     
     public void cargarLabels() {
         Profesional profesional = (Profesional) comboProfesionales.getSelectedItem();
-        campoNombre.setText(profesional.getNombre());
-        campoApellido.setText(profesional.getApellidos());
-        DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-        campoNacimiento.setText(date.format(profesional.getFechaDeNacimiento()));
+        campoTitulo.setText(profesional.getTituloProfesional());
+        campoEmision.setText(profesional.getPaisEstudio().getCountry());
+        DateFormat date = new SimpleDateFormat("dd-MM-yyyy");
+        campoGraduacion.setText(date.format(profesional.getFechaDeGraduacion()));
         if (profesional.getPathPerfil().equals("/imagenes/perfil_defecto.png")) {
             lblFotoPerfil.setIcon(new ImageIcon(this.getClass().getResource(profesional.getPathPerfil())));
         } else {
@@ -47,21 +48,21 @@ public class VentanaSeleccionProfesional extends javax.swing.JDialog {
         lblFotoPerfil = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         lblProfesional = new javax.swing.JLabel();
-        lblNombre = new javax.swing.JLabel();
-        lblApellido = new javax.swing.JLabel();
-        lblNacimiento = new javax.swing.JLabel();
+        lblTituloProfesional = new javax.swing.JLabel();
+        lblEmision = new javax.swing.JLabel();
+        lblGraduacion = new javax.swing.JLabel();
         btnContinuar = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
-        campoNombre = new javax.swing.JLabel();
-        campoApellido = new javax.swing.JLabel();
-        campoNacimiento = new javax.swing.JLabel();
+        campoTitulo = new javax.swing.JLabel();
+        campoEmision = new javax.swing.JLabel();
+        campoGraduacion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Seleccion de profesional");
-        setMinimumSize(new java.awt.Dimension(570, 295));
-        setPreferredSize(new java.awt.Dimension(570, 295));
+        setMinimumSize(new java.awt.Dimension(570, 320));
+        setPreferredSize(new java.awt.Dimension(570, 320));
         setResizable(false);
-        setSize(new java.awt.Dimension(570, 295));
+        setSize(new java.awt.Dimension(570, 320));
         getContentPane().setLayout(null);
 
         lblTitulo.setFont(new java.awt.Font("Seravek", 1, 27)); // NOI18N
@@ -94,23 +95,23 @@ public class VentanaSeleccionProfesional extends javax.swing.JDialog {
         getContentPane().add(lblProfesional);
         lblProfesional.setBounds(40, 60, 210, 24);
 
-        lblNombre.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
-        lblNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/man-user.png"))); // NOI18N
-        lblNombre.setText("Nombre:");
-        getContentPane().add(lblNombre);
-        lblNombre.setBounds(180, 120, 90, 24);
+        lblTituloProfesional.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
+        lblTituloProfesional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diploma.png"))); // NOI18N
+        lblTituloProfesional.setText("Titulo:");
+        getContentPane().add(lblTituloProfesional);
+        lblTituloProfesional.setBounds(180, 120, 90, 24);
 
-        lblApellido.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
-        lblApellido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/man-user.png"))); // NOI18N
-        lblApellido.setText("Apellido:");
-        getContentPane().add(lblApellido);
-        lblApellido.setBounds(180, 160, 90, 24);
+        lblEmision.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
+        lblEmision.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/international-delivery.png"))); // NOI18N
+        lblEmision.setText("Emision:");
+        getContentPane().add(lblEmision);
+        lblEmision.setBounds(180, 160, 90, 24);
 
-        lblNacimiento.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
-        lblNacimiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/calendar-page-empty.png"))); // NOI18N
-        lblNacimiento.setText("Nacimiento:");
-        getContentPane().add(lblNacimiento);
-        lblNacimiento.setBounds(180, 200, 120, 24);
+        lblGraduacion.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
+        lblGraduacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/graduation-hat-and-diploma.png"))); // NOI18N
+        lblGraduacion.setText("Graduacion:");
+        getContentPane().add(lblGraduacion);
+        lblGraduacion.setBounds(180, 200, 120, 24);
 
         btnContinuar.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
         btnContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/right-arrow.png"))); // NOI18N
@@ -129,23 +130,23 @@ public class VentanaSeleccionProfesional extends javax.swing.JDialog {
         getContentPane().add(btnVolver);
         btnVolver.setBounds(260, 240, 150, 50);
 
-        campoNombre.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
-        campoNombre.setForeground(new java.awt.Color(0, 153, 255));
-        campoNombre.setText("xxx");
-        getContentPane().add(campoNombre);
-        campoNombre.setBounds(310, 120, 230, 24);
+        campoTitulo.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
+        campoTitulo.setForeground(new java.awt.Color(0, 153, 255));
+        campoTitulo.setText("xxx");
+        getContentPane().add(campoTitulo);
+        campoTitulo.setBounds(310, 120, 230, 24);
 
-        campoApellido.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
-        campoApellido.setForeground(new java.awt.Color(0, 153, 255));
-        campoApellido.setText("yyy");
-        getContentPane().add(campoApellido);
-        campoApellido.setBounds(310, 160, 230, 24);
+        campoEmision.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
+        campoEmision.setForeground(new java.awt.Color(0, 153, 255));
+        campoEmision.setText("yyy");
+        getContentPane().add(campoEmision);
+        campoEmision.setBounds(310, 160, 230, 24);
 
-        campoNacimiento.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
-        campoNacimiento.setForeground(new java.awt.Color(0, 153, 255));
-        campoNacimiento.setText("zzz");
-        getContentPane().add(campoNacimiento);
-        campoNacimiento.setBounds(310, 200, 230, 24);
+        campoGraduacion.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
+        campoGraduacion.setForeground(new java.awt.Color(0, 153, 255));
+        campoGraduacion.setText("zzz");
+        getContentPane().add(campoGraduacion);
+        campoGraduacion.setBounds(310, 200, 230, 24);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -161,17 +162,17 @@ public class VentanaSeleccionProfesional extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnVolver;
-    private javax.swing.JLabel campoApellido;
-    private javax.swing.JLabel campoNacimiento;
-    private javax.swing.JLabel campoNombre;
+    private javax.swing.JLabel campoEmision;
+    private javax.swing.JLabel campoGraduacion;
+    private javax.swing.JLabel campoTitulo;
     private javax.swing.JComboBox<Object> comboProfesionales;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lblApellido;
+    private javax.swing.JLabel lblEmision;
     private javax.swing.JLabel lblFotoPerfil;
-    private javax.swing.JLabel lblNacimiento;
-    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblGraduacion;
     private javax.swing.JLabel lblProfesional;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTituloProfesional;
     // End of variables declaration//GEN-END:variables
 }

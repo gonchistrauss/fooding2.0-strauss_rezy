@@ -69,6 +69,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         btnIngresoProfesional.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnIngresoProfesional.setText("Soy profesional");
+        btnIngresoProfesional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresoProfesionalActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnIngresoProfesional);
         btnIngresoProfesional.setBounds(450, 140, 180, 50);
 
@@ -121,6 +126,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
             ventana.setVisible(true);
         }
     }//GEN-LAST:event_btnIngresoUsuarioActionPerformed
+
+    private void btnIngresoProfesionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoProfesionalActionPerformed
+        if (modelo.noHayProfesionalesRegistrados()) {
+            JOptionPane.showMessageDialog(null, "No hay profesionales registrados.", "Atención", 0, new ImageIcon(getClass().getResource("/imagenes/warning.png")));
+
+        } else {
+            VentanaSeleccionProfesional ventana = new VentanaSeleccionProfesional(modelo);
+            ventana.setVisible(true);
+        }
+    }//GEN-LAST:event_btnIngresoProfesionalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

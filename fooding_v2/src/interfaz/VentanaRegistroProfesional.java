@@ -191,7 +191,6 @@ public class VentanaRegistroProfesional extends javax.swing.JDialog {
         if (datosVerificados()) {
             modelo.agregarProfesional(txtCampoNombre.getText(), this.txtApellido.getText(), this.dateNacimiento.getDate(), profilePath, this.txtTituloProfesional.getText(), this.comboPaises.getSelectedItem().toString(), this.dateFechaGraduacion.getDate());
             JOptionPane.showMessageDialog(null, "Profesional registrado exitosamente.", "Mensaje", 0, new ImageIcon(getClass().getResource("/imagenes/businessman.png")));
-            System.out.println(this.profilePath);
             this.setVisible(false);
         }
     }//GEN-LAST:event_btnRegistroProfesionalActionPerformed

@@ -22,9 +22,9 @@ public class VentanaSeleccionUsuario extends javax.swing.JDialog {
     
      public void cargarLabels() {
         Usuario usuario = (Usuario) comboUsuarios.getSelectedItem();
-        campoNombre.setText(usuario.getNombre());
-        campoApellido.setText(usuario.getApellidos());
-        DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+        campoNacionalidad.setText(usuario.getNacionalidad().getCountry());
+        campoConsultas.setText(String.valueOf(usuario.getConsultas().size()));
+        DateFormat date = new SimpleDateFormat("dd-MM-yyyy");
         campoNacimiento.setText(date.format(usuario.getFechaDeNacimiento()));
         if (usuario.getPathPerfil().equals("/imagenes/perfil_defecto.png")) {
             lblFotoPerfil.setIcon(new ImageIcon(this.getClass().getResource(usuario.getPathPerfil())));
@@ -48,14 +48,14 @@ public class VentanaSeleccionUsuario extends javax.swing.JDialog {
         lblFotoPerfil = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         lblUsuario = new javax.swing.JLabel();
-        lblNombre = new javax.swing.JLabel();
-        lblApellido = new javax.swing.JLabel();
+        lblNacionalidad = new javax.swing.JLabel();
+        lblConsultas = new javax.swing.JLabel();
         lblNacimiento = new javax.swing.JLabel();
         btnVolver = new javax.swing.JButton();
         btnContinuar = new javax.swing.JButton();
-        campoNombre = new javax.swing.JLabel();
+        campoNacionalidad = new javax.swing.JLabel();
         campoNacimiento = new javax.swing.JLabel();
-        campoApellido = new javax.swing.JLabel();
+        campoConsultas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
@@ -92,23 +92,23 @@ public class VentanaSeleccionUsuario extends javax.swing.JDialog {
         getContentPane().add(lblUsuario);
         lblUsuario.setBounds(40, 60, 210, 24);
 
-        lblNombre.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
-        lblNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/man-user.png"))); // NOI18N
-        lblNombre.setText("Nombre:");
-        getContentPane().add(lblNombre);
-        lblNombre.setBounds(180, 120, 90, 24);
+        lblNacionalidad.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
+        lblNacionalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/international-delivery.png"))); // NOI18N
+        lblNacionalidad.setText("Nacionalidad:");
+        getContentPane().add(lblNacionalidad);
+        lblNacionalidad.setBounds(180, 120, 130, 24);
 
-        lblApellido.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
-        lblApellido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/man-user.png"))); // NOI18N
-        lblApellido.setText("Apellido:");
-        getContentPane().add(lblApellido);
-        lblApellido.setBounds(180, 160, 90, 24);
+        lblConsultas.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
+        lblConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/man-user.png"))); // NOI18N
+        lblConsultas.setText("Consultas:");
+        getContentPane().add(lblConsultas);
+        lblConsultas.setBounds(180, 200, 110, 24);
 
         lblNacimiento.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
         lblNacimiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/calendar-page-empty.png"))); // NOI18N
         lblNacimiento.setText("Nacimiento:");
         getContentPane().add(lblNacimiento);
-        lblNacimiento.setBounds(180, 200, 120, 24);
+        lblNacimiento.setBounds(180, 160, 120, 24);
 
         btnVolver.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
         btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/left-arrow.png"))); // NOI18N
@@ -127,23 +127,23 @@ public class VentanaSeleccionUsuario extends javax.swing.JDialog {
         getContentPane().add(btnContinuar);
         btnContinuar.setBounds(410, 240, 150, 50);
 
-        campoNombre.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
-        campoNombre.setForeground(new java.awt.Color(0, 153, 255));
-        campoNombre.setText("xxx");
-        getContentPane().add(campoNombre);
-        campoNombre.setBounds(310, 120, 230, 24);
+        campoNacionalidad.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
+        campoNacionalidad.setForeground(new java.awt.Color(0, 153, 255));
+        campoNacionalidad.setText("xxx");
+        getContentPane().add(campoNacionalidad);
+        campoNacionalidad.setBounds(310, 120, 230, 24);
 
         campoNacimiento.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
         campoNacimiento.setForeground(new java.awt.Color(0, 153, 255));
         campoNacimiento.setText("zzz");
         getContentPane().add(campoNacimiento);
-        campoNacimiento.setBounds(310, 200, 230, 24);
+        campoNacimiento.setBounds(310, 160, 230, 24);
 
-        campoApellido.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
-        campoApellido.setForeground(new java.awt.Color(0, 153, 255));
-        campoApellido.setText("yyy");
-        getContentPane().add(campoApellido);
-        campoApellido.setBounds(310, 160, 230, 24);
+        campoConsultas.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
+        campoConsultas.setForeground(new java.awt.Color(0, 153, 255));
+        campoConsultas.setText("yyy");
+        getContentPane().add(campoConsultas);
+        campoConsultas.setBounds(310, 200, 230, 24);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -160,16 +160,16 @@ public class VentanaSeleccionUsuario extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;
     private javax.swing.JButton btnVolver;
-    private javax.swing.JLabel campoApellido;
+    private javax.swing.JLabel campoConsultas;
     private javax.swing.JLabel campoNacimiento;
-    private javax.swing.JLabel campoNombre;
+    private javax.swing.JLabel campoNacionalidad;
     private javax.swing.JComboBox<Object> comboUsuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel lblApellido;
+    private javax.swing.JLabel lblConsultas;
     private javax.swing.JLabel lblFotoPerfil;
     private javax.swing.JLabel lblNacimiento;
-    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNacionalidad;
     private javax.swing.JLabel lblUsuario;
     // End of variables declaration//GEN-END:variables
 }

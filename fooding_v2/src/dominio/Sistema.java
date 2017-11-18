@@ -31,9 +31,13 @@ public class Sistema implements Serializable {
     public ArrayList<Consulta> getListaPlanAlimenticioPendientes() {
         return listaPlanAlimenticioPendientes;
     }
-    
-    public boolean noHayUsuariosRegistrados(){
+
+    public boolean noHayUsuariosRegistrados() {
         return this.getListaUsuarios().isEmpty();
+    }
+
+    public boolean noHayProfesionalesRegistrados() {
+        return this.getListaProfesionales().isEmpty();
     }
 
     public Sistema() {
@@ -73,11 +77,10 @@ public class Sistema implements Serializable {
             }
         }
     }
-    
 
     public Usuario obtenerSesionActivaUsuario() {
-        for(Usuario usuario : this.getListaUsuarios()){
-            if(usuario.esSesionActiva()){
+        for (Usuario usuario : this.getListaUsuarios()) {
+            if (usuario.esSesionActiva()) {
                 return usuario;
             }
         }
@@ -85,8 +88,8 @@ public class Sistema implements Serializable {
     }
 
     public Profesional obtenerSesionActivaProfesional() {
-        for(Profesional profesional : this.getListaProfesionales()){
-            if(profesional.esSesionActiva()){
+        for (Profesional profesional : this.getListaProfesionales()) {
+            if (profesional.esSesionActiva()) {
                 return profesional;
             }
         }
