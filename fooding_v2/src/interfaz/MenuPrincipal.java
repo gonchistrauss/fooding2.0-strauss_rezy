@@ -59,6 +59,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         btnIngresoUsuario.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnIngresoUsuario.setText("Soy usuario");
+        btnIngresoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresoUsuarioActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnIngresoUsuario);
         btnIngresoUsuario.setBounds(240, 140, 180, 50);
 
@@ -106,6 +111,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_formWindowClosing
+
+    private void btnIngresoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoUsuarioActionPerformed
+        if (modelo.noHayUsuariosRegistrados()) {
+            JOptionPane.showMessageDialog(null, "No hay usuarios registrados.", "Atención", 0, new ImageIcon(getClass().getResource("/imagenes/warning.png")));
+
+        } else {
+            VentanaSeleccionUsuario ventana = new VentanaSeleccionUsuario(modelo);
+            ventana.setVisible(true);
+        }
+    }//GEN-LAST:event_btnIngresoUsuarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
