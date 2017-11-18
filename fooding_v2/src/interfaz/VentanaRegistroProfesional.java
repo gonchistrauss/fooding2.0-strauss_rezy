@@ -52,6 +52,7 @@ public class VentanaRegistroProfesional extends javax.swing.JDialog {
         btnRegistroProfesional = new javax.swing.JButton();
         separador3 = new javax.swing.JSeparator();
         lblFotoProfesional = new javax.swing.JLabel();
+        btnVolver = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -173,6 +174,17 @@ public class VentanaRegistroProfesional extends javax.swing.JDialog {
         getContentPane().add(lblFotoProfesional);
         lblFotoProfesional.setBounds(30, 280, 130, 160);
 
+        btnVolver.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/left-arrow.png"))); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnVolver);
+        btnVolver.setBounds(20, 460, 97, 50);
+
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/chainimage-free-foods-and-drinks-powerpoint-backgroundswallpapers-download-ppt.jpg"))); // NOI18N
         getContentPane().add(lblBackground);
         lblBackground.setBounds(-20, -410, 790, 980);
@@ -197,6 +209,8 @@ public class VentanaRegistroProfesional extends javax.swing.JDialog {
             modelo.agregarProfesional(txtCampoNombre.getText(), this.txtApellido.getText(), this.dateNacimiento.getDate(), profilePath, this.txtTituloProfesional.getText(), this.comboPaises.getSelectedItem().toString(), this.dateFechaGraduacion.getDate());
             JOptionPane.showMessageDialog(null, "Profesional registrado exitosamente.", "Mensaje", 0, new ImageIcon(getClass().getResource("/imagenes/businessman.png")));
             this.setVisible(false);
+            MenuPrincipal ventana = new MenuPrincipal(modelo);
+            ventana.setVisible(true);
         }
     }//GEN-LAST:event_btnRegistroProfesionalActionPerformed
 
@@ -205,6 +219,12 @@ public class VentanaRegistroProfesional extends javax.swing.JDialog {
         ventana.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        this.dispose();
+        MenuPrincipal ventana = new MenuPrincipal(modelo);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnVolverActionPerformed
+
     private boolean datosVerificados() {
         return true;
     }
@@ -212,6 +232,7 @@ public class VentanaRegistroProfesional extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnImportar;
     private javax.swing.JButton btnRegistroProfesional;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> comboPaises;
     private com.toedter.calendar.JDateChooser dateFechaGraduacion;
     private com.toedter.calendar.JDateChooser dateNacimiento;

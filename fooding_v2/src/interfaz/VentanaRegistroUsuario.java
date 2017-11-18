@@ -31,6 +31,7 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
         lblTitulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lblApellido = new javax.swing.JLabel();
@@ -46,6 +47,7 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
         lblPais = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         comboPaises = new javax.swing.JComboBox<>();
+        btnVolver = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -139,6 +141,17 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
         getContentPane().add(comboPaises);
         comboPaises.setBounds(290, 230, 270, 40);
 
+        btnVolver.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/left-arrow.png"))); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnVolver);
+        btnVolver.setBounds(10, 380, 97, 50);
+
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/chainimage-free-foods-and-drinks-powerpoint-backgroundswallpapers-download-ppt.jpg"))); // NOI18N
         getContentPane().add(lblBackground);
         lblBackground.setBounds(-110, -430, 770, 920);
@@ -164,7 +177,8 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
         System.out.println(profilePath);
         JOptionPane.showMessageDialog(null, "Usuario registrado exitosamente.", "Mensaje", 0, new ImageIcon(getClass().getResource("/imagenes/businessman.png")));
         this.setVisible(false);
-
+        MenuPrincipal ventana = new MenuPrincipal(modelo);
+        ventana.setVisible(true);
     }//GEN-LAST:event_btnRegistroUsuarioActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -172,14 +186,22 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
         ventana.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        this.dispose();
+        MenuPrincipal ventana = new MenuPrincipal(modelo);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnVolverActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnImportar;
     private javax.swing.JButton btnPreferencias;
     private javax.swing.JButton btnRegistroUsuario;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> comboPaises;
     private com.toedter.calendar.JDateChooser dateNacimiento;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblBackground;
