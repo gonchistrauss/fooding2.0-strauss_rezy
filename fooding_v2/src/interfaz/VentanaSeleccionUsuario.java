@@ -27,6 +27,9 @@ public class VentanaSeleccionUsuario extends javax.swing.JDialog {
         lblNacimiento = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         btnContinuar = new javax.swing.JButton();
+        campoNombre = new javax.swing.JLabel();
+        campoNacimiento = new javax.swing.JLabel();
+        campoApellido = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(570, 295));
@@ -87,12 +90,33 @@ public class VentanaSeleccionUsuario extends javax.swing.JDialog {
         getContentPane().add(btnContinuar);
         btnContinuar.setBounds(410, 240, 150, 50);
 
+        campoNombre.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
+        campoNombre.setForeground(new java.awt.Color(0, 153, 255));
+        campoNombre.setText("xxx");
+        getContentPane().add(campoNombre);
+        campoNombre.setBounds(310, 120, 90, 24);
+
+        campoNacimiento.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
+        campoNacimiento.setForeground(new java.awt.Color(0, 153, 255));
+        campoNacimiento.setText("zzz");
+        getContentPane().add(campoNacimiento);
+        campoNacimiento.setBounds(310, 200, 120, 24);
+
+        campoApellido.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
+        campoApellido.setForeground(new java.awt.Color(0, 153, 255));
+        campoApellido.setText("yyy");
+        getContentPane().add(campoApellido);
+        campoApellido.setBounds(310, 160, 90, 24);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;
+    private javax.swing.JLabel campoApellido;
+    private javax.swing.JLabel campoNacimiento;
+    private javax.swing.JLabel campoNombre;
     private javax.swing.JComboBox<String> comboUsuarios;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
