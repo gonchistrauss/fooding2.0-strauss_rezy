@@ -47,6 +47,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().add(lblFooding);
         lblFooding.setBounds(350, 20, 170, 50);
 
+        btnRegistro.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnRegistro.setText("Registro");
         btnRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,10 +57,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().add(btnRegistro);
         btnRegistro.setBounds(340, 80, 180, 50);
 
+        btnIngresoUsuario.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnIngresoUsuario.setText("Soy usuario");
         getContentPane().add(btnIngresoUsuario);
         btnIngresoUsuario.setBounds(240, 140, 180, 50);
 
+        btnIngresoProfesional.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnIngresoProfesional.setText("Soy profesional");
         getContentPane().add(btnIngresoProfesional);
         btnIngresoProfesional.setBounds(450, 140, 180, 50);
