@@ -54,6 +54,11 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
         setPreferredSize(new java.awt.Dimension(638, 458));
         setResizable(false);
         setSize(new java.awt.Dimension(638, 458));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         lblTitulo.setFont(new java.awt.Font("Seravek", 1, 27)); // NOI18N
@@ -161,6 +166,11 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
         this.setVisible(false);
 
     }//GEN-LAST:event_btnRegistroUsuarioActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        MenuPrincipal ventana = new MenuPrincipal(modelo);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

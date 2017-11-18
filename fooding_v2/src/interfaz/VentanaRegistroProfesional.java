@@ -60,6 +60,11 @@ public class VentanaRegistroProfesional extends javax.swing.JDialog {
         setPreferredSize(new java.awt.Dimension(647, 541));
         setResizable(false);
         setSize(new java.awt.Dimension(647, 541));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(null);
         getContentPane().add(separador1);
         separador1.setBounds(10, 50, 600, 12);
@@ -194,6 +199,11 @@ public class VentanaRegistroProfesional extends javax.swing.JDialog {
             this.setVisible(false);
         }
     }//GEN-LAST:event_btnRegistroProfesionalActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        MenuPrincipal ventana = new MenuPrincipal(modelo);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
 
     private boolean datosVerificados() {
         return true;

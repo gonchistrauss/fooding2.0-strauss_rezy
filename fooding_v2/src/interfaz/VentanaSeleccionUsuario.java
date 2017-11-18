@@ -30,7 +30,6 @@ public class VentanaSeleccionUsuario extends javax.swing.JDialog {
             lblFotoPerfil.setIcon(new ImageIcon(this.getClass().getResource(usuario.getPathPerfil())));
         } else {
             lblFotoPerfil.setIcon(new ImageIcon(usuario.getPathPerfil()));
-
         }
     }
 
@@ -56,6 +55,7 @@ public class VentanaSeleccionUsuario extends javax.swing.JDialog {
         campoNacionalidad = new javax.swing.JLabel();
         campoNacimiento = new javax.swing.JLabel();
         campoConsultas = new javax.swing.JLabel();
+        lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
@@ -72,6 +72,7 @@ public class VentanaSeleccionUsuario extends javax.swing.JDialog {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(150, -10, 370, 64);
 
+        comboUsuarios.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
         comboUsuarios.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 comboUsuariosItemStateChanged(evt);
@@ -145,6 +146,10 @@ public class VentanaSeleccionUsuario extends javax.swing.JDialog {
         getContentPane().add(campoConsultas);
         campoConsultas.setBounds(310, 200, 230, 24);
 
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wallll.png"))); // NOI18N
+        getContentPane().add(lblBackground);
+        lblBackground.setBounds(-20, -10, 790, 370);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -166,6 +171,7 @@ public class VentanaSeleccionUsuario extends javax.swing.JDialog {
     private javax.swing.JComboBox<Object> comboUsuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblConsultas;
     private javax.swing.JLabel lblFotoPerfil;
     private javax.swing.JLabel lblNacimiento;

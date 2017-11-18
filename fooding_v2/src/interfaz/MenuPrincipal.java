@@ -89,9 +89,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         if (seleccionRegistro != null) {
             String opcion = (String) seleccionRegistro;
             if (opcion.equals("Usuario")) {
+                this.setVisible(false);
                 VentanaRegistroUsuario ventana = new VentanaRegistroUsuario(modelo);
                 ventana.setVisible(true);
             } else {
+                this.setVisible(false);
                 VentanaRegistroProfesional ventana = new VentanaRegistroProfesional(modelo);
                 ventana.setVisible(true);
             }

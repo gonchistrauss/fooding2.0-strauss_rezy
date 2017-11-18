@@ -56,6 +56,7 @@ public class VentanaSeleccionProfesional extends javax.swing.JDialog {
         campoTitulo = new javax.swing.JLabel();
         campoEmision = new javax.swing.JLabel();
         campoGraduacion = new javax.swing.JLabel();
+        lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Seleccion de profesional");
@@ -72,6 +73,7 @@ public class VentanaSeleccionProfesional extends javax.swing.JDialog {
         getContentPane().add(lblTitulo);
         lblTitulo.setBounds(120, -10, 370, 64);
 
+        comboProfesionales.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
         comboProfesionales.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         comboProfesionales.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -148,6 +150,10 @@ public class VentanaSeleccionProfesional extends javax.swing.JDialog {
         getContentPane().add(campoGraduacion);
         campoGraduacion.setBounds(310, 200, 230, 24);
 
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wallll.png"))); // NOI18N
+        getContentPane().add(lblBackground);
+        lblBackground.setBounds(-35, -14, 650, 360);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -168,6 +174,7 @@ public class VentanaSeleccionProfesional extends javax.swing.JDialog {
     private javax.swing.JComboBox<Object> comboProfesionales;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblEmision;
     private javax.swing.JLabel lblFotoPerfil;
     private javax.swing.JLabel lblGraduacion;
