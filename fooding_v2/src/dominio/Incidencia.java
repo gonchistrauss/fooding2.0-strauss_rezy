@@ -1,11 +1,12 @@
 package dominio;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Incidencia {
+public class Incidencia implements Serializable {
 
     private String mensaje;
-    private Date fechaDeCreacion;
+    private String fechaDeCreacion;
     private Persona creador;
     private Consulta consulta;
 
@@ -25,11 +26,11 @@ public class Incidencia {
         this.mensaje = mensaje;
     }
 
-    public Date getFechaDeCreacion() {
+    public String getFechaDeCreacion() {
         return fechaDeCreacion;
     }
 
-    public void setFechaDeCreacion(Date fechaDeCreacion) {
+    public void setFechaDeCreacion(String fechaDeCreacion) {
         this.fechaDeCreacion = fechaDeCreacion;
     }
 
@@ -41,7 +42,7 @@ public class Incidencia {
         this.consulta = consulta;
     }
 
-    public Incidencia(String mensaje, Date fecha, Consulta unaConsulta, Persona unCreador) {
+    public Incidencia(String mensaje, String fecha, Consulta unaConsulta, Persona unCreador) {
         this.setConsulta(unaConsulta);
         this.setMensaje(mensaje);
         this.setFechaDeCreacion(fecha);

@@ -1,9 +1,11 @@
 package dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import utils.Tipos.*;
 
-public class Consulta {
+public class Consulta implements Serializable {
 
     private int id;
     private Usuario usuario;
@@ -48,7 +50,8 @@ public class Consulta {
         return listaIncidencias;
     }
 
-    public void agregarIncidencia(Incidencia nuevaIncidencia) {
+    public void agregarIncidencia(String mensaje,String fecha,Persona creador) {
+        Incidencia nuevaIncidencia = new Incidencia(mensaje,fecha,this,creador);
         this.listaIncidencias.add(nuevaIncidencia);
     }
 
@@ -74,7 +77,7 @@ public class Consulta {
        //Metodo toString
     @Override
     public String toString() {
-       String consulta = "";
+       String consulta =  "Tipo: " + this.getCategoria().toString() + "\n";
        for(Incidencia incidencia : this.getListaIncidencias()){
            consulta += incidencia.toString() + "\n *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n";
        }
