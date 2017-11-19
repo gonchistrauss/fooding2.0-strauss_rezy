@@ -100,7 +100,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
-        Object seleccionRegistro = JOptionPane.showInputDialog(null, "Registrarme como:", "Registro", JOptionPane.QUESTION_MESSAGE, new ImageIcon(getClass().getResource("/imagenes/avatar.png")), new String[]{"Usuario", "Profesional"}, "Usuario.");
+        Object seleccionRegistro = JOptionPane.showInputDialog(null, "Registrarme como:", "Registro", JOptionPane.QUESTION_MESSAGE, new ImageIcon(getClass().getResource("/imagenes/register.png")), new String[]{"Usuario", "Profesional"}, "Usuario.");
         if (seleccionRegistro != null) {
             String opcion = (String) seleccionRegistro;
             if (opcion.equals("Usuario")) {
