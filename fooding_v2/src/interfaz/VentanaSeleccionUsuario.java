@@ -125,6 +125,11 @@ public class VentanaSeleccionUsuario extends javax.swing.JDialog {
         btnContinuar.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
         btnContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/right-arrow.png"))); // NOI18N
         btnContinuar.setText("Continuar");
+        btnContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContinuarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnContinuar);
         btnContinuar.setBounds(410, 240, 150, 50);
 
@@ -160,6 +165,14 @@ public class VentanaSeleccionUsuario extends javax.swing.JDialog {
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+        Usuario usuario = (Usuario) comboUsuarios.getSelectedItem();
+        usuario.setSesionActiva(true);
+        this.dispose();
+        VentanaPanelUsuario ventana = new VentanaPanelUsuario(modelo);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnContinuarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
