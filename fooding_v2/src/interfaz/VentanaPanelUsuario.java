@@ -45,14 +45,29 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
         getContentPane().setLayout(null);
 
         btnConsultaDirecta.setText("Consulta / Plan");
+        btnConsultaDirecta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaDirectaActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnConsultaDirecta);
         btnConsultaDirecta.setBounds(240, 130, 180, 40);
 
         btnIngesta.setText("Ingesta diaria");
+        btnIngesta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngestaActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnIngesta);
         btnIngesta.setBounds(240, 200, 180, 40);
 
         btnConsultas.setText("Mis consultas / planes");
+        btnConsultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultasActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnConsultas);
         btnConsultas.setBounds(240, 270, 180, 40);
 
@@ -75,7 +90,7 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
         getContentPane().add(lblDeseo);
         lblDeseo.setBounds(250, 70, 180, 30);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 50, 470, 10);
+        jSeparator1.setBounds(10, 50, 470, 12);
 
         lblNombreUsuario.setFont(new java.awt.Font("Seravek", 1, 24)); // NOI18N
         lblNombreUsuario.setForeground(new java.awt.Color(0, 204, 0));
@@ -107,6 +122,24 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
         MenuPrincipal ventana = new MenuPrincipal(modelo);
         ventana.setVisible(true);
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnConsultaDirectaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaDirectaActionPerformed
+        this.dispose();
+        VentanaConsulta ventana = new VentanaConsulta(modelo);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnConsultaDirectaActionPerformed
+
+    private void btnIngestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngestaActionPerformed
+        this.dispose();
+        VentanaIngesta ventana = new VentanaIngesta(modelo);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnIngestaActionPerformed
+
+    private void btnConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultasActionPerformed
+        this.dispose();
+        VentanaHistorial ventana = new VentanaHistorial(modelo);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnConsultasActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultaDirecta;
