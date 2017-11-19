@@ -58,10 +58,9 @@ public class Sistema implements Serializable {
         this.getListaProfesionales().add(nuevoProfesional);
     }
 
-    public void agregarAlimento(String nombre, String familia, ArrayList<String> nutrientes) {
-        Alimento nuevoAlimento = new Alimento(nombre, familia);
+    public void agregarAlimento(String nombre, String familia, HashMap<String,Integer> nutrientes) {
+        Alimento nuevoAlimento = new Alimento(nombre, familia,nutrientes);
         this.getListaAlimentos().add(nuevoAlimento);
-
     }
 
     public void cargarConsultasPendientes() {

@@ -47,7 +47,7 @@ public class Herramientas {
 
     public static boolean validarCampoFecha(String fecha, JLabel status, JLabel ok) {
         boolean valido = false;
-         if (fecha == null) {
+        if (fecha == null) {
             status.setText("La fecha no es válida.");
             ok.setIcon(null);
             ok.setText("");
@@ -71,6 +71,25 @@ public class Herramientas {
             System.out.println("error2");
         }
         return valido;
+    }
+
+    public static boolean esNumero(String str) {
+        return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
+    }
+
+    public static boolean validarRango(String num, int maxRango, int minRango) {
+        boolean retorno = false;
+        int numero = 0;
+        try {
+            numero = Integer.parseInt(num);
+
+            if (numero > maxRango || numero < minRango) {
+            } else {
+                retorno = true;
+            }
+        } catch (NumberFormatException e) {
+        }
+        return retorno;
     }
 
 }

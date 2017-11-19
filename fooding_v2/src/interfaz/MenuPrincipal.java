@@ -27,6 +27,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnRegistro = new javax.swing.JButton();
         btnIngresoUsuario = new javax.swing.JButton();
         btnIngresoProfesional = new javax.swing.JButton();
+        btnConfiguracion = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,6 +49,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         lblFooding.setBounds(350, 20, 170, 50);
 
         btnRegistro.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clipboard-with-pencil-.png"))); // NOI18N
         btnRegistro.setText("Registro");
         btnRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +60,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnRegistro.setBounds(340, 80, 180, 50);
 
         btnIngresoUsuario.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnIngresoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/standing-frontal-man-silhouette.png"))); // NOI18N
         btnIngresoUsuario.setText("Soy usuario");
         btnIngresoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +71,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnIngresoUsuario.setBounds(240, 140, 180, 50);
 
         btnIngresoProfesional.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnIngresoProfesional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/engineer.png"))); // NOI18N
         btnIngresoProfesional.setText("Soy profesional");
         btnIngresoProfesional.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +80,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(btnIngresoProfesional);
         btnIngresoProfesional.setBounds(450, 140, 180, 50);
+
+        btnConfiguracion.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vegetables.png"))); // NOI18N
+        btnConfiguracion.setText("Registro de alimentos");
+        btnConfiguracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfiguracionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnConfiguracion);
+        btnConfiguracion.setBounds(30, 350, 200, 50);
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/rsz_nutrition.jpg"))); // NOI18N
         getContentPane().add(lblBackground);
@@ -139,8 +154,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnIngresoProfesionalActionPerformed
 
+    private void btnConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfiguracionActionPerformed
+        this.setVisible(false);
+        VentanaRegistroAlimento ventana = new VentanaRegistroAlimento(modelo);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnConfiguracionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConfiguracion;
     private javax.swing.JButton btnIngresoProfesional;
     private javax.swing.JButton btnIngresoUsuario;
     private javax.swing.JButton btnRegistro;

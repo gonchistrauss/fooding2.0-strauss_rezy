@@ -1,12 +1,14 @@
 package dominio;
 
-import java.util.Hashtable;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Alimento {
 
     private String nombre;
     private String categoria;
-    private Hashtable<String, Integer> nutrientes;
+    private HashMap<String, Integer> nutrientes;
 
     public String getNombre() {
         return nombre;
@@ -24,17 +26,16 @@ public class Alimento {
         this.categoria = categoria;
     }
 
-    public Hashtable<String, Integer> getNutrientes() {
+    public HashMap<String, Integer> getNutrientes() {
         return nutrientes;
     }
 
-    public void agregarNutriente(String nutriente, Integer proporcion) {
-        this.nutrientes.put(nutriente, proporcion);
-    }
-
-    public Alimento(String nombre, String categoria) {
+    public Alimento(String nombre, String categoria, HashMap<String,Integer> nuts) {
         this.setNombre(nombre);
         this.setCategoria(categoria);
-        nutrientes = new Hashtable<>();
+        nutrientes = new HashMap<>();
+        for (Map.Entry<String,Integer> entry : nuts.entrySet()) {
+            nutrientes.put(entry.getKey(), entry.getValue());
+        }
     }
 }
