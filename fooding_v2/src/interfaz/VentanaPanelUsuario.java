@@ -1,6 +1,8 @@
 package interfaz;
 
 import dominio.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.ImageIcon;
 
 public class VentanaPanelUsuario extends javax.swing.JDialog {
@@ -18,6 +20,10 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
         if (!usuarioActivo.getPathPerfil().equals("/imagenes/perfil_defecto.png")) {
             this.lblFotoPerfil.setIcon(new ImageIcon(usuarioActivo.getPathPerfil()));
         }
+        this.lblPais.setText(usuarioActivo.getNacionalidad().getCountry());
+        DateFormat date = new SimpleDateFormat("dd-MM-yyyy");
+        this.lblNacimiento.setText(date.format(usuarioActivo.getFechaDeNacimiento()));
+        this.lblConsultas.setText("Consultas: " + usuarioActivo.getConsultas().size());
     }
 
     @SuppressWarnings("unchecked")
@@ -34,10 +40,9 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
         lblNombreUsuario = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         lblFotoPerfil = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblPais = new javax.swing.JLabel();
+        lblNacimiento = new javax.swing.JLabel();
+        lblConsultas = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -62,8 +67,10 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnConsultaDirecta);
-        btnConsultaDirecta.setBounds(240, 110, 180, 40);
+        btnConsultaDirecta.setBounds(220, 110, 220, 40);
 
+        btnIngesta.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnIngesta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/calendar.png"))); // NOI18N
         btnIngesta.setText("Ingesta diaria");
         btnIngesta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,8 +78,10 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnIngesta);
-        btnIngesta.setBounds(240, 180, 180, 40);
+        btnIngesta.setBounds(220, 180, 220, 40);
 
+        btnConsultas.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/planning.png"))); // NOI18N
         btnConsultas.setText("Mis consultas / planes");
         btnConsultas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,13 +89,15 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnConsultas);
-        btnConsultas.setBounds(240, 250, 180, 40);
+        btnConsultas.setBounds(220, 250, 220, 40);
 
         lblBBienvenido.setFont(new java.awt.Font("Seravek", 1, 27)); // NOI18N
         lblBBienvenido.setText("Bienvenido, ");
         getContentPane().add(lblBBienvenido);
         lblBBienvenido.setBounds(70, 10, 170, 30);
 
+        btnSalir.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sign-out-option.png"))); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +105,7 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnSalir);
-        btnSalir.setBounds(240, 320, 180, 40);
+        btnSalir.setBounds(220, 320, 220, 40);
 
         lblDeseo.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
         lblDeseo.setText("Que deseas hacer?");
@@ -117,21 +128,23 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
         getContentPane().add(lblFotoPerfil);
         lblFotoPerfil.setBounds(30, 80, 130, 130);
 
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(70, 230, 45, 16);
+        lblPais.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblPais.setForeground(new java.awt.Color(0, 153, 255));
+        lblPais.setText("xxx");
+        getContentPane().add(lblPais);
+        lblPais.setBounds(30, 230, 130, 20);
 
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(70, 270, 45, 16);
+        lblNacimiento.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblNacimiento.setForeground(new java.awt.Color(0, 153, 255));
+        lblNacimiento.setText("yyy");
+        getContentPane().add(lblNacimiento);
+        lblNacimiento.setBounds(31, 260, 130, 16);
 
-        jLabel3.setText("jLabel3");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(70, 310, 45, 16);
-
-        jLabel4.setText("jLabel4");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(70, 350, 45, 16);
+        lblConsultas.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblConsultas.setForeground(new java.awt.Color(0, 153, 255));
+        lblConsultas.setText("zzz");
+        getContentPane().add(lblConsultas);
+        lblConsultas.setBounds(31, 290, 130, 16);
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wall_raro.jpg"))); // NOI18N
         getContentPane().add(lblBackground);
@@ -177,16 +190,15 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
     private javax.swing.JButton btnConsultas;
     private javax.swing.JButton btnIngesta;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblBBienvenido;
     private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblConsultas;
     private javax.swing.JLabel lblDeseo;
     private javax.swing.JLabel lblFotoPerfil;
+    private javax.swing.JLabel lblNacimiento;
     private javax.swing.JLabel lblNombreUsuario;
+    private javax.swing.JLabel lblPais;
     // End of variables declaration//GEN-END:variables
 }
