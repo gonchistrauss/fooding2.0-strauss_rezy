@@ -228,7 +228,6 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
 
     private void btnRegistroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroUsuarioActionPerformed
             modelo.agregarUsuario(this.txtNombre.getText(), this.txtApellido.getText(), this.comboPaises.getSelectedItem().toString(), this.dateNacimiento.getDate(), profilePath);
-            System.out.println(profilePath);
             JOptionPane.showMessageDialog(null, "Usuario registrado exitosamente.", "Mensaje", 0, new ImageIcon(getClass().getResource("/imagenes/businessman.png")));
             this.setVisible(false);
             MenuPrincipal ventana = new MenuPrincipal(modelo);

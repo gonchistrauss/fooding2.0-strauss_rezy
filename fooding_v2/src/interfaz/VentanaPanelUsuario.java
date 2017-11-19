@@ -1,6 +1,7 @@
 package interfaz;
 
 import dominio.*;
+import javax.swing.ImageIcon;
 
 public class VentanaPanelUsuario extends javax.swing.JDialog {
 
@@ -13,7 +14,10 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
         this.setModal(true);
         this.setLocationRelativeTo(null);
         usuarioActivo = modelo.obtenerSesionActivaUsuario();
-        System.out.println(usuarioActivo.toString());
+        this.lblNombreUsuario.setText(usuarioActivo.getNombre() + " " + usuarioActivo.getApellidos());
+        if (!usuarioActivo.getPathPerfil().equals("/imagenes/perfil_defecto.png")) {
+            this.lblFotoPerfil.setIcon(new ImageIcon(usuarioActivo.getPathPerfil()));
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -30,6 +34,11 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
         lblNombreUsuario = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         lblFotoPerfil = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Panel de usuario");
@@ -44,6 +53,8 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
         });
         getContentPane().setLayout(null);
 
+        btnConsultaDirecta.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
+        btnConsultaDirecta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/list.png"))); // NOI18N
         btnConsultaDirecta.setText("Consulta / Plan");
         btnConsultaDirecta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,7 +62,7 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnConsultaDirecta);
-        btnConsultaDirecta.setBounds(240, 130, 180, 40);
+        btnConsultaDirecta.setBounds(240, 110, 180, 40);
 
         btnIngesta.setText("Ingesta diaria");
         btnIngesta.addActionListener(new java.awt.event.ActionListener() {
@@ -60,7 +71,7 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnIngesta);
-        btnIngesta.setBounds(240, 200, 180, 40);
+        btnIngesta.setBounds(240, 180, 180, 40);
 
         btnConsultas.setText("Mis consultas / planes");
         btnConsultas.addActionListener(new java.awt.event.ActionListener() {
@@ -69,12 +80,12 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnConsultas);
-        btnConsultas.setBounds(240, 270, 180, 40);
+        btnConsultas.setBounds(240, 250, 180, 40);
 
         lblBBienvenido.setFont(new java.awt.Font("Seravek", 1, 27)); // NOI18N
         lblBBienvenido.setText("Bienvenido, ");
         getContentPane().add(lblBBienvenido);
-        lblBBienvenido.setBounds(50, 10, 170, 30);
+        lblBBienvenido.setBounds(70, 10, 170, 30);
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -83,14 +94,14 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnSalir);
-        btnSalir.setBounds(240, 340, 180, 40);
+        btnSalir.setBounds(240, 320, 180, 40);
 
         lblDeseo.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
         lblDeseo.setText("Que deseas hacer?");
         getContentPane().add(lblDeseo);
         lblDeseo.setBounds(250, 70, 180, 30);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(10, 50, 470, 12);
+        jSeparator1.setBounds(30, 50, 450, 12);
 
         lblNombreUsuario.setFont(new java.awt.Font("Seravek", 1, 24)); // NOI18N
         lblNombreUsuario.setForeground(new java.awt.Color(0, 204, 0));
@@ -100,11 +111,31 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(160, 70, 10, 340);
+        jSeparator2.setBounds(160, 70, 10, 290);
 
         lblFotoPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/perfil_defecto.png"))); // NOI18N
         getContentPane().add(lblFotoPerfil);
         lblFotoPerfil.setBounds(20, 80, 130, 130);
+
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(60, 230, 45, 16);
+
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(60, 270, 45, 16);
+
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(60, 310, 45, 16);
+
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(60, 350, 45, 16);
+
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wall_raro.jpg"))); // NOI18N
+        getContentPane().add(lblBackground);
+        lblBackground.setBounds(-360, 0, 900, 610);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -146,9 +177,14 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
     private javax.swing.JButton btnConsultas;
     private javax.swing.JButton btnIngesta;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblBBienvenido;
+    private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblDeseo;
     private javax.swing.JLabel lblFotoPerfil;
     private javax.swing.JLabel lblNombreUsuario;

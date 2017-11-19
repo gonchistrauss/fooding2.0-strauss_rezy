@@ -93,7 +93,7 @@ public class VentanaConsulta extends javax.swing.JDialog {
         getContentPane().add(lblMensaje);
         lblMensaje.setBounds(50, 134, 120, 30);
         getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(30, 110, 430, 10);
+        jSeparator2.setBounds(30, 110, 430, 12);
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wall_blue.png"))); // NOI18N
         getContentPane().add(lblBackground);
