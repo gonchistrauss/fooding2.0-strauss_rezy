@@ -1,20 +1,23 @@
 package interfaz;
 
 import dominio.Sistema;
+import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import utils.*;
 
 public class VentanaRegistroUsuario extends javax.swing.JDialog {
-    
+
     private Sistema modelo;
     private FileNameExtensionFilter filter;
     private ImageIcon perfil;
     private String profilePath;
-    
+
     public VentanaRegistroUsuario(Sistema miSis) {
         initComponents();
         this.setModal(true);
@@ -24,16 +27,15 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
         dateNacimiento.setDateFormatString("dd/MM/yyyy");
         perfil = new ImageIcon(getClass().getResource("/imagenes/avatar.png"));
         profilePath = "/imagenes/perfil_defecto.png";
-        
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
         lblTitulo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
         lblApellido = new javax.swing.JLabel();
         btnPreferencias = new javax.swing.JButton();
         lblPref_res = new javax.swing.JLabel();
@@ -48,6 +50,12 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         comboPaises = new javax.swing.JComboBox<>();
         btnVolver = new javax.swing.JButton();
+        lblStatusNombre = new javax.swing.JLabel();
+        lblOkNombre = new javax.swing.JLabel();
+        lblStatusApellido = new javax.swing.JLabel();
+        lblOkApellido = new javax.swing.JLabel();
+        lblStatusNacimiento = new javax.swing.JLabel();
+        lblOkNacimiento = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -68,11 +76,11 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
         getContentPane().add(lblTitulo);
         lblTitulo.setBounds(210, 10, 250, 34);
 
-        jLabel1.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/man-user.png"))); // NOI18N
-        jLabel1.setText("Nombre:");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(170, 70, 90, 24);
+        lblNombre.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
+        lblNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/man-user.png"))); // NOI18N
+        lblNombre.setText("Nombre:");
+        getContentPane().add(lblNombre);
+        lblNombre.setBounds(170, 70, 90, 24);
 
         lblApellido.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
         lblApellido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/man-user.png"))); // NOI18N
@@ -100,8 +108,20 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
         });
         getContentPane().add(btnRegistroUsuario);
         btnRegistroUsuario.setBounds(250, 340, 190, 50);
+
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtApellido);
         txtApellido.setBounds(290, 120, 270, 40);
+
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNombreKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtNombre);
         txtNombre.setBounds(290, 60, 270, 40);
 
@@ -152,7 +172,41 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
         getContentPane().add(btnVolver);
         btnVolver.setBounds(10, 380, 97, 50);
 
+        lblStatusNombre.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblStatusNombre.setForeground(new java.awt.Color(255, 51, 51));
+        lblStatusNombre.setText(" ");
+        lblStatusNombre.setToolTipText("");
+        getContentPane().add(lblStatusNombre);
+        lblStatusNombre.setBounds(300, 100, 250, 16);
+
+        lblOkNombre.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        getContentPane().add(lblOkNombre);
+        lblOkNombre.setBounds(560, 70, 60, 24);
+
+        lblStatusApellido.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblStatusApellido.setForeground(new java.awt.Color(255, 51, 51));
+        lblStatusApellido.setText(" ");
+        getContentPane().add(lblStatusApellido);
+        lblStatusApellido.setBounds(300, 160, 250, 16);
+
+        lblOkApellido.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        getContentPane().add(lblOkApellido);
+        lblOkApellido.setBounds(560, 130, 60, 20);
+
+        lblStatusNacimiento.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblStatusNacimiento.setForeground(new java.awt.Color(255, 51, 51));
+        lblStatusNacimiento.setText(" ");
+        getContentPane().add(lblStatusNacimiento);
+        lblStatusNacimiento.setBounds(300, 220, 240, 16);
+
+        lblOkNacimiento.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        getContentPane().add(lblOkNacimiento);
+        lblOkNacimiento.setBounds(560, 190, 60, 20);
+
+        lblBackground.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblBackground.setForeground(new java.awt.Color(255, 51, 51));
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/chainimage-free-foods-and-drinks-powerpoint-backgroundswallpapers-download-ppt.jpg"))); // NOI18N
+        lblBackground.setText(" ");
         getContentPane().add(lblBackground);
         lblBackground.setBounds(-110, -430, 770, 920);
 
@@ -168,17 +222,17 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
             perfil = icono;
             lblFotoPerfil.setIcon(perfil);
             profilePath = chooser.getSelectedFile().getAbsolutePath();
-            
+
         }
     }//GEN-LAST:event_btnImportarActionPerformed
 
     private void btnRegistroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroUsuarioActionPerformed
-        modelo.agregarUsuario(this.txtNombre.getText(), this.txtApellido.getText(), this.comboPaises.getSelectedItem().toString(), this.dateNacimiento.getDate(), profilePath);
-        System.out.println(profilePath);
-        JOptionPane.showMessageDialog(null, "Usuario registrado exitosamente.", "Mensaje", 0, new ImageIcon(getClass().getResource("/imagenes/businessman.png")));
-        this.setVisible(false);
-        MenuPrincipal ventana = new MenuPrincipal(modelo);
-        ventana.setVisible(true);
+            modelo.agregarUsuario(this.txtNombre.getText(), this.txtApellido.getText(), this.comboPaises.getSelectedItem().toString(), this.dateNacimiento.getDate(), profilePath);
+            System.out.println(profilePath);
+            JOptionPane.showMessageDialog(null, "Usuario registrado exitosamente.", "Mensaje", 0, new ImageIcon(getClass().getResource("/imagenes/businessman.png")));
+            this.setVisible(false);
+            MenuPrincipal ventana = new MenuPrincipal(modelo);
+            ventana.setVisible(true);        
     }//GEN-LAST:event_btnRegistroUsuarioActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -192,6 +246,14 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
         ventana.setVisible(true);
     }//GEN-LAST:event_btnVolverActionPerformed
 
+    private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
+        Herramientas.validarCampo(this.txtNombre, this.lblStatusNombre, this.lblOkNombre, "nombre");
+    }//GEN-LAST:event_txtNombreKeyReleased
+
+    private void txtApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyReleased
+        Herramientas.validarCampo(this.txtApellido, this.lblStatusApellido, this.lblOkApellido, "apellido");
+    }//GEN-LAST:event_txtApellidoKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnImportar;
@@ -200,15 +262,20 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
     private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> comboPaises;
     private com.toedter.calendar.JDateChooser dateNacimiento;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblFotoPerfil;
     private javax.swing.JLabel lblNacimiento;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblOkApellido;
+    private javax.swing.JLabel lblOkNacimiento;
+    private javax.swing.JLabel lblOkNombre;
     private javax.swing.JLabel lblPais;
     private javax.swing.JLabel lblPref_res;
+    private javax.swing.JLabel lblStatusApellido;
+    private javax.swing.JLabel lblStatusNacimiento;
+    private javax.swing.JLabel lblStatusNombre;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtNombre;
