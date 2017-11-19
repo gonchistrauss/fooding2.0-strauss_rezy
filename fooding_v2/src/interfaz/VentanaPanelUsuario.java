@@ -111,27 +111,27 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(160, 70, 10, 290);
+        jSeparator2.setBounds(170, 70, 10, 290);
 
         lblFotoPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/perfil_defecto.png"))); // NOI18N
         getContentPane().add(lblFotoPerfil);
-        lblFotoPerfil.setBounds(20, 80, 130, 130);
+        lblFotoPerfil.setBounds(30, 80, 130, 130);
 
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(60, 230, 45, 16);
+        jLabel1.setBounds(70, 230, 45, 16);
 
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(60, 270, 45, 16);
+        jLabel2.setBounds(70, 270, 45, 16);
 
         jLabel3.setText("jLabel3");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(60, 310, 45, 16);
+        jLabel3.setBounds(70, 310, 45, 16);
 
         jLabel4.setText("jLabel4");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(60, 350, 45, 16);
+        jLabel4.setBounds(70, 350, 45, 16);
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wall_raro.jpg"))); // NOI18N
         getContentPane().add(lblBackground);
