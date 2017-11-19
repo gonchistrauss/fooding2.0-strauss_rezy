@@ -139,6 +139,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No hay usuarios registrados.", "Atención", 0, new ImageIcon(getClass().getResource("/imagenes/warning.png")));
 
         } else {
+            this.setVisible(false);
             VentanaSeleccionUsuario ventana = new VentanaSeleccionUsuario(modelo);
             ventana.setVisible(true);
         }
@@ -149,6 +150,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No hay profesionales registrados.", "Atención", 0, new ImageIcon(getClass().getResource("/imagenes/warning.png")));
 
         } else {
+            this.setVisible(false);
             VentanaSeleccionProfesional ventana = new VentanaSeleccionProfesional(modelo);
             ventana.setVisible(true);
         }

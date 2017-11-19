@@ -97,11 +97,15 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         this.usuarioActivo.setSesionActiva(false);
         this.dispose();
+        MenuPrincipal ventana = new MenuPrincipal(modelo);
+        ventana.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.usuarioActivo.setSesionActiva(false);
         this.dispose();
+        MenuPrincipal ventana = new MenuPrincipal(modelo);
+        ventana.setVisible(true);
     }//GEN-LAST:event_btnSalirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

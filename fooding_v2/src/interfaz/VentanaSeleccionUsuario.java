@@ -19,8 +19,8 @@ public class VentanaSeleccionUsuario extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         cargarLista();
     }
-    
-     public void cargarLabels() {
+
+    public void cargarLabels() {
         Usuario usuario = (Usuario) comboUsuarios.getSelectedItem();
         campoNacionalidad.setText(usuario.getNacionalidad().getCountry());
         campoConsultas.setText(String.valueOf(usuario.getConsultas().size()));
@@ -63,6 +63,11 @@ public class VentanaSeleccionUsuario extends javax.swing.JDialog {
         setPreferredSize(new java.awt.Dimension(570, 320));
         setResizable(false);
         setSize(new java.awt.Dimension(570, 320));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Seravek", 1, 27)); // NOI18N
@@ -164,6 +169,8 @@ public class VentanaSeleccionUsuario extends javax.swing.JDialog {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
+        MenuPrincipal ventana = new MenuPrincipal(modelo);
+        ventana.setVisible(true);
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
@@ -173,6 +180,12 @@ public class VentanaSeleccionUsuario extends javax.swing.JDialog {
         VentanaPanelUsuario ventana = new VentanaPanelUsuario(modelo);
         ventana.setVisible(true);
     }//GEN-LAST:event_btnContinuarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        this.dispose();
+        MenuPrincipal ventana = new MenuPrincipal(modelo);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
