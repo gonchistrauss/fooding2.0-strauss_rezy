@@ -99,18 +99,33 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
         btnInbox.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
         btnInbox.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/inbox.png"))); // NOI18N
         btnInbox.setText("Inbox");
+        btnInbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInboxActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnInbox);
         btnInbox.setBounds(220, 110, 220, 40);
 
         btnConsultas.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/seo.png"))); // NOI18N
         btnConsultas.setText("Mis consultas");
+        btnConsultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultasActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnConsultas);
         btnConsultas.setBounds(220, 180, 220, 40);
 
         btnPlanes.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnPlanes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/planning.png"))); // NOI18N
         btnPlanes.setText("Mis planes");
+        btnPlanes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlanesActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnPlanes);
         btnPlanes.setBounds(220, 250, 220, 40);
 
@@ -141,6 +156,24 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
         MenuPrincipal ventana = new MenuPrincipal(modelo);
         ventana.setVisible(true);
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnInboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInboxActionPerformed
+        this.dispose();
+        VentanaInbox ventana = new VentanaInbox(modelo);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnInboxActionPerformed
+
+    private void btnConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultasActionPerformed
+        this.dispose();
+        VentanaConsultasProfesional ventana = new VentanaConsultasProfesional(modelo);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnConsultasActionPerformed
+
+    private void btnPlanesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlanesActionPerformed
+        this.dispose();
+        VentanaPlanesProfesional ventana = new VentanaPlanesProfesional(modelo);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnPlanesActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultas;
