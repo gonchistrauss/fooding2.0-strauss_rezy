@@ -53,7 +53,7 @@ public class Sistema implements Serializable {
 
     public void agregarProfesional(String nombre, String apellidos, Date nacimiento, String pathPerfil, String titulo, String paisTitulo, Date fechaGrad) {
         ArrayList<Consulta> consultasPendientes = this.filtrarPorPendiente(this.getListaConsultas());
-        Profesional nuevoProfesional = new Profesional(nombre, apellidos, nacimiento, pathPerfil, titulo, fechaGrad, paisTitulo,consultasPendientes);
+        Profesional nuevoProfesional = new Profesional(nombre, apellidos, nacimiento, pathPerfil, titulo, fechaGrad, paisTitulo,(ArrayList<Consulta>)consultasPendientes.clone());
         this.getListaProfesionales().add(nuevoProfesional);
     }
 

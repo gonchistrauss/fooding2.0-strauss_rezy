@@ -5,7 +5,9 @@ import dominio.Profesional;
 import dominio.Sistema;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import utils.Tipos;
+import utils.Tipos.Categoria;
 import utils.Tipos.Estado;
 
 public class VentanaPanelProfesional extends javax.swing.JDialog {
@@ -177,6 +179,11 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
         btnTomar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/checked.png"))); // NOI18N
         btnTomar.setText("Asignar");
         btnTomar.setEnabled(false);
+        btnTomar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTomarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnTomar);
         btnTomar.setBounds(770, 390, 120, 40);
 
@@ -293,6 +300,26 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
         profesionalActivo.eliminarEnInbox(consulta);
         this.lstInbox.setListData(modelo.consultasPorDescripcion(listaActual).toArray());
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnTomarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTomarActionPerformed
+        int input = JOptionPane.showConfirmDialog(null, "Esta seguro que desea asignarse esta tarea?", "Confirmacion",
+                JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (input == 0) {
+            //Si
+            Consulta consulta = listaActual.get(lstInbox.getSelectedIndex());
+            consulta.setProfesional(profesionalActivo);
+            consulta.setEstado(Estado.EN_PROCESO);
+            if (consulta.getCategoria() == Categoria.DIRECTA) {
+                this.dispose();
+                VentanaConsultasProfesional ventana = new VentanaConsultasProfesional(modelo);
+                ventana.setVisible(true);
+            } else {
+                this.dispose();
+                VentanaPlanesProfesional ventana = new VentanaPlanesProfesional(modelo);
+                ventana.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_btnTomarActionPerformed
 
     private ArrayList<Consulta> filtrarCategoria(int nro, ArrayList<Consulta> lista) {
         ArrayList<Consulta> res = new ArrayList<>();

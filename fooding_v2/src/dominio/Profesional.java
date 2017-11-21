@@ -64,13 +64,8 @@ public class Profesional extends Persona implements Serializable {
     }
     
     public void eliminarEnInbox(Consulta unaConsulta){
-       Iterator<Consulta> iter = this.getInbox().iterator();
-       while(iter.hasNext()){
-           Consulta consulta = iter.next();
-           if(consulta.equals(unaConsulta)){
-               iter.remove();
-           }
-       }
+        int index = this.getInbox().indexOf(unaConsulta);
+        this.getInbox().remove(index);
     }
 
     public ArrayList<Consulta> misConsultas() {
