@@ -124,7 +124,7 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnSalir);
-        btnSalir.setBounds(20, 420, 130, 40);
+        btnSalir.setBounds(30, 420, 130, 40);
 
         jLabel1.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/filter-tool-black-shape.png"))); // NOI18N
@@ -172,6 +172,11 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
         btnFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/task-complete.png"))); // NOI18N
         btnFinalizar.setText("Finalizar");
         btnFinalizar.setEnabled(false);
+        btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnFinalizar);
         btnFinalizar.setBounds(600, 390, 120, 40);
 
@@ -254,12 +259,7 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        int nroCategoria = this.comboCategoria.getSelectedIndex();
-        int nroEstado = this.comboEstado.getSelectedIndex();
-        ArrayList<Consulta> inboxConAutor = (this.comboAutor.getSelectedIndex() == 0) ? profesionalActivo.getInbox() : profesionalActivo.misConsultas();
-        ArrayList<Consulta> inboxConCategoria = filtrarCategoria(nroCategoria, inboxConAutor);
-        listaActual = filtrarEstado(nroEstado, inboxConCategoria);
-        this.lstInbox.setListData(modelo.consultasPorDescripcion(listaActual).toArray());
+       cargarLista();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void lstInboxValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstInboxValueChanged
@@ -278,7 +278,7 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
                         this.btnFinalizar.setEnabled(false);
                     } else {
                         this.btnEliminar.setEnabled(false);
-                        if (Estado.EN_PROCESO == consulta.getEstado()) {
+                        if (Estado.EN_PROCESO == consulta.getEstado() && consulta.getProfesional().equals(profesionalActivo)) {
                             this.btnFinalizar.setEnabled(true);
                         } else {
                             this.btnFinalizar.setEnabled(false);
@@ -295,10 +295,19 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
 
     }//GEN-LAST:event_lstInboxValueChanged
 
+    public void cargarLista() {
+        int nroCategoria = this.comboCategoria.getSelectedIndex();
+        int nroEstado = this.comboEstado.getSelectedIndex();
+        ArrayList<Consulta> inboxConAutor = (this.comboAutor.getSelectedIndex() == 0) ? profesionalActivo.getInbox() : profesionalActivo.misConsultas();
+        ArrayList<Consulta> inboxConCategoria = filtrarCategoria(nroCategoria, inboxConAutor);
+        listaActual = filtrarEstado(nroEstado, inboxConCategoria);
+        this.lstInbox.setListData(modelo.consultasPorDescripcion(listaActual).toArray());
+    }
+
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         Consulta consulta = listaActual.get(lstInbox.getSelectedIndex());
         profesionalActivo.eliminarEnInbox(consulta);
-        this.lstInbox.setListData(modelo.consultasPorDescripcion(listaActual).toArray());
+        cargarLista();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnTomarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTomarActionPerformed
@@ -320,6 +329,16 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
             }
         }
     }//GEN-LAST:event_btnTomarActionPerformed
+
+    private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
+        Consulta consulta = listaActual.get(lstInbox.getSelectedIndex());
+        int input = JOptionPane.showConfirmDialog(null, "Esta seguro que desea finalizar esta tarea? \n La acción es irreversible.", "Confirmacion",
+                JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (input == 0) {
+            consulta.setEstado(Estado.COMPLETADO);
+            this.lstInbox.setListData(modelo.consultasPorDescripcion(listaActual).toArray());
+        }
+    }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private ArrayList<Consulta> filtrarCategoria(int nro, ArrayList<Consulta> lista) {
         ArrayList<Consulta> res = new ArrayList<>();
