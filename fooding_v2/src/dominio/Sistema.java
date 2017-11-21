@@ -11,7 +11,6 @@ public class Sistema implements Serializable {
     private ArrayList<Alimento> listaAlimentos;
     private ArrayList<Consulta> listaConsultas;
 
-    
     public ArrayList<Consulta> getListaConsultas() {
         return listaConsultas;
     }
@@ -46,14 +45,11 @@ public class Sistema implements Serializable {
     public void agregarUsuario(String nombre, String apellidos, String nacionalidad, Date nacimiento, String pathPerfil) {
         Usuario nuevoUsuario = new Usuario(nombre, apellidos, nacionalidad, nacimiento, pathPerfil);
         this.getListaUsuarios().add(nuevoUsuario);
-        for(Profesional profesional: this.getListaProfesionales()){
-            //profesional.agregarUsuario(nuevoUsuario);
-        }
     }
 
     public void agregarProfesional(String nombre, String apellidos, Date nacimiento, String pathPerfil, String titulo, String paisTitulo, Date fechaGrad) {
         ArrayList<Consulta> consultasPendientes = this.filtrarPorPendiente(this.getListaConsultas());
-        Profesional nuevoProfesional = new Profesional(nombre, apellidos, nacimiento, pathPerfil, titulo, fechaGrad, paisTitulo,(ArrayList<Consulta>)consultasPendientes.clone());
+        Profesional nuevoProfesional = new Profesional(nombre, apellidos, nacimiento, pathPerfil, titulo, fechaGrad, paisTitulo, (ArrayList<Consulta>) consultasPendientes.clone());
         this.getListaProfesionales().add(nuevoProfesional);
     }
 
@@ -61,22 +57,22 @@ public class Sistema implements Serializable {
         Alimento nuevoAlimento = new Alimento(nombre, familia, nutrientes);
         this.getListaAlimentos().add(nuevoAlimento);
     }
-    
-    public void agregarConsulta(Consulta nuevaConsulta){
-        for(Profesional profesional : this.getListaProfesionales()){
+
+    public void agregarConsulta(Consulta nuevaConsulta) {
+        listaConsultas.add(nuevaConsulta);
+        for (Profesional profesional : this.getListaProfesionales()) {
             profesional.agregarEnInbox(nuevaConsulta);
-            listaConsultas.add(nuevaConsulta);
         }
     }
-    
-    public ArrayList<String> consultasPorDescripcion(ArrayList<Consulta> lista){
+
+    public ArrayList<String> consultasPorDescripcion(ArrayList<Consulta> lista) {
         ArrayList<String> consultasDescripcion = new ArrayList<>();
-        for(Consulta consulta : lista){
+        for (Consulta consulta : lista) {
             consultasDescripcion.add(consulta.toStringDescripcion());
         }
         return consultasDescripcion;
     }
-    
+
     public ArrayList<Consulta> filtrarPorDirecta(ArrayList<Consulta> lista) {
         ArrayList<Consulta> directas = new ArrayList<>();
         for (Consulta consulta : lista) {
@@ -106,8 +102,8 @@ public class Sistema implements Serializable {
         }
         return completados;
     }
-    
-     public ArrayList<Consulta> filtrarPorPendiente(ArrayList<Consulta> lista) {
+
+    public ArrayList<Consulta> filtrarPorPendiente(ArrayList<Consulta> lista) {
         ArrayList<Consulta> pendientes = new ArrayList<>();
         for (Consulta consulta : lista) {
             if (consulta.getEstado() == Estado.PENDIENTE) {
@@ -116,8 +112,8 @@ public class Sistema implements Serializable {
         }
         return pendientes;
     }
-     
-      public ArrayList<Consulta> filtrarPorEnProceso(ArrayList<Consulta> lista) {
+
+    public ArrayList<Consulta> filtrarPorEnProceso(ArrayList<Consulta> lista) {
         ArrayList<Consulta> enProceso = new ArrayList<>();
         for (Consulta consulta : lista) {
             if (consulta.getEstado() == Estado.EN_PROCESO) {

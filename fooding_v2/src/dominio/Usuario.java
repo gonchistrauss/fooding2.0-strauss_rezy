@@ -14,11 +14,15 @@ public class Usuario extends Persona implements Serializable {
     //Atributos Usuario
     private ArrayList<Consulta> consultas;
     private Locale nacionalidad;
-    private ArrayList<Alimento> alimentosIngeridos;
+    private ArrayList<Alimento> preferencias;
     private ArrayList<Alimento> restricciones;
-    private HashMap<Date, ArrayList<Alimento>> alimentosIngs;
+    private HashMap<Date, ArrayList<Alimento>> alimentosIngeridos;
 
-    public ArrayList<Alimento> getAlimentosIngeridos() {
+    public ArrayList<Alimento> getPreferencias() {
+        return preferencias;
+    }
+
+    public HashMap<Date, ArrayList<Alimento>> getAlimentosIngs() {
         return alimentosIngeridos;
     }
 
@@ -26,12 +30,16 @@ public class Usuario extends Persona implements Serializable {
         return restricciones;
     }
 
-    public void agregarAlimento(Alimento nuevoAlimento) {
-        this.alimentosIngeridos.add(nuevoAlimento);
+    public void agregarRestriccion(ArrayList<Alimento> nuevosAlimentos) {
+        for(Alimento alimento : nuevosAlimentos){
+            restricciones.add(alimento);
+        }
     }
-
-    public void agregarRestriccion(Alimento nuevaRestriccion) {
-        this.restricciones.add(nuevaRestriccion);
+    
+    public void agregarPreferencia(ArrayList<Alimento> nuevosAlimentos) {
+        for(Alimento alimento : nuevosAlimentos){
+            preferencias.add(alimento);
+        }
     }
 
     public Locale getNacionalidad() {
@@ -49,8 +57,8 @@ public class Usuario extends Persona implements Serializable {
     public Usuario(String nombre, String apellidos, String pais, Date nacimiento, String pathPerfil) {
         super(nombre, apellidos, nacimiento, pathPerfil);
         this.setNacionalidad(pais);
-        alimentosIngeridos = new ArrayList<Alimento>();
         restricciones = new ArrayList<Alimento>();
+        preferencias = new ArrayList<Alimento>();
         consultas = new ArrayList<Consulta>();
     }
 

@@ -1,7 +1,9 @@
 package interfaz;
 
+import dominio.Alimento;
 import dominio.Sistema;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -17,6 +19,8 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
     private FileNameExtensionFilter filter;
     private ImageIcon perfil;
     private String profilePath;
+    private ArrayList<Alimento> preferencias;
+    private ArrayList<Alimento> restricciones;
 
     public VentanaRegistroUsuario(Sistema miSis) {
         initComponents();
@@ -27,7 +31,8 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
         dateNacimiento.setDateFormatString("dd/MM/yyyy");
         perfil = new ImageIcon(getClass().getResource("/imagenes/avatar.png"));
         profilePath = "/imagenes/perfil_defecto.png";
-
+        preferencias = new ArrayList<>();
+        restricciones = new ArrayList<>();
     }
 
     @SuppressWarnings("unchecked")
@@ -89,6 +94,11 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
         lblApellido.setBounds(170, 130, 90, 24);
 
         btnPreferencias.setText("Agregar");
+        btnPreferencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPreferenciasActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnPreferencias);
         btnPreferencias.setBounds(420, 280, 140, 40);
 
@@ -227,11 +237,13 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_btnImportarActionPerformed
 
     private void btnRegistroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroUsuarioActionPerformed
-            modelo.agregarUsuario(this.txtNombre.getText(), this.txtApellido.getText(), this.comboPaises.getSelectedItem().toString(), this.dateNacimiento.getDate(), profilePath);
-            JOptionPane.showMessageDialog(null, "Usuario registrado exitosamente.", "Mensaje", 0, new ImageIcon(getClass().getResource("/imagenes/businessman.png")));
-            this.setVisible(false);
-            MenuPrincipal ventana = new MenuPrincipal(modelo);
-            ventana.setVisible(true);        
+        modelo.agregarUsuario(this.txtNombre.getText(), this.txtApellido.getText(), this.comboPaises.getSelectedItem().toString(), this.dateNacimiento.getDate(), profilePath);
+        if(!preferencias.isEmpty()){modelo.getListaUsuarios().get(modelo.getListaUsuarios().size() - 1).agregarPreferencia(preferencias);}
+        if(!restricciones.isEmpty()){modelo.getListaUsuarios().get(modelo.getListaUsuarios().size() - 1).agregarRestriccion(restricciones);}
+        JOptionPane.showMessageDialog(null, "Usuario registrado exitosamente.", "Mensaje", 0, new ImageIcon(getClass().getResource("/imagenes/businessman.png")));
+        this.setVisible(false);
+        MenuPrincipal ventana = new MenuPrincipal(modelo);
+        ventana.setVisible(true);
     }//GEN-LAST:event_btnRegistroUsuarioActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -252,6 +264,11 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
     private void txtApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyReleased
         Herramientas.validarCampo(this.txtApellido, this.lblStatusApellido, this.lblOkApellido, "apellido");
     }//GEN-LAST:event_txtApellidoKeyReleased
+
+    private void btnPreferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreferenciasActionPerformed
+        VentanaPreferenciasRestricciones ventana = new VentanaPreferenciasRestricciones(modelo,preferencias,restricciones);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnPreferenciasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

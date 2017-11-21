@@ -1,10 +1,11 @@
 package dominio;
 
+import java.io.Serializable;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Alimento {
+public class Alimento implements Serializable {
 
     private String nombre;
     private String categoria;
@@ -30,12 +31,33 @@ public class Alimento {
         return nutrientes;
     }
 
-    public Alimento(String nombre, String categoria, HashMap<String,Integer> nuts) {
+    public Alimento(String nombre, String categoria, HashMap<String, Integer> nuts) {
         this.setNombre(nombre);
         this.setCategoria(categoria);
         nutrientes = new HashMap<>();
-        for (Map.Entry<String,Integer> entry : nuts.entrySet()) {
+        for (Map.Entry<String, Integer> entry : nuts.entrySet()) {
             nutrientes.put(entry.getKey(), entry.getValue());
         }
+    }
+    
+       @Override
+    public boolean equals(Object obj) {
+        Alimento a = (Alimento) obj;
+        return this.getNombre().equalsIgnoreCase(a.getNombre())
+                && this.getCategoria().equalsIgnoreCase(a.getCategoria());
+    }
+
+
+    @Override
+    public String toString() {
+        String res = "Nombre: " + this.getNombre() + " - Categoria: " + this.getCategoria();
+        if (!this.getNutrientes().isEmpty()) {
+            res += " - Nutrientes: ";
+            for (Map.Entry<String, Integer> entry : this.getNutrientes().entrySet()) {
+                res += entry.getKey() + ",";
+            }
+            res = res.substring(0, res.length() - 1);
+        }
+        return res;
     }
 }
