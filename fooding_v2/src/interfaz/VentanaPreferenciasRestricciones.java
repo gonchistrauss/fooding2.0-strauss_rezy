@@ -51,7 +51,7 @@ public class VentanaPreferenciasRestricciones extends javax.swing.JDialog {
         setSize(new java.awt.Dimension(680, 510));
         getContentPane().setLayout(null);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(20, 380, 640, 10);
+        jSeparator1.setBounds(20, 380, 640, 12);
 
         btnVolver.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/exit.png"))); // NOI18N
@@ -117,7 +117,7 @@ public class VentanaPreferenciasRestricciones extends javax.swing.JDialog {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(390, 66, 130, 20);
         getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(20, 40, 630, 10);
+        jSeparator2.setBounds(20, 40, 630, 12);
 
         lblTituloPreferencias.setFont(new java.awt.Font("Seravek", 1, 27)); // NOI18N
         lblTituloPreferencias.setText("Preferencias");
