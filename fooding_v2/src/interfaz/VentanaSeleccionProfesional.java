@@ -123,6 +123,11 @@ public class VentanaSeleccionProfesional extends javax.swing.JDialog {
         btnContinuar.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
         btnContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/right-arrow.png"))); // NOI18N
         btnContinuar.setText("Continuar");
+        btnContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContinuarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnContinuar);
         btnContinuar.setBounds(410, 240, 150, 50);
 
@@ -138,19 +143,19 @@ public class VentanaSeleccionProfesional extends javax.swing.JDialog {
         btnVolver.setBounds(260, 240, 150, 50);
 
         campoTitulo.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
-        campoTitulo.setForeground(new java.awt.Color(0, 153, 255));
+        campoTitulo.setForeground(new java.awt.Color(255, 153, 0));
         campoTitulo.setText("xxx");
         getContentPane().add(campoTitulo);
         campoTitulo.setBounds(310, 120, 230, 24);
 
         campoEmision.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
-        campoEmision.setForeground(new java.awt.Color(0, 153, 255));
+        campoEmision.setForeground(new java.awt.Color(255, 153, 0));
         campoEmision.setText("yyy");
         getContentPane().add(campoEmision);
         campoEmision.setBounds(310, 160, 230, 24);
 
         campoGraduacion.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
-        campoGraduacion.setForeground(new java.awt.Color(0, 153, 255));
+        campoGraduacion.setForeground(new java.awt.Color(255, 153, 0));
         campoGraduacion.setText("zzz");
         getContentPane().add(campoGraduacion);
         campoGraduacion.setBounds(310, 200, 230, 24);
@@ -176,6 +181,14 @@ public class VentanaSeleccionProfesional extends javax.swing.JDialog {
         MenuPrincipal ventana = new MenuPrincipal(modelo);
         ventana.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+        Profesional profesional = (Profesional) this.comboProfesionales.getSelectedItem();
+        profesional.setSesionActiva(true);
+        this.dispose();
+        VentanaPanelProfesional ventana = new VentanaPanelProfesional(modelo);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_btnContinuarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;

@@ -1,7 +1,11 @@
 package interfaz;
 
+import dominio.Consulta;
 import dominio.Sistema;
 import dominio.Usuario;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import utils.Tipos;
@@ -117,14 +121,22 @@ public class VentanaConsulta extends javax.swing.JDialog {
     }//GEN-LAST:event_txtMensajeKeyReleased
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
         if (this.jComboBox1.getSelectedIndex() == 0) {
-            usuarioActivo.agregarConsulta(Tipos.Categoria.DIRECTA, this.txtMensaje.getText());
+            usuarioActivo.agregarConsulta(Tipos.Categoria.DIRECTA);
+            Consulta consulta = usuarioActivo.getConsultas().get(usuarioActivo.getConsultas().size() - 1);
+            consulta.agregarIncidencia(this.txtMensaje.getText(), dateFormat.format(date), usuarioActivo);
+            modelo.agregarConsulta(consulta);
             JOptionPane.showMessageDialog(null, "Consulta enviada exitosamente.", "Mensaje", 0, new ImageIcon(getClass().getResource("/imagenes/send.png")));
             this.dispose();
             VentanaPanelUsuario ventana = new VentanaPanelUsuario(modelo);
             ventana.setVisible(true);
         } else {
-            usuarioActivo.agregarConsulta(Tipos.Categoria.PLAN_ALIMENTICIO, this.txtMensaje.getText());
+            usuarioActivo.agregarConsulta(Tipos.Categoria.PLAN_ALIMENTICIO);
+            Consulta consulta = usuarioActivo.getConsultas().get(usuarioActivo.getConsultas().size() - 1);
+            consulta.agregarIncidencia(this.txtMensaje.getText(), dateFormat.format(date), usuarioActivo);
+            modelo.agregarConsulta(consulta);
             JOptionPane.showMessageDialog(null, "Plan alimenticio solicitado exitosamente.", "Mensaje", 0, new ImageIcon(getClass().getResource("/imagenes/send.png")));
             this.dispose();
             VentanaPanelUsuario ventana = new VentanaPanelUsuario(modelo);
