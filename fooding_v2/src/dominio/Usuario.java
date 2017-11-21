@@ -37,6 +37,10 @@ public class Usuario extends Persona implements Serializable {
     public Locale getNacionalidad() {
         return nacionalidad;
     }
+    
+    public ArrayList<Consulta> getConsultas() {
+        return consultas;
+    }
 
     public void setNacionalidad(String countryCode) {
         this.nacionalidad = new Locale("", countryCode);
@@ -50,18 +54,11 @@ public class Usuario extends Persona implements Serializable {
         consultas = new ArrayList<Consulta>();
     }
 
-    public ArrayList<Consulta> getConsultas() {
-        return consultas;
-    }
 
-    public void agregarConsulta(Categoria categoria, String mensajeInicial) {
+    public void agregarConsulta(Categoria categoria) {
         Consulta nuevaConsulta = new Consulta(this, categoria);
-        nuevaConsulta.setId(consultas.size() + 1);
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date = new Date();
-        nuevaConsulta.agregarIncidencia(mensajeInicial, dateFormat.format(date), this);
-        System.out.println(nuevaConsulta.toString());
-        consultas.add(nuevaConsulta);
+        nuevaConsulta.setId(this.getConsultas().size() + 1);
+        this.getConsultas().add(nuevaConsulta);
     }
 
     //Metodo toString

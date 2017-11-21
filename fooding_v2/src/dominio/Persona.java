@@ -2,6 +2,7 @@ package dominio;
 
 import java.io.Serializable;
 import java.util.*;
+import utils.Tipos.Categoria;
 
 public abstract class Persona implements Serializable {
 
@@ -12,7 +13,8 @@ public abstract class Persona implements Serializable {
     private String pathPerfil;
     private boolean sesionActiva;
     //private String mail;
-    
+
+       
     public boolean esSesionActiva() {
         return sesionActiva;
     }

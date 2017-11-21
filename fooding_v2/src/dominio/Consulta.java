@@ -50,8 +50,8 @@ public class Consulta implements Serializable {
         return listaIncidencias;
     }
 
-    public void agregarIncidencia(String mensaje,String fecha,Persona creador) {
-        Incidencia nuevaIncidencia = new Incidencia(mensaje,fecha,this,creador);
+    public void agregarIncidencia(String mensaje, String fecha, Persona creador) {
+        Incidencia nuevaIncidencia = new Incidencia(mensaje, fecha, this, creador);
         this.listaIncidencias.add(nuevaIncidencia);
     }
 
@@ -62,25 +62,37 @@ public class Consulta implements Serializable {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-    
+
     public Consulta(Usuario unUsuario, Categoria unaCategoria) {
         this.setUsuario(unUsuario);
         this.setEstado(Estado.PENDIENTE);
         this.setCategoria(unaCategoria);
         listaIncidencias = new ArrayList<Incidencia>();
     }
-    
-    public String toStringDescripcion(){
-        return "Categoria: " + this.getCategoria().name() + " - Usuario: " + this.getUsuario() + " - Profesional: " + this.getProfesional() + " - Estado: " + this.getEstado().name();
+
+    public String toStringDescripcion() {
+        String res = "Categoria: " + this.getCategoria().name() + " - Estado: "
+                + this.getEstado().name() + " - Usuario: "
+                + this.getUsuario().getNombre().toUpperCase() + " "
+                + this.getUsuario().getApellidos().toUpperCase()
+                + " - Profesional: ";
+        if (this.getProfesional() == null) {
+            res += "N/A";
+        } else {
+            res += this.getProfesional().getNombre() + " "
+                    + this.getProfesional().getApellidos();
+
+        }
+        return res;
     }
-    
-       //Metodo toString
+
+    //Metodo toString
     @Override
     public String toString() {
-       String consulta =  "Tipo: " + this.getCategoria().toString() + "\n";
-       for(Incidencia incidencia : this.getListaIncidencias()){
-           consulta += incidencia.toString() + "\n *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n";
-       }
-       return consulta;
+        String consulta = "Tipo: " + this.getCategoria().toString() + "\n";
+        for (Incidencia incidencia : this.getListaIncidencias()) {
+            consulta += incidencia.toString() + "\n *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n";
+        }
+        return consulta;
     }
 }
