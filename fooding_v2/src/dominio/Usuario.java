@@ -37,7 +37,7 @@ public class Usuario extends Persona implements Serializable {
     public Locale getNacionalidad() {
         return nacionalidad;
     }
-    
+
     public ArrayList<Consulta> getConsultas() {
         return consultas;
     }
@@ -54,11 +54,18 @@ public class Usuario extends Persona implements Serializable {
         consultas = new ArrayList<Consulta>();
     }
 
-
     public void agregarConsulta(Categoria categoria) {
         Consulta nuevaConsulta = new Consulta(this, categoria);
         nuevaConsulta.setId(this.getConsultas().size() + 1);
         this.getConsultas().add(nuevaConsulta);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Usuario unU = (Usuario) obj;
+        return this.getNombre().equals(unU.getNombre())
+                && this.getApellidos().equals(unU.getApellidos())
+                && this.getFechaDeNacimiento().equals(unU.getFechaDeNacimiento());
     }
 
     //Metodo toString

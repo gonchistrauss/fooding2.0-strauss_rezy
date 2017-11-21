@@ -1,13 +1,18 @@
 package interfaz;
 
+import dominio.Consulta;
 import dominio.Profesional;
 import dominio.Sistema;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import utils.Tipos;
+import utils.Tipos.Estado;
 
 public class VentanaPanelProfesional extends javax.swing.JDialog {
 
     private Sistema modelo;
     private Profesional profesionalActivo;
+    private ArrayList<Consulta> listaActual;
 
     public VentanaPanelProfesional(Sistema miSis) {
         initComponents();
@@ -20,8 +25,10 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
             this.lblFotoPerfil.setIcon(new ImageIcon(profesionalActivo.getPathPerfil()));
         }
         this.lblPlanesPendientes.setText(profesionalActivo.getTituloProfesional());
-         profesionalActivo = modelo.obtenerSesionActivaProfesional();
-        this.lstInbox.setListData(modelo.consultasPorDescripcion(profesionalActivo.getInbox()).toArray());
+        profesionalActivo = modelo.obtenerSesionActivaProfesional();
+        listaActual = new ArrayList<>();
+        listaActual = profesionalActivo.getInbox();
+        this.lstInbox.setListData(modelo.consultasPorDescripcion(listaActual).toArray());
     }
 
     @SuppressWarnings("unchecked")
@@ -45,7 +52,7 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
         lblCategoria = new javax.swing.JLabel();
         lblEstado = new javax.swing.JLabel();
         comboEstado = new javax.swing.JComboBox<>();
-        btnDetalle = new javax.swing.JButton();
+        btnFinalizar = new javax.swing.JButton();
         btnTomar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
@@ -53,6 +60,7 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
         btnAutor = new javax.swing.JLabel();
         comboAutor = new javax.swing.JComboBox<>();
         lblPanel = new javax.swing.JLabel();
+        btnDetalle = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(980, 500));
@@ -69,13 +77,13 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
         lblBBienvenido.setFont(new java.awt.Font("Seravek", 1, 27)); // NOI18N
         lblBBienvenido.setText("Bienvenido, ");
         getContentPane().add(lblBBienvenido);
-        lblBBienvenido.setBounds(480, 20, 170, 30);
+        lblBBienvenido.setBounds(520, 20, 170, 30);
 
         lblNombreProfesional.setFont(new java.awt.Font("Seravek", 1, 24)); // NOI18N
         lblNombreProfesional.setForeground(new java.awt.Color(0, 204, 0));
         lblNombreProfesional.setText("Gonzalo Strauss");
         getContentPane().add(lblNombreProfesional);
-        lblNombreProfesional.setBounds(630, 20, 270, 30);
+        lblNombreProfesional.setBounds(670, 20, 270, 30);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(60, 50, 920, 10);
 
@@ -114,7 +122,7 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnSalir);
-        btnSalir.setBounds(10, 420, 130, 40);
+        btnSalir.setBounds(20, 420, 130, 40);
 
         jLabel1.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 18)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/filter-tool-black-shape.png"))); // NOI18N
@@ -132,6 +140,12 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
             String[] strings = { " " };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
+        });
+        lstInbox.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstInbox.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstInboxValueChanged(evt);
+            }
         });
         jScrollPane1.setViewportView(lstInbox);
 
@@ -152,26 +166,31 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
         getContentPane().add(comboEstado);
         comboEstado.setBounds(600, 90, 130, 27);
 
-        btnDetalle.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        btnDetalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
-        btnDetalle.setText("Ver detalle");
-        btnDetalle.setEnabled(false);
-        getContentPane().add(btnDetalle);
-        btnDetalle.setBounds(290, 390, 120, 40);
+        btnFinalizar.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        btnFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/task-complete.png"))); // NOI18N
+        btnFinalizar.setText("Finalizar");
+        btnFinalizar.setEnabled(false);
+        getContentPane().add(btnFinalizar);
+        btnFinalizar.setBounds(600, 390, 120, 40);
 
         btnTomar.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnTomar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/checked.png"))); // NOI18N
-        btnTomar.setText("Seleccionar");
+        btnTomar.setText("Asignar");
         btnTomar.setEnabled(false);
         getContentPane().add(btnTomar);
-        btnTomar.setBounds(520, 390, 120, 40);
+        btnTomar.setBounds(770, 390, 120, 40);
 
         btnEliminar.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/delete.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.setEnabled(false);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnEliminar);
-        btnEliminar.setBounds(760, 390, 120, 40);
+        btnEliminar.setBounds(430, 390, 120, 40);
 
         btnBuscar.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/loupe.png"))); // NOI18N
@@ -182,7 +201,7 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnBuscar);
-        btnBuscar.setBounds(830, 120, 110, 30);
+        btnBuscar.setBounds(840, 120, 110, 30);
 
         jLabel3.setFont(new java.awt.Font("Malayalam Sangam MN", 1, 24)); // NOI18N
         jLabel3.setText("Inbox");
@@ -199,9 +218,16 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
         comboAutor.setBounds(830, 90, 120, 27);
 
         lblPanel.setFont(new java.awt.Font("Seravek", 1, 30)); // NOI18N
-        lblPanel.setText("Panel del profesional:");
+        lblPanel.setText("Panel del profesional -");
         getContentPane().add(lblPanel);
-        lblPanel.setBounds(80, 10, 370, 50);
+        lblPanel.setBounds(210, 10, 370, 50);
+
+        btnDetalle.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        btnDetalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
+        btnDetalle.setText("Ver detalle");
+        btnDetalle.setEnabled(false);
+        getContentPane().add(btnDetalle);
+        btnDetalle.setBounds(250, 390, 120, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -223,14 +249,98 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         int nroCategoria = this.comboCategoria.getSelectedIndex();
         int nroEstado = this.comboEstado.getSelectedIndex();
-
+        ArrayList<Consulta> inboxConAutor = (this.comboAutor.getSelectedIndex() == 0) ? profesionalActivo.getInbox() : profesionalActivo.misConsultas();
+        ArrayList<Consulta> inboxConCategoria = filtrarCategoria(nroCategoria, inboxConAutor);
+        listaActual = filtrarEstado(nroEstado, inboxConCategoria);
+        this.lstInbox.setListData(modelo.consultasPorDescripcion(listaActual).toArray());
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void lstInboxValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstInboxValueChanged
+        if (!evt.getValueIsAdjusting()) {
+            int index = this.lstInbox.getSelectedIndex();
+            if (index >= 0) {
+                this.btnDetalle.setEnabled(true);
+                this.btnEliminar.setEnabled(true);
+                Consulta consulta = this.listaActual.get(index);
+                if (consulta.getEstado() == Estado.PENDIENTE) {
+                    this.btnFinalizar.setEnabled(false);
+                    this.btnTomar.setEnabled(true);
+                } else {
+                    this.btnTomar.setEnabled(false);
+                    if (consulta.getEstado() == Estado.COMPLETADO) {
+                        this.btnFinalizar.setEnabled(false);
+                    } else {
+                        this.btnEliminar.setEnabled(false);
+                        if (Estado.EN_PROCESO == consulta.getEstado()) {
+                            this.btnFinalizar.setEnabled(true);
+                        } else {
+                            this.btnFinalizar.setEnabled(false);
+                        }
+                    }
+                }
+            } else {
+                this.btnDetalle.setEnabled(false);
+                this.btnEliminar.setEnabled(false);
+                this.btnTomar.setEnabled(false);
+                this.btnFinalizar.setEnabled(false);
+            }
+        }
+
+    }//GEN-LAST:event_lstInboxValueChanged
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        Consulta consulta = listaActual.get(lstInbox.getSelectedIndex());
+        profesionalActivo.eliminarEnInbox(consulta);
+        this.lstInbox.setListData(modelo.consultasPorDescripcion(listaActual).toArray());
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private ArrayList<Consulta> filtrarCategoria(int nro, ArrayList<Consulta> lista) {
+        ArrayList<Consulta> res = new ArrayList<>();
+        switch (nro) {
+            case 0:
+                res = lista;
+                break;
+            case 1:
+                res = modelo.filtrarPorPlan(lista);
+                break;
+            case 2:
+                res = modelo.filtrarPorDirecta(lista);
+                break;
+            default:
+                res = lista;
+                break;
+        }
+        return res;
+    }
+
+    private ArrayList<Consulta> filtrarEstado(int nro, ArrayList<Consulta> lista) {
+        ArrayList<Consulta> res = new ArrayList<>();
+        switch (nro) {
+            case 0:
+                res = lista;
+                break;
+            case 1:
+                res = modelo.filtrarPorPendiente(lista);
+                break;
+            case 2:
+                res = modelo.filtrarPorEnProceso(lista);
+                break;
+            case 3:
+                res = modelo.filtrarPorCompletado(lista);
+                break;
+            default:
+                res = lista;
+                break;
+        }
+        return res;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAutor;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnDetalle;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnTomar;
     private javax.swing.JComboBox<String> comboAutor;

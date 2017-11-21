@@ -52,7 +52,8 @@ public class Sistema implements Serializable {
     }
 
     public void agregarProfesional(String nombre, String apellidos, Date nacimiento, String pathPerfil, String titulo, String paisTitulo, Date fechaGrad) {
-        Profesional nuevoProfesional = new Profesional(nombre, apellidos, nacimiento, pathPerfil, titulo, fechaGrad, paisTitulo);
+        ArrayList<Consulta> consultasPendientes = this.filtrarPorPendiente(this.getListaConsultas());
+        Profesional nuevoProfesional = new Profesional(nombre, apellidos, nacimiento, pathPerfil, titulo, fechaGrad, paisTitulo,consultasPendientes);
         this.getListaProfesionales().add(nuevoProfesional);
     }
 
@@ -64,6 +65,7 @@ public class Sistema implements Serializable {
     public void agregarConsulta(Consulta nuevaConsulta){
         for(Profesional profesional : this.getListaProfesionales()){
             profesional.agregarEnInbox(nuevaConsulta);
+            listaConsultas.add(nuevaConsulta);
         }
     }
     
@@ -74,7 +76,7 @@ public class Sistema implements Serializable {
         }
         return consultasDescripcion;
     }
-
+    
     public ArrayList<Consulta> filtrarPorDirecta(ArrayList<Consulta> lista) {
         ArrayList<Consulta> directas = new ArrayList<>();
         for (Consulta consulta : lista) {

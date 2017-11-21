@@ -67,6 +67,7 @@ public class Consulta implements Serializable {
         this.setUsuario(unUsuario);
         this.setEstado(Estado.PENDIENTE);
         this.setCategoria(unaCategoria);
+        profesional = new Profesional();
         listaIncidencias = new ArrayList<Incidencia>();
     }
 
@@ -84,6 +85,14 @@ public class Consulta implements Serializable {
 
         }
         return res;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Consulta unaC = (Consulta) obj;
+        return this.getId() == unaC.getId()
+                && this.getProfesional().equals(unaC.getProfesional())
+                && this.getUsuario().equals(unaC.getUsuario());
     }
 
     //Metodo toString
