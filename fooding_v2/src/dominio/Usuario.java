@@ -25,8 +25,8 @@ public class Usuario extends Persona implements Serializable {
     public HashMap<String, ArrayList<Alimento>> getAlimentosIngs() {
         return alimentosIngeridos;
     }
-    
-    public void agregarAlimentosIngeridos(ArrayList<Alimento> ingeridos,String fecha){
+
+    public void agregarAlimentosIngeridos(ArrayList<Alimento> ingeridos, String fecha) {
         alimentosIngeridos.put(fecha, ingeridos);
     }
 
@@ -35,13 +35,13 @@ public class Usuario extends Persona implements Serializable {
     }
 
     public void agregarRestriccion(ArrayList<Alimento> nuevosAlimentos) {
-        for(Alimento alimento : nuevosAlimentos){
+        for (Alimento alimento : nuevosAlimentos) {
             restricciones.add(alimento);
         }
     }
-    
+
     public void agregarPreferencia(ArrayList<Alimento> nuevosAlimentos) {
-        for(Alimento alimento : nuevosAlimentos){
+        for (Alimento alimento : nuevosAlimentos) {
             preferencias.add(alimento);
         }
     }
@@ -61,6 +61,15 @@ public class Usuario extends Persona implements Serializable {
     public Usuario(String nombre, String apellidos, String pais, Date nacimiento, String pathPerfil) {
         super(nombre, apellidos, nacimiento, pathPerfil);
         this.setNacionalidad(pais);
+        restricciones = new ArrayList<Alimento>();
+        preferencias = new ArrayList<Alimento>();
+        consultas = new ArrayList<Consulta>();
+        alimentosIngeridos = new HashMap<String, ArrayList<Alimento>>();
+    }
+
+    public Usuario() {
+        super("nombre", "apellido", new Date(), "pathPerfil");
+        this.setNacionalidad("nacionalidad");
         restricciones = new ArrayList<Alimento>();
         preferencias = new ArrayList<Alimento>();
         consultas = new ArrayList<Consulta>();
