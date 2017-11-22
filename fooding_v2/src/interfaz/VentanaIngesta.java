@@ -67,12 +67,14 @@ public class VentanaIngesta extends javax.swing.JDialog {
         btnBuscar = new javax.swing.JButton();
         lblStatusIngerido = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        lblDia = new javax.swing.JLabel();
+        lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro alimenticio");
-        setMinimumSize(new java.awt.Dimension(995, 660));
-        setPreferredSize(new java.awt.Dimension(995, 660));
-        setSize(new java.awt.Dimension(995, 660));
+        setMinimumSize(new java.awt.Dimension(995, 610));
+        setPreferredSize(new java.awt.Dimension(995, 610));
+        setSize(new java.awt.Dimension(995, 610));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -85,14 +87,15 @@ public class VentanaIngesta extends javax.swing.JDialog {
         jSeparator1.setBounds(490, 60, 10, 530);
 
         lblHistorial.setFont(new java.awt.Font("Seravek", 1, 27)); // NOI18N
+        lblHistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/history-clock-button.png"))); // NOI18N
         lblHistorial.setText("Historial");
         getContentPane().add(lblHistorial);
-        lblHistorial.setBounds(670, 20, 140, 34);
+        lblHistorial.setBounds(670, 20, 160, 34);
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel2.setText("Alimentos ingeridos en el dia:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(530, 120, 210, 16);
+        jLabel2.setBounds(530, 120, 230, 16);
 
         lstIngeridosHistorial.setModel(new javax.swing.AbstractListModel<Object>() {
             String[] strings = { " " };
@@ -102,16 +105,16 @@ public class VentanaIngesta extends javax.swing.JDialog {
         jScrollPane1.setViewportView(lstIngeridosHistorial);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(520, 140, 430, 440);
+        jScrollPane1.setBounds(520, 140, 430, 390);
         getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(510, 50, 440, 10);
+        jSeparator2.setBounds(510, 50, 440, 12);
 
         jLabel1.setFont(new java.awt.Font("Seravek", 1, 27)); // NOI18N
         jLabel1.setText("Ingreso de alimentos ingeridos");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(60, 10, 440, 50);
         getContentPane().add(jSeparator3);
-        jSeparator3.setBounds(20, 50, 440, 10);
+        jSeparator3.setBounds(20, 50, 440, 12);
 
         lstAlimentos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -130,6 +133,7 @@ public class VentanaIngesta extends javax.swing.JDialog {
         jScrollPane3.setBounds(30, 340, 450, 190);
 
         btnSalir.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/exit.png"))); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +141,7 @@ public class VentanaIngesta extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnSalir);
-        btnSalir.setBounds(10, 580, 130, 50);
+        btnSalir.setBounds(30, 530, 130, 40);
 
         btnAgregarAlimento.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnAgregarAlimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/arrow-angle-pointing-down.png"))); // NOI18N
@@ -151,6 +155,8 @@ public class VentanaIngesta extends javax.swing.JDialog {
         getContentPane().add(btnAgregarAlimento);
         btnAgregarAlimento.setBounds(170, 270, 180, 50);
 
+        btnGuardar.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tack-save-button.png"))); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,14 +164,19 @@ public class VentanaIngesta extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnGuardar);
-        btnGuardar.setBounds(190, 540, 120, 40);
+        btnGuardar.setBounds(360, 530, 120, 40);
+
+        dateChooser.setOpaque(false);
         getContentPane().add(dateChooser);
         dateChooser.setBounds(650, 70, 200, 30);
 
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel3.setText("Seleccionar fecha:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(530, 70, 190, 30);
+        jLabel3.setBounds(520, 70, 190, 30);
 
+        btnBuscar.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/loupe.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,15 +184,26 @@ public class VentanaIngesta extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnBuscar);
-        btnBuscar.setBounds(860, 70, 90, 29);
+        btnBuscar.setBounds(860, 70, 90, 28);
 
+        lblStatusIngerido.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblStatusIngerido.setText("Ingreso de alimentos ingeridos del dia:");
         getContentPane().add(lblStatusIngerido);
-        lblStatusIngerido.setBounds(40, 70, 350, 16);
+        lblStatusIngerido.setBounds(40, 70, 430, 16);
 
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel4.setText("Alimentos ingeridos:");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(40, 320, 200, 16);
+
+        lblDia.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        lblDia.setText("dd/MM/yyyy");
+        getContentPane().add(lblDia);
+        lblDia.setBounds(760, 120, 150, 16);
+
+        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wall_green.jpg"))); // NOI18N
+        getContentPane().add(lblBackground);
+        lblBackground.setBounds(-280, -20, 1290, 690);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -229,7 +251,7 @@ public class VentanaIngesta extends javax.swing.JDialog {
         Date fechaBuscada = this.dateChooser.getDate();
         DateFormat date = new SimpleDateFormat("dd-MM-yyyy");
         String fechaString = date.format(fechaBuscada);
-        System.out.println(fechaString);
+        this.lblDia.setText(fechaString);
         if (usuarioActivo.getAlimentosIngs().containsKey(fechaString)) {
             ArrayList<Alimento> ingeridosHistorial = usuarioActivo.getAlimentosIngs().get(fechaString);
             this.lstIngeridosHistorial.setListData(ingeridosHistorial.toArray());
@@ -261,6 +283,8 @@ public class VentanaIngesta extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblDia;
     private javax.swing.JLabel lblHistorial;
     private javax.swing.JLabel lblStatusIngerido;
     private javax.swing.JList<Object> lstAlimentos;

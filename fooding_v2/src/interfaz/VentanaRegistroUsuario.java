@@ -64,7 +64,7 @@ public class VentanaRegistroUsuario extends javax.swing.JDialog {
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Regisdtro de usuario");
+        setTitle("Registro de usuario");
         setMinimumSize(new java.awt.Dimension(638, 458));
         setPreferredSize(new java.awt.Dimension(638, 458));
         setResizable(false);
