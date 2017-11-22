@@ -62,7 +62,7 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
         btnAutor = new javax.swing.JLabel();
         comboAutor = new javax.swing.JComboBox<>();
         lblPanel = new javax.swing.JLabel();
-        btnDetalle = new javax.swing.JButton();
+        btnResponder = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(980, 500));
@@ -234,12 +234,12 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
         getContentPane().add(lblPanel);
         lblPanel.setBounds(210, 10, 370, 50);
 
-        btnDetalle.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
-        btnDetalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
-        btnDetalle.setText("Ver detalle");
-        btnDetalle.setEnabled(false);
-        getContentPane().add(btnDetalle);
-        btnDetalle.setBounds(250, 390, 120, 40);
+        btnResponder.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        btnResponder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
+        btnResponder.setText("Responder");
+        btnResponder.setEnabled(false);
+        getContentPane().add(btnResponder);
+        btnResponder.setBounds(250, 390, 120, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -259,14 +259,14 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-       cargarLista();
+        cargarLista();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void lstInboxValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstInboxValueChanged
         if (!evt.getValueIsAdjusting()) {
             int index = this.lstInbox.getSelectedIndex();
             if (index >= 0) {
-                this.btnDetalle.setEnabled(true);
+                this.btnResponder.setEnabled(true);
                 this.btnEliminar.setEnabled(true);
                 Consulta consulta = this.listaActual.get(index);
                 if (consulta.getEstado() == Estado.PENDIENTE) {
@@ -286,7 +286,7 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
                     }
                 }
             } else {
-                this.btnDetalle.setEnabled(false);
+                this.btnResponder.setEnabled(false);
                 this.btnEliminar.setEnabled(false);
                 this.btnTomar.setEnabled(false);
                 this.btnFinalizar.setEnabled(false);
@@ -314,19 +314,9 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
         int input = JOptionPane.showConfirmDialog(null, "Esta seguro que desea asignarse esta tarea?", "Confirmacion",
                 JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if (input == 0) {
-            //Si
             Consulta consulta = listaActual.get(lstInbox.getSelectedIndex());
             consulta.setProfesional(profesionalActivo);
             consulta.setEstado(Estado.EN_PROCESO);
-            if (consulta.getCategoria() == Categoria.DIRECTA) {
-                this.dispose();
-                VentanaConsultasProfesional ventana = new VentanaConsultasProfesional(modelo);
-                ventana.setVisible(true);
-            } else {
-                this.dispose();
-                VentanaPlanesProfesional ventana = new VentanaPlanesProfesional(modelo);
-                ventana.setVisible(true);
-            }
         }
     }//GEN-LAST:event_btnTomarActionPerformed
 
@@ -384,9 +374,9 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAutor;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnDetalle;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnFinalizar;
+    private javax.swing.JButton btnResponder;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnTomar;
     private javax.swing.JComboBox<String> comboAutor;
