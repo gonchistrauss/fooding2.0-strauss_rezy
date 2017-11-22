@@ -347,7 +347,9 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
             ventana.setVisible(true);
         }
         else{
-
+            this.dispose();
+            VentanaPlanesProfesional ventana = new VentanaPlanesProfesional(modelo,consulta);
+            ventana.setVisible(true);
         }
     }//GEN-LAST:event_btnResponderActionPerformed
 
