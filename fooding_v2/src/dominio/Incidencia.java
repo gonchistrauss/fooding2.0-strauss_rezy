@@ -54,6 +54,6 @@ public class Incidencia implements Serializable {
     public String toString() {
         return "Fecha: " + this.getFechaDeCreacion() + "\n"
                 + "Origen: " + this.getCreador() + "\n" 
-                + "Descripción:" + this.getMensaje();
+                + "Mensaje: " + this.getMensaje();
     }
 }

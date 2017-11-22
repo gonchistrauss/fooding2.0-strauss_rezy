@@ -69,7 +69,6 @@ public class Usuario extends Persona implements Serializable {
 
     public void agregarConsulta(Categoria categoria) {
         Consulta nuevaConsulta = new Consulta(this, categoria);
-        nuevaConsulta.setId(this.getConsultas().size() + 1);
         this.getConsultas().add(nuevaConsulta);
     }
 

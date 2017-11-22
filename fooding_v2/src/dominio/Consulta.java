@@ -100,7 +100,7 @@ public class Consulta implements Serializable {
     public String toString() {
         String consulta = "Tipo: " + this.getCategoria().toString() + "\n";
         for (Incidencia incidencia : this.getListaIncidencias()) {
-            consulta += incidencia.toString() + "\n *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n";
+            consulta += incidencia.toString() + "\n *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n";
         }
         return consulta;
     }

@@ -238,6 +238,11 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
         btnResponder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
         btnResponder.setText("Responder");
         btnResponder.setEnabled(false);
+        btnResponder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResponderActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnResponder);
         btnResponder.setBounds(250, 390, 120, 40);
 
@@ -266,7 +271,6 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
         if (!evt.getValueIsAdjusting()) {
             int index = this.lstInbox.getSelectedIndex();
             if (index >= 0) {
-                this.btnResponder.setEnabled(true);
                 this.btnEliminar.setEnabled(true);
                 Consulta consulta = this.listaActual.get(index);
                 if (consulta.getEstado() == Estado.PENDIENTE) {
@@ -279,9 +283,12 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
                     } else {
                         this.btnEliminar.setEnabled(false);
                         if (Estado.EN_PROCESO == consulta.getEstado() && consulta.getProfesional().equals(profesionalActivo)) {
+                            this.btnResponder.setEnabled(true);
                             this.btnFinalizar.setEnabled(true);
                         } else {
+                            this.btnEliminar.setEnabled(true);
                             this.btnFinalizar.setEnabled(false);
+                            this.btnResponder.setEnabled(false);
                         }
                     }
                 }
@@ -317,6 +324,8 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
             Consulta consulta = listaActual.get(lstInbox.getSelectedIndex());
             consulta.setProfesional(profesionalActivo);
             consulta.setEstado(Estado.EN_PROCESO);
+            this.lstInbox.setListData(modelo.consultasPorDescripcion(listaActual).toArray());
+
         }
     }//GEN-LAST:event_btnTomarActionPerformed
 
@@ -329,6 +338,18 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
             this.lstInbox.setListData(modelo.consultasPorDescripcion(listaActual).toArray());
         }
     }//GEN-LAST:event_btnFinalizarActionPerformed
+
+    private void btnResponderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResponderActionPerformed
+        Consulta consulta = listaActual.get(lstInbox.getSelectedIndex());
+        if(consulta.getCategoria() == Categoria.DIRECTA){
+            this.dispose();
+            VentanaConsultaProfesional ventana = new VentanaConsultaProfesional(modelo,consulta);
+            ventana.setVisible(true);
+        }
+        else{
+
+        }
+    }//GEN-LAST:event_btnResponderActionPerformed
 
     private ArrayList<Consulta> filtrarCategoria(int nro, ArrayList<Consulta> lista) {
         ArrayList<Consulta> res = new ArrayList<>();
