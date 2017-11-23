@@ -40,56 +40,57 @@ public class Profesional extends Persona implements Serializable {
     }
 
     public void agregarEnInbox(Consulta nuevaConsulta) {
-<span class="nc" id="L43">        this.getInbox().add(nuevaConsulta);</span>
-<span class="nc" id="L44">    }</span>
+<span class="fc" id="L43">        this.getInbox().add(nuevaConsulta);</span>
+<span class="fc" id="L44">    }</span>
 
     public Profesional(String nombre, String apellidos,
             Date nacimiento, String pathPerfil, String titulo, Date fechaGrad,
-            String paisEstudio,ArrayList&lt;Consulta&gt; consultasPendientes) {
+            String paisEstudio, ArrayList&lt;Consulta&gt; consultasPendientes) {
 <span class="fc" id="L49">        super(nombre, apellidos, nacimiento, pathPerfil);</span>
 <span class="fc" id="L50">        this.setFechaDeGraduacion(fechaGrad);</span>
 <span class="fc" id="L51">        this.setPaisEstudio(paisEstudio);</span>
 <span class="fc" id="L52">        this.setTituloProfesional(titulo);</span>
 <span class="fc" id="L53">        inbox = new ArrayList&lt;Consulta&gt;();</span>
-<span class="pc bpc" id="L54" title="1 of 2 branches missed.">        for (Consulta consulta: consultasPendientes) {</span>
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">        for (Consulta consulta : consultasPendientes) {</span>
 <span class="nc" id="L55">            this.getInbox().add(consulta);</span>
 <span class="nc" id="L56">        }</span>
 <span class="fc" id="L57">    }</span>
-    
-    public Profesional(){
-<span class="fc" id="L60">        super(&quot;N/A&quot;,&quot;&quot;,new Date(),&quot;N/A&quot;);</span>
+
+    public Profesional() {
+<span class="fc" id="L60">        super(&quot;N/A&quot;, &quot;&quot;, new Date(), &quot;N/A&quot;);</span>
 <span class="fc" id="L61">        this.setFechaDeGraduacion(new Date());</span>
 <span class="fc" id="L62">        this.setPaisEstudio(Locale.CANADA.getCountry());</span>
 <span class="fc" id="L63">        this.setTituloProfesional(&quot;N/A&quot;);</span>
-<span class="fc" id="L64">    }</span>
-    
-    public void eliminarEnInbox(Consulta unaConsulta){
-<span class="nc" id="L67">        int index = this.getInbox().indexOf(unaConsulta);</span>
-<span class="nc" id="L68">        this.getInbox().remove(index);</span>
-<span class="nc" id="L69">    }</span>
+<span class="fc" id="L64">        inbox = new ArrayList&lt;Consulta&gt;();</span>
+<span class="fc" id="L65">    }</span>
+
+    public void eliminarEnInbox(Consulta unaConsulta) {
+<span class="fc" id="L68">        int index = this.getInbox().indexOf(unaConsulta);</span>
+<span class="fc" id="L69">        this.getInbox().remove(index);</span>
+<span class="fc" id="L70">    }</span>
 
     public ArrayList&lt;Consulta&gt; misConsultas() {
-<span class="fc" id="L72">        ArrayList&lt;Consulta&gt; lista = new ArrayList&lt;Consulta&gt;();</span>
-<span class="nc bnc" id="L73" title="All 2 branches missed.">        for (Consulta consulta : this.getInbox()) {</span>
-<span class="nc bnc" id="L74" title="All 2 branches missed.">            if (consulta.getProfesional().equals(this)) {</span>
-<span class="nc" id="L75">                lista.add(consulta);</span>
+<span class="fc" id="L73">        ArrayList&lt;Consulta&gt; lista = new ArrayList&lt;Consulta&gt;();</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        for (Consulta consulta : this.getInbox()) {</span>
+<span class="pc bpc" id="L75" title="1 of 2 branches missed.">            if (consulta.getProfesional().equals(this)) {</span>
+<span class="fc" id="L76">                lista.add(consulta);</span>
             }
-<span class="nc" id="L77">        }</span>
-<span class="nc" id="L78">        return lista;</span>
+<span class="fc" id="L78">        }</span>
+<span class="fc" id="L79">        return lista;</span>
     }
 
     @Override
     public boolean equals(Object obj) {
-<span class="fc" id="L83">        Profesional unP = (Profesional) obj;</span>
-<span class="pc bpc" id="L84" title="1 of 2 branches missed.">        return this.getNombre().equals(unP.getNombre())</span>
-<span class="pc bpc" id="L85" title="1 of 2 branches missed.">                &amp;&amp; this.getApellidos().equals(unP.getApellidos())</span>
-<span class="pc bpc" id="L86" title="1 of 2 branches missed.">                &amp;&amp; this.getFechaDeNacimiento().equals(unP.getFechaDeNacimiento());</span>
-    } 
+<span class="fc" id="L84">        Profesional unP = (Profesional) obj;</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">        return this.getNombre().equals(unP.getNombre())</span>
+<span class="pc bpc" id="L86" title="1 of 2 branches missed.">                &amp;&amp; this.getApellidos().equals(unP.getApellidos())</span>
+<span class="pc bpc" id="L87" title="1 of 2 branches missed.">                &amp;&amp; this.getFechaDeNacimiento().equals(unP.getFechaDeNacimiento());</span>
+    }
 
     //Metodo toString
     @Override
     public String toString() {
-<span class="fc" id="L92">        return this.getNombre() + &quot; &quot; + this.getApellidos();</span>
+<span class="fc" id="L93">        return this.getNombre() + &quot; &quot; + this.getApellidos();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

@@ -14,28 +14,33 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import utils.Tipos;
+import utils.Tipos.Categoria;
 
 /**
  *
  * @author gonzalostrauss
  */
 public class ProfesionalTest {
+
     private Profesional instance;
+
     public ProfesionalTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
+        instance = new Profesional();
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -45,13 +50,9 @@ public class ProfesionalTest {
      */
     @Test
     public void testGetTituloProfesional() {
-        System.out.println("getTituloProfesional");
-        Profesional instance = new Profesional();
-        String expResult = "";
+        String expResult = "N/A";
         String result = instance.getTituloProfesional();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -59,12 +60,9 @@ public class ProfesionalTest {
      */
     @Test
     public void testSetTituloProfesional() {
-        System.out.println("setTituloProfesional");
-        String tituloProfesional = "";
-        Profesional instance = new Profesional();
+        String tituloProfesional = "Ingeniero";
         instance.setTituloProfesional(tituloProfesional);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(instance.getTituloProfesional(), tituloProfesional);
     }
 
     /**
@@ -72,13 +70,9 @@ public class ProfesionalTest {
      */
     @Test
     public void testGetFechaDeGraduacion() {
-        System.out.println("getFechaDeGraduacion");
-        Profesional instance = new Profesional();
-        Date expResult = null;
+        Date expResult = new Date();
         Date result = instance.getFechaDeGraduacion();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -86,12 +80,9 @@ public class ProfesionalTest {
      */
     @Test
     public void testSetFechaDeGraduacion() {
-        System.out.println("setFechaDeGraduacion");
-        Date fechaDeGraduacion = null;
-        Profesional instance = new Profesional();
+        Date fechaDeGraduacion = new Date();
         instance.setFechaDeGraduacion(fechaDeGraduacion);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(fechaDeGraduacion, instance.getFechaDeGraduacion());
     }
 
     /**
@@ -99,13 +90,10 @@ public class ProfesionalTest {
      */
     @Test
     public void testGetPaisEstudio() {
-        System.out.println("getPaisEstudio");
-        Profesional instance = new Profesional();
-        Locale expResult = null;
+        Locale expResult = new Locale("", "Uruguay");
+        instance.setPaisEstudio("Uruguay");
         Locale result = instance.getPaisEstudio();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -113,12 +101,10 @@ public class ProfesionalTest {
      */
     @Test
     public void testSetPaisEstudio() {
-        System.out.println("setPaisEstudio");
-        String countryCode = "";
-        Profesional instance = new Profesional();
+        String countryCode = "Uruguay";
         instance.setPaisEstudio(countryCode);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String expRes = new Locale("", "Uruguay").getCountry();
+        assertEquals(expRes, instance.getPaisEstudio().getCountry());
     }
 
     /**
@@ -126,13 +112,12 @@ public class ProfesionalTest {
      */
     @Test
     public void testGetInbox() {
-        System.out.println("getInbox");
-        Profesional instance = new Profesional();
-        ArrayList<Consulta> expResult = null;
+        Consulta c = new Consulta(new Usuario(),Categoria.DIRECTA);
+        ArrayList<Consulta> expResult = new ArrayList<>();
+        expResult.add(c);
+        instance.getInbox().add(c);
         ArrayList<Consulta> result = instance.getInbox();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult.get(0), c);
     }
 
     /**
@@ -140,12 +125,10 @@ public class ProfesionalTest {
      */
     @Test
     public void testAgregarEnInbox() {
-        System.out.println("agregarEnInbox");
-        Consulta nuevaConsulta = null;
-        Profesional instance = new Profesional();
+        Consulta nuevaConsulta = new Consulta(new Usuario(),Categoria.DIRECTA);
+        int expRes = instance.getInbox().size() + 1;
         instance.agregarEnInbox(nuevaConsulta);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(instance.getInbox().size(),expRes);
     }
 
     /**
@@ -153,12 +136,11 @@ public class ProfesionalTest {
      */
     @Test
     public void testEliminarEnInbox() {
-        System.out.println("eliminarEnInbox");
-        Consulta unaConsulta = null;
-        Profesional instance = new Profesional();
+        Consulta unaConsulta = new Consulta(new Usuario(),Categoria.DIRECTA);
+        instance.getInbox().add(unaConsulta);
+        int expRes = instance.getInbox().size() - 1;
         instance.eliminarEnInbox(unaConsulta);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expRes,instance.getInbox().size());
     }
 
     /**
@@ -166,42 +148,40 @@ public class ProfesionalTest {
      */
     @Test
     public void testMisConsultas() {
-        System.out.println("misConsultas");
-        Profesional instance = new Profesional();
-        ArrayList<Consulta> expResult = null;
+        ArrayList<Consulta> expResult = new ArrayList<>();
+        Consulta c1 = new Consulta(new Usuario(),Categoria.DIRECTA);
+        c1.setProfesional(instance);
+        instance.agregarEnInbox(c1);
+        Consulta c2 = new Consulta(new Usuario(),Categoria.DIRECTA);
+        expResult.add(c1);
         ArrayList<Consulta> result = instance.misConsultas();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of equals method, of class Profesional.
-     */
-    @Test
+      @Test
     public void testEquals() {
-        System.out.println("equals");
-        Object obj = null;
-        Profesional instance = new Profesional();
-        boolean expResult = false;
-        boolean result = instance.equals(obj);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Profesional pAux = new Profesional();
+        Profesional pAux2 = new Profesional();
+        assertTrue(pAux.equals(pAux2));
     }
+    
+    @Test
+    public void testEquals2() {
+        Profesional pAux = new Profesional();
+        Profesional pAux2 = new Profesional();
+        pAux2.setNombre("Gerardo");
+        assertFalse(pAux.equals(pAux2));
+    }
+
 
     /**
      * Test of toString method, of class Profesional.
      */
     @Test
     public void testToString() {
-        System.out.println("toString");
-        Profesional instance = new Profesional();
-        String expResult = "";
+        String expResult = "N/A ";
         String result = instance.toString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-    
+
 }

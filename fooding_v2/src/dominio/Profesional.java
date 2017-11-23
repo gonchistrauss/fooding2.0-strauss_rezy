@@ -45,25 +45,26 @@ public class Profesional extends Persona implements Serializable {
 
     public Profesional(String nombre, String apellidos,
             Date nacimiento, String pathPerfil, String titulo, Date fechaGrad,
-            String paisEstudio,ArrayList<Consulta> consultasPendientes) {
+            String paisEstudio, ArrayList<Consulta> consultasPendientes) {
         super(nombre, apellidos, nacimiento, pathPerfil);
         this.setFechaDeGraduacion(fechaGrad);
         this.setPaisEstudio(paisEstudio);
         this.setTituloProfesional(titulo);
         inbox = new ArrayList<Consulta>();
-        for (Consulta consulta: consultasPendientes) {
+        for (Consulta consulta : consultasPendientes) {
             this.getInbox().add(consulta);
         }
     }
-    
-    public Profesional(){
-        super("N/A","",new Date(),"N/A");
+
+    public Profesional() {
+        super("N/A", "", new Date(), "N/A");
         this.setFechaDeGraduacion(new Date());
         this.setPaisEstudio(Locale.CANADA.getCountry());
         this.setTituloProfesional("N/A");
+        inbox = new ArrayList<Consulta>();
     }
-    
-    public void eliminarEnInbox(Consulta unaConsulta){
+
+    public void eliminarEnInbox(Consulta unaConsulta) {
         int index = this.getInbox().indexOf(unaConsulta);
         this.getInbox().remove(index);
     }
@@ -84,7 +85,7 @@ public class Profesional extends Persona implements Serializable {
         return this.getNombre().equals(unP.getNombre())
                 && this.getApellidos().equals(unP.getApellidos())
                 && this.getFechaDeNacimiento().equals(unP.getFechaDeNacimiento());
-    } 
+    }
 
     //Metodo toString
     @Override
