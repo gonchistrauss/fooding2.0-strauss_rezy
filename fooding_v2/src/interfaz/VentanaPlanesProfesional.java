@@ -180,7 +180,7 @@ public class VentanaPlanesProfesional extends javax.swing.JDialog {
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(380, 20, 50, 690);
+        jSeparator1.setBounds(380, 20, 12, 690);
 
         lblPlanAlimentacion.setFont(new java.awt.Font("Seravek", 1, 27)); // NOI18N
         lblPlanAlimentacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/planning (1).png"))); // NOI18N
@@ -449,7 +449,7 @@ public class VentanaPlanesProfesional extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowClosing
 
     private void btnLunesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLunesActionPerformed
-        if (!lunes.contains((Alimento) this.comboAlimentos.getSelectedItem())) {
+        if (!lunes.contains((Alimento) this.comboAlimentos.getSelectedItem()) && lunes.size() <= 8) {
             this.lunes.add((Alimento) this.comboAlimentos.getSelectedItem());
             this.lstLunes.setListData(lunes.toArray());
             btnGuardar.setEnabled(true);
@@ -457,7 +457,7 @@ public class VentanaPlanesProfesional extends javax.swing.JDialog {
     }//GEN-LAST:event_btnLunesActionPerformed
 
     private void btnMartesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMartesActionPerformed
-        if (!martes.contains((Alimento) this.comboAlimentos.getSelectedItem())) {
+        if (!martes.contains((Alimento) this.comboAlimentos.getSelectedItem()) && martes.size() <= 8) {
             this.martes.add((Alimento) this.comboAlimentos.getSelectedItem());
             this.lstMartes.setListData(martes.toArray());
             btnGuardar.setEnabled(true);
@@ -465,7 +465,7 @@ public class VentanaPlanesProfesional extends javax.swing.JDialog {
     }//GEN-LAST:event_btnMartesActionPerformed
 
     private void btnMiercolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMiercolesActionPerformed
-        if (!miercoles.contains((Alimento) this.comboAlimentos.getSelectedItem())) {
+        if (!miercoles.contains((Alimento) this.comboAlimentos.getSelectedItem()) && miercoles.size() <= 8) {
             this.miercoles.add((Alimento) this.comboAlimentos.getSelectedItem());
             this.lstMiercoles.setListData(miercoles.toArray());
             btnGuardar.setEnabled(true);
@@ -473,7 +473,7 @@ public class VentanaPlanesProfesional extends javax.swing.JDialog {
     }//GEN-LAST:event_btnMiercolesActionPerformed
 
     private void btnJuevesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJuevesActionPerformed
-        if (!jueves.contains((Alimento) this.comboAlimentos.getSelectedItem())) {
+        if (!jueves.contains((Alimento) this.comboAlimentos.getSelectedItem()) && jueves.size() <= 8) {
             this.jueves.add((Alimento) this.comboAlimentos.getSelectedItem());
             this.lstJueves.setListData(jueves.toArray());
             btnGuardar.setEnabled(true);
@@ -481,7 +481,7 @@ public class VentanaPlanesProfesional extends javax.swing.JDialog {
     }//GEN-LAST:event_btnJuevesActionPerformed
 
     private void btnViernesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViernesActionPerformed
-        if (!viernes.contains((Alimento) this.comboAlimentos.getSelectedItem())) {
+        if (!viernes.contains((Alimento) this.comboAlimentos.getSelectedItem()) && viernes.size() <= 8) {
             this.viernes.add((Alimento) this.comboAlimentos.getSelectedItem());
             this.lstViernes.setListData(viernes.toArray());
             btnGuardar.setEnabled(true);
@@ -489,7 +489,7 @@ public class VentanaPlanesProfesional extends javax.swing.JDialog {
     }//GEN-LAST:event_btnViernesActionPerformed
 
     private void btnSabadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSabadoActionPerformed
-        if (!sabado.contains((Alimento) this.comboAlimentos.getSelectedItem())) {
+        if (!sabado.contains((Alimento) this.comboAlimentos.getSelectedItem()) && sabado.size() <= 8) {
             this.sabado.add((Alimento) this.comboAlimentos.getSelectedItem());
             this.lstSabado.setListData(sabado.toArray());
             btnGuardar.setEnabled(true);
@@ -497,7 +497,7 @@ public class VentanaPlanesProfesional extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSabadoActionPerformed
 
     private void btnDomingoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDomingoActionPerformed
-        if (!domingo.contains((Alimento) this.comboAlimentos.getSelectedItem())) {
+        if (!domingo.contains((Alimento) this.comboAlimentos.getSelectedItem()) && domingo.size() <= 8) {
             this.domingo.add((Alimento) this.comboAlimentos.getSelectedItem());
             this.lstDomingo.setListData(domingo.toArray());
             btnGuardar.setEnabled(true);

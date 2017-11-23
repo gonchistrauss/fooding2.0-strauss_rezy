@@ -71,6 +71,11 @@ public class Usuario extends Persona implements Serializable {
         Consulta nuevaConsulta = new Consulta(this, categoria);
         this.getConsultas().add(nuevaConsulta);
     }
+    
+    public void eliminarConsulta(Consulta unaConsulta){
+        int index = this.getConsultas().indexOf(unaConsulta);
+        this.getConsultas().remove(index);
+    }
 
     @Override
     public boolean equals(Object obj) {

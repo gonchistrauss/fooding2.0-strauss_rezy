@@ -3,6 +3,7 @@ package interfaz;
 import dominio.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 public class VentanaPanelUsuario extends javax.swing.JDialog {
@@ -181,7 +182,7 @@ public class VentanaPanelUsuario extends javax.swing.JDialog {
 
     private void btnConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultasActionPerformed
         this.dispose();
-        VentanaHistorial ventana = new VentanaHistorial(modelo);
+        VentanaConsultasPlanesUsuario ventana = new VentanaConsultasPlanesUsuario(modelo);
         ventana.setVisible(true);
     }//GEN-LAST:event_btnConsultasActionPerformed
 
