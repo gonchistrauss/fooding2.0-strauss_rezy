@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>VentanaRegistroAlimento.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;fooding_v2&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">interfaz</a> &gt; <span class="el_source">VentanaRegistroAlimento.java</span></div><h1>VentanaRegistroAlimento.java</h1><pre class="source lang-java linenums">package interfaz;
+
+import dominio.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import utils.Herramientas;
+
+public class VentanaRegistroAlimento extends javax.swing.JDialog {
+
+    private Sistema modelo;
+    private HashMap&lt;String, Integer&gt; nutrientes;
+    private ArrayList&lt;String&gt; listaNutrientes;
+
+<span class="nc" id="L17">    public VentanaRegistroAlimento(Sistema miSis) {</span>
+<span class="nc" id="L18">        initComponents();</span>
+<span class="nc" id="L19">        modelo = miSis;</span>
+<span class="nc" id="L20">        this.setModal(true);</span>
+<span class="nc" id="L21">        this.setLocationRelativeTo(null);</span>
+<span class="nc" id="L22">        nutrientes = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L23">        listaNutrientes = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L24">    }</span>
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L30">        lblTitulo = new javax.swing.JLabel();</span>
+<span class="nc" id="L31">        jSeparator1 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L32">        lblNombre = new javax.swing.JLabel();</span>
+<span class="nc" id="L33">        txtNombre = new javax.swing.JTextField();</span>
+<span class="nc" id="L34">        lblCategoria = new javax.swing.JLabel();</span>
+<span class="nc" id="L35">        txtCategoria = new javax.swing.JTextField();</span>
+<span class="nc" id="L36">        lblNutrientes = new javax.swing.JLabel();</span>
+<span class="nc" id="L37">        btnAgregar = new javax.swing.JButton();</span>
+<span class="nc" id="L38">        jSeparator2 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L39">        lblNombreNutriente = new javax.swing.JLabel();</span>
+<span class="nc" id="L40">        btnRegistro = new javax.swing.JButton();</span>
+<span class="nc" id="L41">        jScrollPane1 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L42">        lstNutrientes = new javax.swing.JList&lt;&gt;();</span>
+<span class="nc" id="L43">        txtNutriente = new javax.swing.JTextField();</span>
+<span class="nc" id="L44">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L45">        txtProporcion = new javax.swing.JTextField();</span>
+<span class="nc" id="L46">        jLabel2 = new javax.swing.JLabel();</span>
+<span class="nc" id="L47">        jSeparator3 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L48">        lblBackground = new javax.swing.JLabel();</span>
+
+<span class="nc" id="L50">        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);</span>
+<span class="nc" id="L51">        setMinimumSize(new java.awt.Dimension(480, 502));</span>
+<span class="nc" id="L52">        setPreferredSize(new java.awt.Dimension(480, 502));</span>
+<span class="nc" id="L53">        setResizable(false);</span>
+<span class="nc" id="L54">        setSize(new java.awt.Dimension(480, 502));</span>
+<span class="nc" id="L55">        addWindowListener(new java.awt.event.WindowAdapter() {</span>
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+<span class="nc" id="L57">                formWindowClosing(evt);</span>
+<span class="nc" id="L58">            }</span>
+        });
+<span class="nc" id="L60">        getContentPane().setLayout(null);</span>
+
+<span class="nc" id="L62">        lblTitulo.setFont(new java.awt.Font(&quot;Seravek&quot;, 1, 27)); // NOI18N</span>
+<span class="nc" id="L63">        lblTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/organic.png&quot;))); // NOI18N</span>
+<span class="nc" id="L64">        lblTitulo.setText(&quot;Registro de alimento:&quot;);</span>
+<span class="nc" id="L65">        getContentPane().add(lblTitulo);</span>
+<span class="nc" id="L66">        lblTitulo.setBounds(110, 10, 310, 34);</span>
+<span class="nc" id="L67">        getContentPane().add(jSeparator1);</span>
+<span class="nc" id="L68">        jSeparator1.setBounds(20, 40, 430, 12);</span>
+
+<span class="nc" id="L70">        lblNombre.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L71">        lblNombre.setText(&quot;Alimento:&quot;);</span>
+<span class="nc" id="L72">        getContentPane().add(lblNombre);</span>
+<span class="nc" id="L73">        lblNombre.setBounds(20, 70, 90, 24);</span>
+
+<span class="nc" id="L75">        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {</span>
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L77">                txtNombreKeyReleased(evt);</span>
+<span class="nc" id="L78">            }</span>
+        });
+<span class="nc" id="L80">        getContentPane().add(txtNombre);</span>
+<span class="nc" id="L81">        txtNombre.setBounds(150, 60, 250, 40);</span>
+
+<span class="nc" id="L83">        lblCategoria.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L84">        lblCategoria.setText(&quot;Categoria:&quot;);</span>
+<span class="nc" id="L85">        getContentPane().add(lblCategoria);</span>
+<span class="nc" id="L86">        lblCategoria.setBounds(20, 130, 170, 24);</span>
+
+<span class="nc" id="L88">        txtCategoria.addKeyListener(new java.awt.event.KeyAdapter() {</span>
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L90">                txtCategoriaKeyReleased(evt);</span>
+<span class="nc" id="L91">            }</span>
+        });
+<span class="nc" id="L93">        getContentPane().add(txtCategoria);</span>
+<span class="nc" id="L94">        txtCategoria.setBounds(150, 120, 250, 40);</span>
+
+<span class="nc" id="L96">        lblNutrientes.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L97">        lblNutrientes.setText(&quot;Nutrientes del alimento:&quot;);</span>
+<span class="nc" id="L98">        getContentPane().add(lblNutrientes);</span>
+<span class="nc" id="L99">        lblNutrientes.setBounds(150, 200, 200, 24);</span>
+
+<span class="nc" id="L101">        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/plus.png&quot;))); // NOI18N</span>
+<span class="nc" id="L102">        btnAgregar.setEnabled(false);</span>
+<span class="nc" id="L103">        btnAgregar.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L105">                btnAgregarActionPerformed(evt);</span>
+<span class="nc" id="L106">            }</span>
+        });
+<span class="nc" id="L108">        getContentPane().add(btnAgregar);</span>
+<span class="nc" id="L109">        btnAgregar.setBounds(180, 300, 80, 40);</span>
+<span class="nc" id="L110">        getContentPane().add(jSeparator2);</span>
+<span class="nc" id="L111">        jSeparator2.setBounds(20, 190, 430, 12);</span>
+
+<span class="nc" id="L113">        lblNombreNutriente.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L114">        lblNombreNutriente.setText(&quot;Nutriente:&quot;);</span>
+<span class="nc" id="L115">        getContentPane().add(lblNombreNutriente);</span>
+<span class="nc" id="L116">        lblNombreNutriente.setBounds(50, 230, 110, 24);</span>
+
+<span class="nc" id="L118">        btnRegistro.setText(&quot;Registrar Alimento&quot;);</span>
+<span class="nc" id="L119">        btnRegistro.setEnabled(false);</span>
+<span class="nc" id="L120">        btnRegistro.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L122">                btnRegistroActionPerformed(evt);</span>
+<span class="nc" id="L123">            }</span>
+        });
+<span class="nc" id="L125">        getContentPane().add(btnRegistro);</span>
+<span class="nc" id="L126">        btnRegistro.setBounds(160, 430, 140, 40);</span>
+
+<span class="nc" id="L128">        jScrollPane1.setViewportView(lstNutrientes);</span>
+
+<span class="nc" id="L130">        getContentPane().add(jScrollPane1);</span>
+<span class="nc" id="L131">        jScrollPane1.setBounds(280, 240, 180, 150);</span>
+
+<span class="nc" id="L133">        txtNutriente.setEditable(false);</span>
+<span class="nc" id="L134">        getContentPane().add(txtNutriente);</span>
+<span class="nc" id="L135">        txtNutriente.setBounds(10, 256, 160, 40);</span>
+
+<span class="nc" id="L137">        jLabel1.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L138">        jLabel1.setText(&quot;Proporcion:&quot;);</span>
+<span class="nc" id="L139">        getContentPane().add(jLabel1);</span>
+<span class="nc" id="L140">        jLabel1.setBounds(50, 310, 110, 24);</span>
+
+<span class="nc" id="L142">        txtProporcion.setEditable(false);</span>
+<span class="nc" id="L143">        getContentPane().add(txtProporcion);</span>
+<span class="nc" id="L144">        txtProporcion.setBounds(10, 340, 160, 40);</span>
+
+<span class="nc" id="L146">        jLabel2.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 2, 13)); // NOI18N</span>
+<span class="nc" id="L147">        jLabel2.setForeground(new java.awt.Color(102, 102, 102));</span>
+<span class="nc" id="L148">        jLabel2.setText(&quot;% cada 100 gramos&quot;);</span>
+<span class="nc" id="L149">        getContentPane().add(jLabel2);</span>
+<span class="nc" id="L150">        jLabel2.setBounds(30, 380, 140, 16);</span>
+<span class="nc" id="L151">        getContentPane().add(jSeparator3);</span>
+<span class="nc" id="L152">        jSeparator3.setBounds(20, 410, 440, 12);</span>
+
+<span class="nc" id="L154">        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/wall_alimento.jpg&quot;))); // NOI18N</span>
+<span class="nc" id="L155">        getContentPane().add(lblBackground);</span>
+<span class="nc" id="L156">        lblBackground.setBounds(-5, -4, 500, 520);</span>
+
+<span class="nc" id="L158">        pack();</span>
+<span class="nc" id="L159">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
+<span class="nc bnc" id="L162" title="All 4 branches missed.">        if (!this.txtCategoria.getText().isEmpty() &amp;&amp; !this.txtNombre.getText().isEmpty()) {</span>
+<span class="nc" id="L163">            this.txtNutriente.setEditable(true);</span>
+<span class="nc" id="L164">            this.txtProporcion.setEditable(true);</span>
+<span class="nc" id="L165">            this.btnAgregar.setEnabled(true);</span>
+        } else {
+<span class="nc" id="L167">            this.txtNutriente.setEditable(false);</span>
+<span class="nc" id="L168">            this.txtProporcion.setEditable(false);</span>
+<span class="nc" id="L169">            this.btnAgregar.setEnabled(false);</span>
+        }
+<span class="nc" id="L171">        listaNutrientes.clear();</span>
+<span class="nc" id="L172">        nutrientes.clear();</span>
+<span class="nc" id="L173">        this.lstNutrientes.setListData(listaNutrientes.toArray());</span>
+<span class="nc" id="L174">    }//GEN-LAST:event_txtNombreKeyReleased</span>
+
+    private void txtCategoriaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCategoriaKeyReleased
+<span class="nc bnc" id="L177" title="All 4 branches missed.">        if (!this.txtNombre.getText().isEmpty() &amp;&amp; !this.txtCategoria.getText().isEmpty()) {</span>
+<span class="nc" id="L178">            this.txtNutriente.setEditable(true);</span>
+<span class="nc" id="L179">            this.txtProporcion.setEditable(true);</span>
+<span class="nc" id="L180">            this.btnAgregar.setEnabled(true);</span>
+<span class="nc" id="L181">            this.btnRegistro.setEnabled(true);</span>
+        } else {
+<span class="nc" id="L183">            this.txtNutriente.setEditable(false);</span>
+<span class="nc" id="L184">            this.txtProporcion.setEditable(false);</span>
+<span class="nc" id="L185">            this.btnAgregar.setEnabled(false);</span>
+<span class="nc" id="L186">            this.btnRegistro.setEnabled(false);</span>
+        }
+<span class="nc" id="L188">        listaNutrientes.clear();</span>
+<span class="nc" id="L189">        nutrientes.clear();</span>
+<span class="nc" id="L190">        this.lstNutrientes.setListData(listaNutrientes.toArray());</span>
+<span class="nc" id="L191">    }//GEN-LAST:event_txtCategoriaKeyReleased</span>
+
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+<span class="nc bnc" id="L195" title="All 2 branches missed.">        if (Herramientas.esNumero(this.txtProporcion.getText())) {</span>
+<span class="nc bnc" id="L196" title="All 2 branches missed.">            if (Herramientas.validarRango(this.txtProporcion.getText(), 100, 1)) {</span>
+<span class="nc" id="L197">                nutrientes.put(this.txtNutriente.getText(), Integer.valueOf(this.txtProporcion.getText()));</span>
+<span class="nc" id="L198">                listaNutrientes.add(this.txtNutriente.getText() + &quot; - &quot; + this.txtProporcion.getText() + &quot;%&quot;);</span>
+<span class="nc" id="L199">                this.lstNutrientes.setListData(listaNutrientes.toArray());</span>
+<span class="nc" id="L200">                this.txtNutriente.setText(&quot;&quot;);</span>
+<span class="nc" id="L201">                this.txtProporcion.setText(&quot;&quot;);</span>
+            } else {
+<span class="nc" id="L203">                JOptionPane.showMessageDialog(null, &quot;Proporción furea de rango.&quot;, &quot;Atención&quot;, 0, new ImageIcon(getClass().getResource(&quot;/imagenes/warning.png&quot;)));</span>
+            }
+        } else {
+<span class="nc" id="L206">            JOptionPane.showMessageDialog(null, &quot;Proporción invalida.&quot;, &quot;Atención&quot;, 0, new ImageIcon(getClass().getResource(&quot;/imagenes/warning.png&quot;)));</span>
+
+        }
+<span class="nc" id="L209">    }//GEN-LAST:event_btnAgregarActionPerformed</span>
+
+    private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
+<span class="nc" id="L212">        modelo.agregarAlimento(this.txtNombre.getText(), this.txtCategoria.getText(), nutrientes);</span>
+<span class="nc" id="L213">        JOptionPane.showMessageDialog(null, &quot;Alimento registrado exitosamente.&quot;, &quot;Mensaje&quot;, 0, new ImageIcon(getClass().getResource(&quot;/imagenes/groceries.png&quot;)));</span>
+<span class="nc" id="L214">        this.dispose();</span>
+<span class="nc" id="L215">        MenuPrincipal ventana = new MenuPrincipal(modelo);</span>
+<span class="nc" id="L216">        ventana.setVisible(true);</span>
+<span class="nc" id="L217">    }//GEN-LAST:event_btnRegistroActionPerformed</span>
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+
+<span class="nc" id="L221">        this.dispose();</span>
+<span class="nc" id="L222">        MenuPrincipal ventana = new MenuPrincipal(modelo);</span>
+<span class="nc" id="L223">        ventana.setVisible(true);</span>
+<span class="nc" id="L224">    }//GEN-LAST:event_formWindowClosing</span>
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnRegistro;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblCategoria;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNombreNutriente;
+    private javax.swing.JLabel lblNutrientes;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JList&lt;Object&gt; lstNutrientes;
+    private javax.swing.JTextField txtCategoria;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNutriente;
+    private javax.swing.JTextField txtProporcion;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

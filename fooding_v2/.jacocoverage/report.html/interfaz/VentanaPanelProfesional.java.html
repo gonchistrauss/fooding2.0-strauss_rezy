@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>VentanaPanelProfesional.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;fooding_v2&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">interfaz</a> &gt; <span class="el_source">VentanaPanelProfesional.java</span></div><h1>VentanaPanelProfesional.java</h1><pre class="source lang-java linenums">package interfaz;
+
+import dominio.Consulta;
+import dominio.Profesional;
+import dominio.Sistema;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import utils.Tipos;
+import utils.Tipos.Categoria;
+import utils.Tipos.Estado;
+
+public class VentanaPanelProfesional extends javax.swing.JDialog {
+
+    private Sistema modelo;
+    private Profesional profesionalActivo;
+    private ArrayList&lt;Consulta&gt; listaActual;
+
+<span class="nc" id="L19">    public VentanaPanelProfesional(Sistema miSis) {</span>
+<span class="nc" id="L20">        initComponents();</span>
+<span class="nc" id="L21">        modelo = miSis;</span>
+<span class="nc" id="L22">        this.setModal(true);</span>
+<span class="nc" id="L23">        this.setLocationRelativeTo(null);</span>
+<span class="nc" id="L24">        profesionalActivo = modelo.obtenerSesionActivaProfesional();</span>
+<span class="nc" id="L25">        this.lblNombreProfesional.setText(profesionalActivo.getNombre() + &quot; &quot; + profesionalActivo.getApellidos());</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        if (!profesionalActivo.getPathPerfil().equals(&quot;/imagenes/perfil_defecto.png&quot;)) {</span>
+<span class="nc" id="L27">            this.lblFotoPerfil.setIcon(new ImageIcon(profesionalActivo.getPathPerfil()));</span>
+        }
+<span class="nc" id="L29">        this.lblPlanesPendientes.setText(profesionalActivo.getTituloProfesional());</span>
+<span class="nc" id="L30">        profesionalActivo = modelo.obtenerSesionActivaProfesional();</span>
+<span class="nc" id="L31">        listaActual = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L32">        listaActual = profesionalActivo.getInbox();</span>
+<span class="nc" id="L33">        this.lstInbox.setListData(modelo.consultasPorDescripcion(listaActual).toArray());</span>
+<span class="nc" id="L34">    }</span>
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L40">        lblBBienvenido = new javax.swing.JLabel();</span>
+<span class="nc" id="L41">        lblNombreProfesional = new javax.swing.JLabel();</span>
+<span class="nc" id="L42">        jSeparator1 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L43">        lblFotoPerfil = new javax.swing.JLabel();</span>
+<span class="nc" id="L44">        jSeparator2 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L45">        lblNacionalidad = new javax.swing.JLabel();</span>
+<span class="nc" id="L46">        lblPlanesPendientes = new javax.swing.JLabel();</span>
+<span class="nc" id="L47">        lblConsultasPendientes = new javax.swing.JLabel();</span>
+<span class="nc" id="L48">        btnSalir = new javax.swing.JButton();</span>
+<span class="nc" id="L49">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L50">        comboCategoria = new javax.swing.JComboBox&lt;&gt;();</span>
+<span class="nc" id="L51">        jSeparator3 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L52">        jScrollPane1 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L53">        lstInbox = new javax.swing.JList&lt;&gt;();</span>
+<span class="nc" id="L54">        lblCategoria = new javax.swing.JLabel();</span>
+<span class="nc" id="L55">        lblEstado = new javax.swing.JLabel();</span>
+<span class="nc" id="L56">        comboEstado = new javax.swing.JComboBox&lt;&gt;();</span>
+<span class="nc" id="L57">        btnFinalizar = new javax.swing.JButton();</span>
+<span class="nc" id="L58">        btnTomar = new javax.swing.JButton();</span>
+<span class="nc" id="L59">        btnEliminar = new javax.swing.JButton();</span>
+<span class="nc" id="L60">        btnBuscar = new javax.swing.JButton();</span>
+<span class="nc" id="L61">        jLabel3 = new javax.swing.JLabel();</span>
+<span class="nc" id="L62">        btnAutor = new javax.swing.JLabel();</span>
+<span class="nc" id="L63">        comboAutor = new javax.swing.JComboBox&lt;&gt;();</span>
+<span class="nc" id="L64">        lblPanel = new javax.swing.JLabel();</span>
+<span class="nc" id="L65">        btnResponder = new javax.swing.JButton();</span>
+
+<span class="nc" id="L67">        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);</span>
+<span class="nc" id="L68">        setMinimumSize(new java.awt.Dimension(980, 500));</span>
+<span class="nc" id="L69">        setPreferredSize(new java.awt.Dimension(980, 500));</span>
+<span class="nc" id="L70">        setResizable(false);</span>
+<span class="nc" id="L71">        setSize(new java.awt.Dimension(502, 446));</span>
+<span class="nc" id="L72">        addWindowListener(new java.awt.event.WindowAdapter() {</span>
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+<span class="nc" id="L74">                formWindowClosing(evt);</span>
+<span class="nc" id="L75">            }</span>
+        });
+<span class="nc" id="L77">        getContentPane().setLayout(null);</span>
+
+<span class="nc" id="L79">        lblBBienvenido.setFont(new java.awt.Font(&quot;Seravek&quot;, 1, 27)); // NOI18N</span>
+<span class="nc" id="L80">        lblBBienvenido.setText(&quot;Bienvenido, &quot;);</span>
+<span class="nc" id="L81">        getContentPane().add(lblBBienvenido);</span>
+<span class="nc" id="L82">        lblBBienvenido.setBounds(520, 20, 170, 30);</span>
+
+<span class="nc" id="L84">        lblNombreProfesional.setFont(new java.awt.Font(&quot;Seravek&quot;, 1, 24)); // NOI18N</span>
+<span class="nc" id="L85">        lblNombreProfesional.setForeground(new java.awt.Color(0, 204, 0));</span>
+<span class="nc" id="L86">        lblNombreProfesional.setText(&quot;Gonzalo Strauss&quot;);</span>
+<span class="nc" id="L87">        getContentPane().add(lblNombreProfesional);</span>
+<span class="nc" id="L88">        lblNombreProfesional.setBounds(670, 20, 270, 30);</span>
+<span class="nc" id="L89">        getContentPane().add(jSeparator1);</span>
+<span class="nc" id="L90">        jSeparator1.setBounds(60, 50, 920, 10);</span>
+
+<span class="nc" id="L92">        lblFotoPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/perfil_defecto.png&quot;))); // NOI18N</span>
+<span class="nc" id="L93">        getContentPane().add(lblFotoPerfil);</span>
+<span class="nc" id="L94">        lblFotoPerfil.setBounds(30, 80, 130, 130);</span>
+
+<span class="nc" id="L96">        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);</span>
+<span class="nc" id="L97">        getContentPane().add(jSeparator2);</span>
+<span class="nc" id="L98">        jSeparator2.setBounds(170, 70, 10, 320);</span>
+
+<span class="nc" id="L100">        lblNacionalidad.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L101">        lblNacionalidad.setForeground(new java.awt.Color(255, 153, 0));</span>
+<span class="nc" id="L102">        lblNacionalidad.setText(&quot;xxx&quot;);</span>
+<span class="nc" id="L103">        getContentPane().add(lblNacionalidad);</span>
+<span class="nc" id="L104">        lblNacionalidad.setBounds(30, 230, 130, 20);</span>
+
+<span class="nc" id="L106">        lblPlanesPendientes.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L107">        lblPlanesPendientes.setForeground(new java.awt.Color(255, 153, 0));</span>
+<span class="nc" id="L108">        lblPlanesPendientes.setText(&quot;yyy&quot;);</span>
+<span class="nc" id="L109">        getContentPane().add(lblPlanesPendientes);</span>
+<span class="nc" id="L110">        lblPlanesPendientes.setBounds(31, 260, 130, 16);</span>
+
+<span class="nc" id="L112">        lblConsultasPendientes.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L113">        lblConsultasPendientes.setForeground(new java.awt.Color(255, 153, 0));</span>
+<span class="nc" id="L114">        lblConsultasPendientes.setText(&quot;zzz&quot;);</span>
+<span class="nc" id="L115">        getContentPane().add(lblConsultasPendientes);</span>
+<span class="nc" id="L116">        lblConsultasPendientes.setBounds(31, 290, 130, 16);</span>
+
+<span class="nc" id="L118">        btnSalir.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 11)); // NOI18N</span>
+<span class="nc" id="L119">        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/sign-out-option.png&quot;))); // NOI18N</span>
+<span class="nc" id="L120">        btnSalir.setText(&quot;Salir&quot;);</span>
+<span class="nc" id="L121">        btnSalir.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L123">                btnSalirActionPerformed(evt);</span>
+<span class="nc" id="L124">            }</span>
+        });
+<span class="nc" id="L126">        getContentPane().add(btnSalir);</span>
+<span class="nc" id="L127">        btnSalir.setBounds(30, 420, 130, 40);</span>
+
+<span class="nc" id="L129">        jLabel1.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L130">        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/filter-tool-black-shape.png&quot;))); // NOI18N</span>
+<span class="nc" id="L131">        jLabel1.setText(&quot;Filtrar por :&quot;);</span>
+<span class="nc" id="L132">        getContentPane().add(jLabel1);</span>
+<span class="nc" id="L133">        jLabel1.setBounds(190, 90, 120, 30);</span>
+
+<span class="nc" id="L135">        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Todos&quot;, &quot;Planes&quot;, &quot;Consultas&quot; }));</span>
+<span class="nc" id="L136">        getContentPane().add(comboCategoria);</span>
+<span class="nc" id="L137">        comboCategoria.setBounds(400, 90, 130, 30);</span>
+<span class="nc" id="L138">        getContentPane().add(jSeparator3);</span>
+<span class="nc" id="L139">        jSeparator3.setBounds(190, 150, 750, 12);</span>
+
+<span class="nc" id="L141">        lstInbox.setModel(new javax.swing.AbstractListModel&lt;Object&gt;() {</span>
+<span class="nc" id="L142">            String[] strings = { &quot; &quot; };</span>
+<span class="nc" id="L143">            public int getSize() { return strings.length; }</span>
+<span class="nc" id="L144">            public Object getElementAt(int i) { return strings[i]; }</span>
+        });
+<span class="nc" id="L146">        lstInbox.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);</span>
+<span class="nc" id="L147">        lstInbox.addListSelectionListener(new javax.swing.event.ListSelectionListener() {</span>
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+<span class="nc" id="L149">                lstInboxValueChanged(evt);</span>
+<span class="nc" id="L150">            }</span>
+        });
+<span class="nc" id="L152">        jScrollPane1.setViewportView(lstInbox);</span>
+
+<span class="nc" id="L154">        getContentPane().add(jScrollPane1);</span>
+<span class="nc" id="L155">        jScrollPane1.setBounds(240, 180, 670, 200);</span>
+
+<span class="nc" id="L157">        lblCategoria.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L158">        lblCategoria.setText(&quot;Categoria&quot;);</span>
+<span class="nc" id="L159">        getContentPane().add(lblCategoria);</span>
+<span class="nc" id="L160">        lblCategoria.setBounds(320, 90, 90, 30);</span>
+
+<span class="nc" id="L162">        lblEstado.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L163">        lblEstado.setText(&quot;Estado&quot;);</span>
+<span class="nc" id="L164">        getContentPane().add(lblEstado);</span>
+<span class="nc" id="L165">        lblEstado.setBounds(540, 90, 90, 30);</span>
+
+<span class="nc" id="L167">        comboEstado.setModel(new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Todos&quot;, &quot;Pendiente&quot;, &quot;En proceso&quot;, &quot;Completado&quot; }));</span>
+<span class="nc" id="L168">        getContentPane().add(comboEstado);</span>
+<span class="nc" id="L169">        comboEstado.setBounds(600, 90, 130, 27);</span>
+
+<span class="nc" id="L171">        btnFinalizar.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 12)); // NOI18N</span>
+<span class="nc" id="L172">        btnFinalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/task-complete.png&quot;))); // NOI18N</span>
+<span class="nc" id="L173">        btnFinalizar.setText(&quot;Finalizar&quot;);</span>
+<span class="nc" id="L174">        btnFinalizar.setEnabled(false);</span>
+<span class="nc" id="L175">        btnFinalizar.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L177">                btnFinalizarActionPerformed(evt);</span>
+<span class="nc" id="L178">            }</span>
+        });
+<span class="nc" id="L180">        getContentPane().add(btnFinalizar);</span>
+<span class="nc" id="L181">        btnFinalizar.setBounds(600, 390, 120, 40);</span>
+
+<span class="nc" id="L183">        btnTomar.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L184">        btnTomar.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/checked.png&quot;))); // NOI18N</span>
+<span class="nc" id="L185">        btnTomar.setText(&quot;Asignar&quot;);</span>
+<span class="nc" id="L186">        btnTomar.setEnabled(false);</span>
+<span class="nc" id="L187">        btnTomar.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L189">                btnTomarActionPerformed(evt);</span>
+<span class="nc" id="L190">            }</span>
+        });
+<span class="nc" id="L192">        getContentPane().add(btnTomar);</span>
+<span class="nc" id="L193">        btnTomar.setBounds(770, 390, 120, 40);</span>
+
+<span class="nc" id="L195">        btnEliminar.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 12)); // NOI18N</span>
+<span class="nc" id="L196">        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/delete.png&quot;))); // NOI18N</span>
+<span class="nc" id="L197">        btnEliminar.setText(&quot;Eliminar&quot;);</span>
+<span class="nc" id="L198">        btnEliminar.setEnabled(false);</span>
+<span class="nc" id="L199">        btnEliminar.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L201">                btnEliminarActionPerformed(evt);</span>
+<span class="nc" id="L202">            }</span>
+        });
+<span class="nc" id="L204">        getContentPane().add(btnEliminar);</span>
+<span class="nc" id="L205">        btnEliminar.setBounds(430, 390, 120, 40);</span>
+
+<span class="nc" id="L207">        btnBuscar.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L208">        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/loupe.png&quot;))); // NOI18N</span>
+<span class="nc" id="L209">        btnBuscar.setText(&quot;Buscar&quot;);</span>
+<span class="nc" id="L210">        btnBuscar.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L212">                btnBuscarActionPerformed(evt);</span>
+<span class="nc" id="L213">            }</span>
+        });
+<span class="nc" id="L215">        getContentPane().add(btnBuscar);</span>
+<span class="nc" id="L216">        btnBuscar.setBounds(840, 120, 110, 30);</span>
+
+<span class="nc" id="L218">        jLabel3.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 24)); // NOI18N</span>
+<span class="nc" id="L219">        jLabel3.setText(&quot;Inbox&quot;);</span>
+<span class="nc" id="L220">        getContentPane().add(jLabel3);</span>
+<span class="nc" id="L221">        jLabel3.setBounds(520, 60, 130, 30);</span>
+
+<span class="nc" id="L223">        btnAutor.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L224">        btnAutor.setText(&quot;Profesional&quot;);</span>
+<span class="nc" id="L225">        getContentPane().add(btnAutor);</span>
+<span class="nc" id="L226">        btnAutor.setBounds(740, 90, 90, 30);</span>
+
+<span class="nc" id="L228">        comboAutor.setModel(new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Todos&quot;, &quot;Yo&quot; }));</span>
+<span class="nc" id="L229">        getContentPane().add(comboAutor);</span>
+<span class="nc" id="L230">        comboAutor.setBounds(830, 90, 120, 27);</span>
+
+<span class="nc" id="L232">        lblPanel.setFont(new java.awt.Font(&quot;Seravek&quot;, 1, 30)); // NOI18N</span>
+<span class="nc" id="L233">        lblPanel.setText(&quot;Panel del profesional -&quot;);</span>
+<span class="nc" id="L234">        getContentPane().add(lblPanel);</span>
+<span class="nc" id="L235">        lblPanel.setBounds(210, 10, 370, 50);</span>
+
+<span class="nc" id="L237">        btnResponder.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 12)); // NOI18N</span>
+<span class="nc" id="L238">        btnResponder.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/search.png&quot;))); // NOI18N</span>
+<span class="nc" id="L239">        btnResponder.setText(&quot;Responder&quot;);</span>
+<span class="nc" id="L240">        btnResponder.setEnabled(false);</span>
+<span class="nc" id="L241">        btnResponder.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L243">                btnResponderActionPerformed(evt);</span>
+<span class="nc" id="L244">            }</span>
+        });
+<span class="nc" id="L246">        getContentPane().add(btnResponder);</span>
+<span class="nc" id="L247">        btnResponder.setBounds(250, 390, 120, 40);</span>
+
+<span class="nc" id="L249">        pack();</span>
+<span class="nc" id="L250">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+<span class="nc" id="L253">        this.profesionalActivo.setSesionActiva(false);</span>
+<span class="nc" id="L254">        this.dispose();</span>
+<span class="nc" id="L255">        MenuPrincipal ventana = new MenuPrincipal(modelo);</span>
+<span class="nc" id="L256">        ventana.setVisible(true);</span>
+<span class="nc" id="L257">    }//GEN-LAST:event_formWindowClosing</span>
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+<span class="nc" id="L260">        this.profesionalActivo.setSesionActiva(false);</span>
+<span class="nc" id="L261">        this.dispose();</span>
+<span class="nc" id="L262">        MenuPrincipal ventana = new MenuPrincipal(modelo);</span>
+<span class="nc" id="L263">        ventana.setVisible(true);</span>
+<span class="nc" id="L264">    }//GEN-LAST:event_btnSalirActionPerformed</span>
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+<span class="nc" id="L267">        cargarLista();</span>
+<span class="nc" id="L268">    }//GEN-LAST:event_btnBuscarActionPerformed</span>
+
+    private void lstInboxValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstInboxValueChanged
+<span class="nc bnc" id="L271" title="All 2 branches missed.">        if (!evt.getValueIsAdjusting()) {</span>
+<span class="nc" id="L272">            int index = this.lstInbox.getSelectedIndex();</span>
+<span class="nc bnc" id="L273" title="All 2 branches missed.">            if (index &gt;= 0) {</span>
+<span class="nc" id="L274">                this.btnEliminar.setEnabled(true);</span>
+<span class="nc" id="L275">                Consulta consulta = this.listaActual.get(index);</span>
+<span class="nc bnc" id="L276" title="All 2 branches missed.">                if (consulta.getEstado() == Estado.PENDIENTE) {</span>
+<span class="nc" id="L277">                    this.btnFinalizar.setEnabled(false);</span>
+<span class="nc" id="L278">                    this.btnTomar.setEnabled(true);</span>
+                } else {
+<span class="nc" id="L280">                    this.btnTomar.setEnabled(false);</span>
+<span class="nc bnc" id="L281" title="All 2 branches missed.">                    if (consulta.getEstado() == Estado.COMPLETADO) {</span>
+<span class="nc" id="L282">                        this.btnFinalizar.setEnabled(false);</span>
+                    } else {
+<span class="nc" id="L284">                        this.btnEliminar.setEnabled(false);</span>
+<span class="nc bnc" id="L285" title="All 4 branches missed.">                        if (Estado.EN_PROCESO == consulta.getEstado() &amp;&amp; consulta.getProfesional().equals(profesionalActivo)) {</span>
+<span class="nc" id="L286">                            this.btnResponder.setEnabled(true);</span>
+<span class="nc" id="L287">                            this.btnFinalizar.setEnabled(true);</span>
+                        } else {
+<span class="nc" id="L289">                            this.btnEliminar.setEnabled(true);</span>
+<span class="nc" id="L290">                            this.btnFinalizar.setEnabled(false);</span>
+<span class="nc" id="L291">                            this.btnResponder.setEnabled(false);</span>
+                        }
+                    }
+                }
+<span class="nc" id="L295">            } else {</span>
+<span class="nc" id="L296">                this.btnResponder.setEnabled(false);</span>
+<span class="nc" id="L297">                this.btnEliminar.setEnabled(false);</span>
+<span class="nc" id="L298">                this.btnTomar.setEnabled(false);</span>
+<span class="nc" id="L299">                this.btnFinalizar.setEnabled(false);</span>
+            }
+        }
+
+<span class="nc" id="L303">    }//GEN-LAST:event_lstInboxValueChanged</span>
+
+    public void cargarLista() {
+<span class="nc" id="L306">        int nroCategoria = this.comboCategoria.getSelectedIndex();</span>
+<span class="nc" id="L307">        int nroEstado = this.comboEstado.getSelectedIndex();</span>
+<span class="nc bnc" id="L308" title="All 2 branches missed.">        ArrayList&lt;Consulta&gt; inboxConAutor = (this.comboAutor.getSelectedIndex() == 0) ? profesionalActivo.getInbox() : profesionalActivo.misConsultas();</span>
+<span class="nc" id="L309">        ArrayList&lt;Consulta&gt; inboxConCategoria = filtrarCategoria(nroCategoria, inboxConAutor);</span>
+<span class="nc" id="L310">        listaActual = filtrarEstado(nroEstado, inboxConCategoria);</span>
+<span class="nc" id="L311">        this.lstInbox.setListData(modelo.consultasPorDescripcion(listaActual).toArray());</span>
+<span class="nc" id="L312">    }</span>
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+<span class="nc" id="L315">        Consulta consulta = listaActual.get(lstInbox.getSelectedIndex());</span>
+<span class="nc" id="L316">        profesionalActivo.eliminarEnInbox(consulta);</span>
+<span class="nc" id="L317">        cargarLista();</span>
+<span class="nc" id="L318">    }//GEN-LAST:event_btnEliminarActionPerformed</span>
+
+    private void btnTomarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTomarActionPerformed
+<span class="nc" id="L321">        int input = JOptionPane.showConfirmDialog(null, &quot;Esta seguro que desea asignarse esta tarea?&quot;, &quot;Confirmacion&quot;,</span>
+                JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+<span class="nc bnc" id="L323" title="All 2 branches missed.">        if (input == 0) {</span>
+<span class="nc" id="L324">            Consulta consulta = listaActual.get(lstInbox.getSelectedIndex());</span>
+<span class="nc" id="L325">            consulta.setProfesional(profesionalActivo);</span>
+<span class="nc" id="L326">            consulta.setEstado(Estado.EN_PROCESO);</span>
+<span class="nc" id="L327">            this.lstInbox.setListData(modelo.consultasPorDescripcion(listaActual).toArray());</span>
+
+        }
+<span class="nc" id="L330">    }//GEN-LAST:event_btnTomarActionPerformed</span>
+
+    private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
+<span class="nc" id="L333">        Consulta consulta = listaActual.get(lstInbox.getSelectedIndex());</span>
+<span class="nc" id="L334">        int input = JOptionPane.showConfirmDialog(null, &quot;Esta seguro que desea finalizar esta tarea? \n La acción es irreversible.&quot;, &quot;Confirmacion&quot;,</span>
+                JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+<span class="nc bnc" id="L336" title="All 2 branches missed.">        if (input == 0) {</span>
+<span class="nc" id="L337">            consulta.setEstado(Estado.COMPLETADO);</span>
+<span class="nc" id="L338">            this.lstInbox.setListData(modelo.consultasPorDescripcion(listaActual).toArray());</span>
+        }
+<span class="nc" id="L340">    }//GEN-LAST:event_btnFinalizarActionPerformed</span>
+
+    private void btnResponderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResponderActionPerformed
+<span class="nc" id="L343">        Consulta consulta = listaActual.get(lstInbox.getSelectedIndex());</span>
+<span class="nc bnc" id="L344" title="All 2 branches missed.">        if(consulta.getCategoria() == Categoria.DIRECTA){</span>
+<span class="nc" id="L345">            this.dispose();</span>
+<span class="nc" id="L346">            VentanaConsultaProfesional ventana = new VentanaConsultaProfesional(modelo,consulta);</span>
+<span class="nc" id="L347">            ventana.setVisible(true);</span>
+<span class="nc" id="L348">        }</span>
+        else{
+<span class="nc" id="L350">            this.dispose();</span>
+<span class="nc" id="L351">            VentanaPlanesProfesional ventana = new VentanaPlanesProfesional(modelo,consulta);</span>
+<span class="nc" id="L352">            ventana.setVisible(true);</span>
+        }
+<span class="nc" id="L354">    }//GEN-LAST:event_btnResponderActionPerformed</span>
+
+    private ArrayList&lt;Consulta&gt; filtrarCategoria(int nro, ArrayList&lt;Consulta&gt; lista) {
+<span class="nc" id="L357">        ArrayList&lt;Consulta&gt; res = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L358" title="All 4 branches missed.">        switch (nro) {</span>
+            case 0:
+<span class="nc" id="L360">                res = lista;</span>
+<span class="nc" id="L361">                break;</span>
+            case 1:
+<span class="nc" id="L363">                res = modelo.filtrarPorPlan(lista);</span>
+<span class="nc" id="L364">                break;</span>
+            case 2:
+<span class="nc" id="L366">                res = modelo.filtrarPorDirecta(lista);</span>
+<span class="nc" id="L367">                break;</span>
+            default:
+<span class="nc" id="L369">                res = lista;</span>
+                break;
+        }
+<span class="nc" id="L372">        return res;</span>
+    }
+
+    private ArrayList&lt;Consulta&gt; filtrarEstado(int nro, ArrayList&lt;Consulta&gt; lista) {
+<span class="nc" id="L376">        ArrayList&lt;Consulta&gt; res = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L377" title="All 5 branches missed.">        switch (nro) {</span>
+            case 0:
+<span class="nc" id="L379">                res = lista;</span>
+<span class="nc" id="L380">                break;</span>
+            case 1:
+<span class="nc" id="L382">                res = modelo.filtrarPorPendiente(lista);</span>
+<span class="nc" id="L383">                break;</span>
+            case 2:
+<span class="nc" id="L385">                res = modelo.filtrarPorEnProceso(lista);</span>
+<span class="nc" id="L386">                break;</span>
+            case 3:
+<span class="nc" id="L388">                res = modelo.filtrarPorCompletado(lista);</span>
+<span class="nc" id="L389">                break;</span>
+            default:
+<span class="nc" id="L391">                res = lista;</span>
+                break;
+        }
+<span class="nc" id="L394">        return res;</span>
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnAutor;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnFinalizar;
+    private javax.swing.JButton btnResponder;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnTomar;
+    private javax.swing.JComboBox&lt;String&gt; comboAutor;
+    private javax.swing.JComboBox&lt;String&gt; comboCategoria;
+    private javax.swing.JComboBox&lt;String&gt; comboEstado;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel lblBBienvenido;
+    private javax.swing.JLabel lblCategoria;
+    private javax.swing.JLabel lblConsultasPendientes;
+    private javax.swing.JLabel lblEstado;
+    private javax.swing.JLabel lblFotoPerfil;
+    private javax.swing.JLabel lblNacionalidad;
+    private javax.swing.JLabel lblNombreProfesional;
+    private javax.swing.JLabel lblPanel;
+    private javax.swing.JLabel lblPlanesPendientes;
+    private javax.swing.JList&lt;Object&gt; lstInbox;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

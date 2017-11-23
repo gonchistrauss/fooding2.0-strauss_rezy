@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>VentanaConsulta.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;fooding_v2&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">interfaz</a> &gt; <span class="el_source">VentanaConsulta.java</span></div><h1>VentanaConsulta.java</h1><pre class="source lang-java linenums">package interfaz;
+
+import dominio.Consulta;
+import dominio.Sistema;
+import dominio.Usuario;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import utils.Tipos;
+
+public class VentanaConsulta extends javax.swing.JDialog {
+
+    private Sistema modelo;
+    private Usuario usuarioActivo;
+
+<span class="nc" id="L18">    public VentanaConsulta(Sistema miSis) {</span>
+<span class="nc" id="L19">        initComponents();</span>
+<span class="nc" id="L20">        modelo = miSis;</span>
+<span class="nc" id="L21">        this.setModal(true);</span>
+<span class="nc" id="L22">        this.setLocationRelativeTo(null);</span>
+<span class="nc" id="L23">        usuarioActivo = modelo.obtenerSesionActivaUsuario();</span>
+<span class="nc" id="L24">    }</span>
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L30">        lblTitulo = new javax.swing.JLabel();</span>
+<span class="nc" id="L31">        jSeparator1 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L32">        lblEleccion = new javax.swing.JLabel();</span>
+<span class="nc" id="L33">        jComboBox1 = new javax.swing.JComboBox&lt;&gt;();</span>
+<span class="nc" id="L34">        btnEnviar = new javax.swing.JButton();</span>
+<span class="nc" id="L35">        jScrollPane1 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L36">        txtMensaje = new javax.swing.JTextArea();</span>
+<span class="nc" id="L37">        lblMensaje = new javax.swing.JLabel();</span>
+<span class="nc" id="L38">        jSeparator2 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L39">        lblBackground = new javax.swing.JLabel();</span>
+
+<span class="nc" id="L41">        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);</span>
+<span class="nc" id="L42">        setTitle(&quot;Consultas y planes de alimentacion&quot;);</span>
+<span class="nc" id="L43">        setMinimumSize(new java.awt.Dimension(476, 401));</span>
+<span class="nc" id="L44">        setSize(new java.awt.Dimension(476, 401));</span>
+<span class="nc" id="L45">        addWindowListener(new java.awt.event.WindowAdapter() {</span>
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+<span class="nc" id="L47">                formWindowClosing(evt);</span>
+<span class="nc" id="L48">            }</span>
+        });
+<span class="nc" id="L50">        getContentPane().setLayout(null);</span>
+
+<span class="nc" id="L52">        lblTitulo.setFont(new java.awt.Font(&quot;Seravek&quot;, 1, 27)); // NOI18N</span>
+<span class="nc" id="L53">        lblTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/consulting.png&quot;))); // NOI18N</span>
+<span class="nc" id="L54">        lblTitulo.setText(&quot;Consulta / Plan de Alimentacion&quot;);</span>
+<span class="nc" id="L55">        getContentPane().add(lblTitulo);</span>
+<span class="nc" id="L56">        lblTitulo.setBounds(20, 10, 450, 40);</span>
+<span class="nc" id="L57">        getContentPane().add(jSeparator1);</span>
+<span class="nc" id="L58">        jSeparator1.setBounds(30, 60, 430, 20);</span>
+
+<span class="nc" id="L60">        lblEleccion.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L61">        lblEleccion.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/question-mark.png&quot;))); // NOI18N</span>
+<span class="nc" id="L62">        lblEleccion.setText(&quot;Que desea realizar?&quot;);</span>
+<span class="nc" id="L63">        getContentPane().add(lblEleccion);</span>
+<span class="nc" id="L64">        lblEleccion.setBounds(30, 70, 180, 40);</span>
+
+<span class="nc" id="L66">        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Consulta directa&quot;, &quot;Plan de alimentacion&quot; }));</span>
+<span class="nc" id="L67">        getContentPane().add(jComboBox1);</span>
+<span class="nc" id="L68">        jComboBox1.setBounds(210, 70, 260, 40);</span>
+
+<span class="nc" id="L70">        btnEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/icon.png&quot;))); // NOI18N</span>
+<span class="nc" id="L71">        btnEnviar.setText(&quot;Enviar&quot;);</span>
+<span class="nc" id="L72">        btnEnviar.setEnabled(false);</span>
+<span class="nc" id="L73">        btnEnviar.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L75">                btnEnviarActionPerformed(evt);</span>
+<span class="nc" id="L76">            }</span>
+        });
+<span class="nc" id="L78">        getContentPane().add(btnEnviar);</span>
+<span class="nc" id="L79">        btnEnviar.setBounds(340, 330, 90, 40);</span>
+
+<span class="nc" id="L81">        txtMensaje.setColumns(20);</span>
+<span class="nc" id="L82">        txtMensaje.setFont(new java.awt.Font(&quot;Optima&quot;, 0, 14)); // NOI18N</span>
+<span class="nc" id="L83">        txtMensaje.setRows(5);</span>
+<span class="nc" id="L84">        txtMensaje.addKeyListener(new java.awt.event.KeyAdapter() {</span>
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L86">                txtMensajeKeyReleased(evt);</span>
+<span class="nc" id="L87">            }</span>
+        });
+<span class="nc" id="L89">        jScrollPane1.setViewportView(txtMensaje);</span>
+
+<span class="nc" id="L91">        getContentPane().add(jScrollPane1);</span>
+<span class="nc" id="L92">        jScrollPane1.setBounds(50, 160, 380, 170);</span>
+
+<span class="nc" id="L94">        lblMensaje.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 3, 14)); // NOI18N</span>
+<span class="nc" id="L95">        lblMensaje.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/close-envelope.png&quot;))); // NOI18N</span>
+<span class="nc" id="L96">        lblMensaje.setText(&quot;Mensaje:&quot;);</span>
+<span class="nc" id="L97">        getContentPane().add(lblMensaje);</span>
+<span class="nc" id="L98">        lblMensaje.setBounds(50, 134, 120, 30);</span>
+<span class="nc" id="L99">        getContentPane().add(jSeparator2);</span>
+<span class="nc" id="L100">        jSeparator2.setBounds(30, 110, 430, 12);</span>
+
+<span class="nc" id="L102">        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/wall_blue.png&quot;))); // NOI18N</span>
+<span class="nc" id="L103">        getContentPane().add(lblBackground);</span>
+<span class="nc" id="L104">        lblBackground.setBounds(-5, -4, 500, 420);</span>
+
+<span class="nc" id="L106">        pack();</span>
+<span class="nc" id="L107">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+<span class="nc" id="L110">        this.dispose();</span>
+<span class="nc" id="L111">        VentanaPanelUsuario ventana = new VentanaPanelUsuario(modelo);</span>
+<span class="nc" id="L112">        ventana.setVisible(true);</span>
+<span class="nc" id="L113">    }//GEN-LAST:event_formWindowClosing</span>
+
+    private void txtMensajeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMensajeKeyReleased
+<span class="nc bnc" id="L116" title="All 2 branches missed.">        if (!this.txtMensaje.getText().isEmpty()) {</span>
+<span class="nc" id="L117">            this.btnEnviar.setEnabled(true);</span>
+        } else {
+<span class="nc" id="L119">            this.btnEnviar.setEnabled(false);</span>
+        }
+<span class="nc" id="L121">    }//GEN-LAST:event_txtMensajeKeyReleased</span>
+
+    private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
+<span class="nc" id="L124">        DateFormat dateFormat = new SimpleDateFormat(&quot;dd/MM/yyyy HH:mm:ss&quot;);</span>
+<span class="nc" id="L125">        Date date = new Date();</span>
+<span class="nc bnc" id="L126" title="All 2 branches missed.">        if (this.jComboBox1.getSelectedIndex() == 0) {</span>
+<span class="nc" id="L127">            usuarioActivo.agregarConsulta(Tipos.Categoria.DIRECTA);</span>
+<span class="nc" id="L128">            Consulta consulta = usuarioActivo.getConsultas().get(usuarioActivo.getConsultas().size() - 1);</span>
+<span class="nc" id="L129">            consulta.agregarIncidencia(this.txtMensaje.getText(), dateFormat.format(date), usuarioActivo);</span>
+<span class="nc" id="L130">            modelo.agregarConsulta(consulta);</span>
+<span class="nc" id="L131">            JOptionPane.showMessageDialog(null, &quot;Consulta enviada exitosamente.&quot;, &quot;Mensaje&quot;, 0, new ImageIcon(getClass().getResource(&quot;/imagenes/send.png&quot;)));</span>
+<span class="nc" id="L132">            this.dispose();</span>
+<span class="nc" id="L133">            VentanaPanelUsuario ventana = new VentanaPanelUsuario(modelo);</span>
+<span class="nc" id="L134">            ventana.setVisible(true);</span>
+<span class="nc" id="L135">        } else {</span>
+<span class="nc" id="L136">            usuarioActivo.agregarConsulta(Tipos.Categoria.PLAN_ALIMENTICIO);</span>
+<span class="nc" id="L137">            Consulta consulta = usuarioActivo.getConsultas().get(usuarioActivo.getConsultas().size() - 1);</span>
+<span class="nc" id="L138">            consulta.agregarIncidencia(this.txtMensaje.getText(), dateFormat.format(date), usuarioActivo);</span>
+<span class="nc" id="L139">            modelo.agregarConsulta(consulta);</span>
+<span class="nc" id="L140">            JOptionPane.showMessageDialog(null, &quot;Plan alimenticio solicitado exitosamente.&quot;, &quot;Mensaje&quot;, 0, new ImageIcon(getClass().getResource(&quot;/imagenes/send.png&quot;)));</span>
+<span class="nc" id="L141">            this.dispose();</span>
+<span class="nc" id="L142">            VentanaPanelUsuario ventana = new VentanaPanelUsuario(modelo);</span>
+<span class="nc" id="L143">            ventana.setVisible(true);</span>
+        }
+<span class="nc" id="L145">    }//GEN-LAST:event_btnEnviarActionPerformed</span>
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEnviar;
+    private javax.swing.JComboBox&lt;String&gt; jComboBox1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblEleccion;
+    private javax.swing.JLabel lblMensaje;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JTextArea txtMensaje;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

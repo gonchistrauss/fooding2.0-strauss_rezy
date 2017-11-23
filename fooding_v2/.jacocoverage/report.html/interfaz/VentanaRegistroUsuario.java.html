@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>VentanaRegistroUsuario.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;fooding_v2&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">interfaz</a> &gt; <span class="el_source">VentanaRegistroUsuario.java</span></div><h1>VentanaRegistroUsuario.java</h1><pre class="source lang-java linenums">package interfaz;
+
+import dominio.Alimento;
+import dominio.Sistema;
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import utils.*;
+
+public class VentanaRegistroUsuario extends javax.swing.JDialog {
+
+    private Sistema modelo;
+    private FileNameExtensionFilter filter;
+    private ImageIcon perfil;
+    private String profilePath;
+    private ArrayList&lt;Alimento&gt; preferencias;
+    private ArrayList&lt;Alimento&gt; restricciones;
+
+<span class="nc" id="L25">    public VentanaRegistroUsuario(Sistema miSis) {</span>
+<span class="nc" id="L26">        initComponents();</span>
+<span class="nc" id="L27">        this.setModal(true);</span>
+<span class="nc" id="L28">        this.setLocationRelativeTo(null);</span>
+<span class="nc" id="L29">        modelo = miSis;</span>
+<span class="nc" id="L30">        this.comboPaises.setModel(new DefaultComboBoxModel(utils.Herramientas.obtenerpaises()));</span>
+<span class="nc" id="L31">        dateNacimiento.setDateFormatString(&quot;dd/MM/yyyy&quot;);</span>
+<span class="nc" id="L32">        perfil = new ImageIcon(getClass().getResource(&quot;/imagenes/avatar.png&quot;));</span>
+<span class="nc" id="L33">        profilePath = &quot;/imagenes/perfil_defecto.png&quot;;</span>
+<span class="nc" id="L34">        preferencias = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L35">        restricciones = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L36">    }</span>
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L42">        lblTitulo = new javax.swing.JLabel();</span>
+<span class="nc" id="L43">        lblNombre = new javax.swing.JLabel();</span>
+<span class="nc" id="L44">        lblApellido = new javax.swing.JLabel();</span>
+<span class="nc" id="L45">        btnPreferencias = new javax.swing.JButton();</span>
+<span class="nc" id="L46">        lblPref_res = new javax.swing.JLabel();</span>
+<span class="nc" id="L47">        btnRegistroUsuario = new javax.swing.JButton();</span>
+<span class="nc" id="L48">        txtApellido = new javax.swing.JTextField();</span>
+<span class="nc" id="L49">        txtNombre = new javax.swing.JTextField();</span>
+<span class="nc" id="L50">        lblFotoPerfil = new javax.swing.JLabel();</span>
+<span class="nc" id="L51">        btnImportar = new javax.swing.JButton();</span>
+<span class="nc" id="L52">        lblNacimiento = new javax.swing.JLabel();</span>
+<span class="nc" id="L53">        dateNacimiento = new com.toedter.calendar.JDateChooser();</span>
+<span class="nc" id="L54">        lblPais = new javax.swing.JLabel();</span>
+<span class="nc" id="L55">        jSeparator1 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L56">        comboPaises = new javax.swing.JComboBox&lt;&gt;();</span>
+<span class="nc" id="L57">        btnVolver = new javax.swing.JButton();</span>
+<span class="nc" id="L58">        lblStatusNombre = new javax.swing.JLabel();</span>
+<span class="nc" id="L59">        lblOkNombre = new javax.swing.JLabel();</span>
+<span class="nc" id="L60">        lblStatusApellido = new javax.swing.JLabel();</span>
+<span class="nc" id="L61">        lblOkApellido = new javax.swing.JLabel();</span>
+<span class="nc" id="L62">        lblStatusNacimiento = new javax.swing.JLabel();</span>
+<span class="nc" id="L63">        lblOkNacimiento = new javax.swing.JLabel();</span>
+<span class="nc" id="L64">        lblBackground = new javax.swing.JLabel();</span>
+
+<span class="nc" id="L66">        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);</span>
+<span class="nc" id="L67">        setTitle(&quot;Registro de usuario&quot;);</span>
+<span class="nc" id="L68">        setMinimumSize(new java.awt.Dimension(638, 458));</span>
+<span class="nc" id="L69">        setPreferredSize(new java.awt.Dimension(638, 458));</span>
+<span class="nc" id="L70">        setResizable(false);</span>
+<span class="nc" id="L71">        setSize(new java.awt.Dimension(638, 458));</span>
+<span class="nc" id="L72">        addWindowListener(new java.awt.event.WindowAdapter() {</span>
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+<span class="nc" id="L74">                formWindowClosing(evt);</span>
+<span class="nc" id="L75">            }</span>
+        });
+<span class="nc" id="L77">        getContentPane().setLayout(null);</span>
+
+<span class="nc" id="L79">        lblTitulo.setFont(new java.awt.Font(&quot;Seravek&quot;, 1, 27)); // NOI18N</span>
+<span class="nc" id="L80">        lblTitulo.setText(&quot;Registro de Usuario&quot;);</span>
+<span class="nc" id="L81">        getContentPane().add(lblTitulo);</span>
+<span class="nc" id="L82">        lblTitulo.setBounds(210, 10, 250, 34);</span>
+
+<span class="nc" id="L84">        lblNombre.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L85">        lblNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/man-user.png&quot;))); // NOI18N</span>
+<span class="nc" id="L86">        lblNombre.setText(&quot;Nombre:&quot;);</span>
+<span class="nc" id="L87">        getContentPane().add(lblNombre);</span>
+<span class="nc" id="L88">        lblNombre.setBounds(170, 70, 90, 24);</span>
+
+<span class="nc" id="L90">        lblApellido.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L91">        lblApellido.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/man-user.png&quot;))); // NOI18N</span>
+<span class="nc" id="L92">        lblApellido.setText(&quot;Apellido:&quot;);</span>
+<span class="nc" id="L93">        getContentPane().add(lblApellido);</span>
+<span class="nc" id="L94">        lblApellido.setBounds(170, 130, 90, 24);</span>
+
+<span class="nc" id="L96">        btnPreferencias.setText(&quot;Agregar&quot;);</span>
+<span class="nc" id="L97">        btnPreferencias.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L99">                btnPreferenciasActionPerformed(evt);</span>
+<span class="nc" id="L100">            }</span>
+        });
+<span class="nc" id="L102">        getContentPane().add(btnPreferencias);</span>
+<span class="nc" id="L103">        btnPreferencias.setBounds(420, 280, 140, 40);</span>
+
+<span class="nc" id="L105">        lblPref_res.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L106">        lblPref_res.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/adjust-button-with-plus-and-minus.png&quot;))); // NOI18N</span>
+<span class="nc" id="L107">        lblPref_res.setText(&quot;Preferencias y/o restricciones&quot;);</span>
+<span class="nc" id="L108">        getContentPane().add(lblPref_res);</span>
+<span class="nc" id="L109">        lblPref_res.setBounds(170, 290, 260, 24);</span>
+
+<span class="nc" id="L111">        btnRegistroUsuario.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 0, 14)); // NOI18N</span>
+<span class="nc" id="L112">        btnRegistroUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/add-a-contact-on-phone-interface-symbol-of-a-user-with-a-plus-sign.png&quot;))); // NOI18N</span>
+<span class="nc" id="L113">        btnRegistroUsuario.setText(&quot;Registrar&quot;);</span>
+<span class="nc" id="L114">        btnRegistroUsuario.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L116">                btnRegistroUsuarioActionPerformed(evt);</span>
+<span class="nc" id="L117">            }</span>
+        });
+<span class="nc" id="L119">        getContentPane().add(btnRegistroUsuario);</span>
+<span class="nc" id="L120">        btnRegistroUsuario.setBounds(250, 340, 190, 50);</span>
+
+<span class="nc" id="L122">        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {</span>
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L124">                txtApellidoKeyReleased(evt);</span>
+<span class="nc" id="L125">            }</span>
+        });
+<span class="nc" id="L127">        getContentPane().add(txtApellido);</span>
+<span class="nc" id="L128">        txtApellido.setBounds(290, 120, 270, 40);</span>
+
+<span class="nc" id="L130">        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {</span>
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L132">                txtNombreKeyReleased(evt);</span>
+<span class="nc" id="L133">            }</span>
+        });
+<span class="nc" id="L135">        getContentPane().add(txtNombre);</span>
+<span class="nc" id="L136">        txtNombre.setBounds(290, 60, 270, 40);</span>
+
+<span class="nc" id="L138">        lblFotoPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/perfil_defecto.png&quot;))); // NOI18N</span>
+<span class="nc" id="L139">        getContentPane().add(lblFotoPerfil);</span>
+<span class="nc" id="L140">        lblFotoPerfil.setBounds(30, 60, 130, 130);</span>
+
+<span class="nc" id="L142">        btnImportar.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/export.png&quot;))); // NOI18N</span>
+<span class="nc" id="L143">        btnImportar.setText(&quot;Importar&quot;);</span>
+<span class="nc" id="L144">        btnImportar.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L146">                btnImportarActionPerformed(evt);</span>
+<span class="nc" id="L147">            }</span>
+        });
+<span class="nc" id="L149">        getContentPane().add(btnImportar);</span>
+<span class="nc" id="L150">        btnImportar.setBounds(30, 186, 130, 28);</span>
+
+<span class="nc" id="L152">        lblNacimiento.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L153">        lblNacimiento.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/calendar-page-empty.png&quot;))); // NOI18N</span>
+<span class="nc" id="L154">        lblNacimiento.setText(&quot;Nacimiento&quot;);</span>
+<span class="nc" id="L155">        getContentPane().add(lblNacimiento);</span>
+<span class="nc" id="L156">        lblNacimiento.setBounds(170, 190, 120, 24);</span>
+
+<span class="nc" id="L158">        dateNacimiento.setOpaque(false);</span>
+<span class="nc" id="L159">        getContentPane().add(dateNacimiento);</span>
+<span class="nc" id="L160">        dateNacimiento.setBounds(290, 180, 270, 40);</span>
+
+<span class="nc" id="L162">        lblPais.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L163">        lblPais.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/international-delivery.png&quot;))); // NOI18N</span>
+<span class="nc" id="L164">        lblPais.setText(&quot;País&quot;);</span>
+<span class="nc" id="L165">        getContentPane().add(lblPais);</span>
+<span class="nc" id="L166">        lblPais.setBounds(170, 240, 80, 24);</span>
+<span class="nc" id="L167">        getContentPane().add(jSeparator1);</span>
+<span class="nc" id="L168">        jSeparator1.setBounds(10, 50, 600, 12);</span>
+
+<span class="nc" id="L170">        comboPaises.setModel(new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot; &quot; }));</span>
+<span class="nc" id="L171">        getContentPane().add(comboPaises);</span>
+<span class="nc" id="L172">        comboPaises.setBounds(290, 230, 270, 40);</span>
+
+<span class="nc" id="L174">        btnVolver.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 11)); // NOI18N</span>
+<span class="nc" id="L175">        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/left-arrow.png&quot;))); // NOI18N</span>
+<span class="nc" id="L176">        btnVolver.setText(&quot;Volver&quot;);</span>
+<span class="nc" id="L177">        btnVolver.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L179">                btnVolverActionPerformed(evt);</span>
+<span class="nc" id="L180">            }</span>
+        });
+<span class="nc" id="L182">        getContentPane().add(btnVolver);</span>
+<span class="nc" id="L183">        btnVolver.setBounds(10, 380, 97, 50);</span>
+
+<span class="nc" id="L185">        lblStatusNombre.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L186">        lblStatusNombre.setForeground(new java.awt.Color(255, 51, 51));</span>
+<span class="nc" id="L187">        lblStatusNombre.setText(&quot; &quot;);</span>
+<span class="nc" id="L188">        lblStatusNombre.setToolTipText(&quot;&quot;);</span>
+<span class="nc" id="L189">        getContentPane().add(lblStatusNombre);</span>
+<span class="nc" id="L190">        lblStatusNombre.setBounds(300, 100, 250, 16);</span>
+
+<span class="nc" id="L192">        lblOkNombre.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L193">        getContentPane().add(lblOkNombre);</span>
+<span class="nc" id="L194">        lblOkNombre.setBounds(560, 70, 60, 24);</span>
+
+<span class="nc" id="L196">        lblStatusApellido.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L197">        lblStatusApellido.setForeground(new java.awt.Color(255, 51, 51));</span>
+<span class="nc" id="L198">        lblStatusApellido.setText(&quot; &quot;);</span>
+<span class="nc" id="L199">        getContentPane().add(lblStatusApellido);</span>
+<span class="nc" id="L200">        lblStatusApellido.setBounds(300, 160, 250, 16);</span>
+
+<span class="nc" id="L202">        lblOkApellido.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L203">        getContentPane().add(lblOkApellido);</span>
+<span class="nc" id="L204">        lblOkApellido.setBounds(560, 130, 60, 20);</span>
+
+<span class="nc" id="L206">        lblStatusNacimiento.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L207">        lblStatusNacimiento.setForeground(new java.awt.Color(255, 51, 51));</span>
+<span class="nc" id="L208">        lblStatusNacimiento.setText(&quot; &quot;);</span>
+<span class="nc" id="L209">        getContentPane().add(lblStatusNacimiento);</span>
+<span class="nc" id="L210">        lblStatusNacimiento.setBounds(300, 220, 240, 16);</span>
+
+<span class="nc" id="L212">        lblOkNacimiento.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L213">        getContentPane().add(lblOkNacimiento);</span>
+<span class="nc" id="L214">        lblOkNacimiento.setBounds(560, 190, 60, 20);</span>
+
+<span class="nc" id="L216">        lblBackground.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L217">        lblBackground.setForeground(new java.awt.Color(255, 51, 51));</span>
+<span class="nc" id="L218">        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/chainimage-free-foods-and-drinks-powerpoint-backgroundswallpapers-download-ppt.jpg&quot;))); // NOI18N</span>
+<span class="nc" id="L219">        lblBackground.setText(&quot; &quot;);</span>
+<span class="nc" id="L220">        getContentPane().add(lblBackground);</span>
+<span class="nc" id="L221">        lblBackground.setBounds(-110, -430, 770, 920);</span>
+
+<span class="nc" id="L223">        pack();</span>
+<span class="nc" id="L224">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void btnImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarActionPerformed
+<span class="nc" id="L227">        JFileChooser chooser = new JFileChooser();</span>
+<span class="nc" id="L228">        chooser.setFileFilter(filter);</span>
+<span class="nc" id="L229">        int opcion = chooser.showOpenDialog(this);</span>
+<span class="nc bnc" id="L230" title="All 2 branches missed.">        if (opcion == JFileChooser.APPROVE_OPTION) {</span>
+<span class="nc" id="L231">            ImageIcon icono = new ImageIcon(chooser.getSelectedFile().getAbsolutePath());</span>
+<span class="nc" id="L232">            perfil = icono;</span>
+<span class="nc" id="L233">            lblFotoPerfil.setIcon(perfil);</span>
+<span class="nc" id="L234">            profilePath = chooser.getSelectedFile().getAbsolutePath();</span>
+
+        }
+<span class="nc" id="L237">    }//GEN-LAST:event_btnImportarActionPerformed</span>
+
+    private void btnRegistroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroUsuarioActionPerformed
+<span class="nc" id="L240">        modelo.agregarUsuario(this.txtNombre.getText(), this.txtApellido.getText(), this.comboPaises.getSelectedItem().toString(), this.dateNacimiento.getDate(), profilePath);</span>
+<span class="nc bnc" id="L241" title="All 2 branches missed.">        if(!preferencias.isEmpty()){modelo.getListaUsuarios().get(modelo.getListaUsuarios().size() - 1).agregarPreferencia(preferencias);}</span>
+<span class="nc bnc" id="L242" title="All 2 branches missed.">        if(!restricciones.isEmpty()){modelo.getListaUsuarios().get(modelo.getListaUsuarios().size() - 1).agregarRestriccion(restricciones);}</span>
+<span class="nc" id="L243">        JOptionPane.showMessageDialog(null, &quot;Usuario registrado exitosamente.&quot;, &quot;Mensaje&quot;, 0, new ImageIcon(getClass().getResource(&quot;/imagenes/businessman.png&quot;)));</span>
+<span class="nc" id="L244">        this.setVisible(false);</span>
+<span class="nc" id="L245">        MenuPrincipal ventana = new MenuPrincipal(modelo);</span>
+<span class="nc" id="L246">        ventana.setVisible(true);</span>
+<span class="nc" id="L247">    }//GEN-LAST:event_btnRegistroUsuarioActionPerformed</span>
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+<span class="nc" id="L250">        MenuPrincipal ventana = new MenuPrincipal(modelo);</span>
+<span class="nc" id="L251">        ventana.setVisible(true);</span>
+<span class="nc" id="L252">    }//GEN-LAST:event_formWindowClosing</span>
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+<span class="nc" id="L255">        this.dispose();</span>
+<span class="nc" id="L256">        MenuPrincipal ventana = new MenuPrincipal(modelo);</span>
+<span class="nc" id="L257">        ventana.setVisible(true);</span>
+<span class="nc" id="L258">    }//GEN-LAST:event_btnVolverActionPerformed</span>
+
+    private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
+<span class="nc" id="L261">        Herramientas.validarCampo(this.txtNombre, this.lblStatusNombre, this.lblOkNombre, &quot;nombre&quot;);</span>
+<span class="nc" id="L262">    }//GEN-LAST:event_txtNombreKeyReleased</span>
+
+    private void txtApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyReleased
+<span class="nc" id="L265">        Herramientas.validarCampo(this.txtApellido, this.lblStatusApellido, this.lblOkApellido, &quot;apellido&quot;);</span>
+<span class="nc" id="L266">    }//GEN-LAST:event_txtApellidoKeyReleased</span>
+
+    private void btnPreferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreferenciasActionPerformed
+<span class="nc" id="L269">        VentanaPreferenciasRestricciones ventana = new VentanaPreferenciasRestricciones(modelo,preferencias,restricciones);</span>
+<span class="nc" id="L270">        ventana.setVisible(true);</span>
+<span class="nc" id="L271">    }//GEN-LAST:event_btnPreferenciasActionPerformed</span>
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnImportar;
+    private javax.swing.JButton btnPreferencias;
+    private javax.swing.JButton btnRegistroUsuario;
+    private javax.swing.JButton btnVolver;
+    private javax.swing.JComboBox&lt;String&gt; comboPaises;
+    private com.toedter.calendar.JDateChooser dateNacimiento;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblApellido;
+    private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblFotoPerfil;
+    private javax.swing.JLabel lblNacimiento;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblOkApellido;
+    private javax.swing.JLabel lblOkNacimiento;
+    private javax.swing.JLabel lblOkNombre;
+    private javax.swing.JLabel lblPais;
+    private javax.swing.JLabel lblPref_res;
+    private javax.swing.JLabel lblStatusApellido;
+    private javax.swing.JLabel lblStatusNacimiento;
+    private javax.swing.JLabel lblStatusNombre;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtNombre;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

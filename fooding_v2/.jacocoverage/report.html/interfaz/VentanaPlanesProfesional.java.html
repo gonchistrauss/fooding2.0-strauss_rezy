@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>VentanaPlanesProfesional.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;fooding_v2&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">interfaz</a> &gt; <span class="el_source">VentanaPlanesProfesional.java</span></div><h1>VentanaPlanesProfesional.java</h1><pre class="source lang-java linenums">package interfaz;
+
+import dominio.Alimento;
+import dominio.Consulta;
+import dominio.Profesional;
+import dominio.Sistema;
+import dominio.Usuario;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+
+public class VentanaPlanesProfesional extends javax.swing.JDialog {
+
+    private Sistema modelo;
+    private Profesional profesionalActivo;
+    private Usuario usuarioConsulta;
+    private Consulta consultaUsuario;
+    private ArrayList&lt;Alimento&gt; lunes, martes, miercoles, jueves, viernes, sabado, domingo;
+
+<span class="nc" id="L23">    public VentanaPlanesProfesional(Sistema miSis, Consulta consulta) {</span>
+<span class="nc" id="L24">        initComponents();</span>
+<span class="nc" id="L25">        modelo = miSis;</span>
+<span class="nc" id="L26">        this.setModal(true);</span>
+<span class="nc" id="L27">        this.setLocationRelativeTo(null);</span>
+<span class="nc" id="L28">        cargarListasAlimentos();</span>
+<span class="nc" id="L29">        profesionalActivo = modelo.obtenerSesionActivaProfesional();</span>
+<span class="nc" id="L30">        this.comboAlimentos.setModel(new DefaultComboBoxModel(modelo.getListaAlimentos().toArray()));</span>
+<span class="nc" id="L31">        habilitarBotones();</span>
+<span class="nc" id="L32">        usuarioConsulta = consulta.getUsuario();</span>
+<span class="nc" id="L33">        consultaUsuario = consulta;</span>
+<span class="nc" id="L34">        this.lblNombre.setText(&quot;Nombre: &quot; + usuarioConsulta.getNombre());</span>
+<span class="nc" id="L35">        this.lblApellido.setText(&quot;Apellidos: &quot; + usuarioConsulta.getApellidos());</span>
+<span class="nc" id="L36">        this.lblNacionalidad.setText(&quot;Nacionalidad: &quot; + usuarioConsulta.getNacionalidad().getCountry());</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        if (!usuarioConsulta.getPathPerfil().equals(&quot;/imagenes/perfil_defecto.png&quot;)) {</span>
+<span class="nc" id="L38">            this.lblFotoPerfil.setIcon(new ImageIcon(usuarioConsulta.getPathPerfil()));</span>
+        }
+<span class="nc" id="L40">        DateFormat date = new SimpleDateFormat(&quot;dd-MM-yyyy&quot;);</span>
+<span class="nc" id="L41">        this.lblNacimiento.setText(&quot;Nacimiento: &quot; + date.format(usuarioConsulta.getFechaDeNacimiento()));</span>
+<span class="nc" id="L42">        this.comboPreferencias.setModel(new DefaultComboBoxModel(usuarioConsulta.getPreferencias().toArray()));</span>
+<span class="nc" id="L43">        this.comboRestricciones.setModel(new DefaultComboBoxModel(usuarioConsulta.getRestricciones().toArray()));</span>
+<span class="nc" id="L44">        this.txtMensajeInicial.setText(consultaUsuario.toString());</span>
+<span class="nc" id="L45">    }</span>
+
+    public void cargarListasAlimentos() {
+<span class="nc" id="L48">        lunes = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L49">        martes = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L50">        miercoles = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L51">        jueves = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L52">        viernes = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L53">        sabado = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L54">        domingo = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L55">    }</span>
+
+    public boolean hayAlimentoCargado() {
+<span class="nc bnc" id="L58" title="All 2 branches missed.">        if (this.comboAlimentos.getSelectedIndex() &gt;= 0) {</span>
+<span class="nc" id="L59">            return true;</span>
+        }
+<span class="nc" id="L61">        return false;</span>
+    }
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L68">        lblNacimiento = new javax.swing.JLabel();</span>
+<span class="nc" id="L69">        lblInformacion = new javax.swing.JLabel();</span>
+<span class="nc" id="L70">        lblFotoPerfil = new javax.swing.JLabel();</span>
+<span class="nc" id="L71">        lblNombre = new javax.swing.JLabel();</span>
+<span class="nc" id="L72">        lblApellido = new javax.swing.JLabel();</span>
+<span class="nc" id="L73">        lblNacionalidad = new javax.swing.JLabel();</span>
+<span class="nc" id="L74">        jLabel2 = new javax.swing.JLabel();</span>
+<span class="nc" id="L75">        jLabel3 = new javax.swing.JLabel();</span>
+<span class="nc" id="L76">        comboPreferencias = new javax.swing.JComboBox&lt;&gt;();</span>
+<span class="nc" id="L77">        comboRestricciones = new javax.swing.JComboBox&lt;&gt;();</span>
+<span class="nc" id="L78">        jSeparator1 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L79">        lblPlanAlimentacion = new javax.swing.JLabel();</span>
+<span class="nc" id="L80">        jSeparator2 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L81">        lblSeleccionDeAlimento = new javax.swing.JLabel();</span>
+<span class="nc" id="L82">        comboAlimentos = new javax.swing.JComboBox&lt;&gt;();</span>
+<span class="nc" id="L83">        jScrollPane2 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L84">        lstDomingo = new javax.swing.JList&lt;&gt;();</span>
+<span class="nc" id="L85">        jScrollPane3 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L86">        lstLunes = new javax.swing.JList&lt;&gt;();</span>
+<span class="nc" id="L87">        jScrollPane4 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L88">        lstMartes = new javax.swing.JList&lt;&gt;();</span>
+<span class="nc" id="L89">        jScrollPane5 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L90">        lstMiercoles = new javax.swing.JList&lt;&gt;();</span>
+<span class="nc" id="L91">        jScrollPane6 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L92">        lstJueves = new javax.swing.JList&lt;&gt;();</span>
+<span class="nc" id="L93">        jScrollPane7 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L94">        lstViernes = new javax.swing.JList&lt;&gt;();</span>
+<span class="nc" id="L95">        jScrollPane8 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L96">        lstSabado = new javax.swing.JList&lt;&gt;();</span>
+<span class="nc" id="L97">        btnDomingo = new javax.swing.JButton();</span>
+<span class="nc" id="L98">        btnLunes = new javax.swing.JButton();</span>
+<span class="nc" id="L99">        btnMartes = new javax.swing.JButton();</span>
+<span class="nc" id="L100">        btnMiercoles = new javax.swing.JButton();</span>
+<span class="nc" id="L101">        btnJueves = new javax.swing.JButton();</span>
+<span class="nc" id="L102">        btnViernes = new javax.swing.JButton();</span>
+<span class="nc" id="L103">        btnSabado = new javax.swing.JButton();</span>
+<span class="nc" id="L104">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L105">        jLabel4 = new javax.swing.JLabel();</span>
+<span class="nc" id="L106">        jLabel5 = new javax.swing.JLabel();</span>
+<span class="nc" id="L107">        jLabel6 = new javax.swing.JLabel();</span>
+<span class="nc" id="L108">        jLabel7 = new javax.swing.JLabel();</span>
+<span class="nc" id="L109">        jLabel8 = new javax.swing.JLabel();</span>
+<span class="nc" id="L110">        jLabel9 = new javax.swing.JLabel();</span>
+<span class="nc" id="L111">        btnGuardar = new javax.swing.JButton();</span>
+<span class="nc" id="L112">        lblDescripcion = new javax.swing.JLabel();</span>
+<span class="nc" id="L113">        jScrollPane1 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L114">        txtMensajeInicial = new javax.swing.JTextArea();</span>
+<span class="nc" id="L115">        btnSalir = new javax.swing.JButton();</span>
+<span class="nc" id="L116">        jLabel10 = new javax.swing.JLabel();</span>
+<span class="nc" id="L117">        jScrollPane9 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L118">        txtEnvio = new javax.swing.JTextArea();</span>
+<span class="nc" id="L119">        lblEnvio = new javax.swing.JLabel();</span>
+<span class="nc" id="L120">        btnEnviar = new javax.swing.JButton();</span>
+<span class="nc" id="L121">        lblBackgorund = new javax.swing.JLabel();</span>
+
+<span class="nc" id="L123">        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);</span>
+<span class="nc" id="L124">        setMinimumSize(new java.awt.Dimension(1125, 800));</span>
+<span class="nc" id="L125">        setSize(new java.awt.Dimension(1125, 800));</span>
+<span class="nc" id="L126">        addWindowListener(new java.awt.event.WindowAdapter() {</span>
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+<span class="nc" id="L128">                formWindowClosing(evt);</span>
+<span class="nc" id="L129">            }</span>
+        });
+<span class="nc" id="L131">        getContentPane().setLayout(null);</span>
+
+<span class="nc" id="L133">        lblNacimiento.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L134">        lblNacimiento.setText(&quot;Nacimiento:&quot;);</span>
+<span class="nc" id="L135">        getContentPane().add(lblNacimiento);</span>
+<span class="nc" id="L136">        lblNacimiento.setBounds(150, 150, 230, 20);</span>
+
+<span class="nc" id="L138">        lblInformacion.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 24)); // NOI18N</span>
+<span class="nc" id="L139">        lblInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/business-card-of-a-man-with-contact-info.png&quot;))); // NOI18N</span>
+<span class="nc" id="L140">        lblInformacion.setText(&quot;Informacion del usuario:&quot;);</span>
+<span class="nc" id="L141">        getContentPane().add(lblInformacion);</span>
+<span class="nc" id="L142">        lblInformacion.setBounds(50, 20, 300, 40);</span>
+
+<span class="nc" id="L144">        lblFotoPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/perfil_defecto.png&quot;))); // NOI18N</span>
+<span class="nc" id="L145">        getContentPane().add(lblFotoPerfil);</span>
+<span class="nc" id="L146">        lblFotoPerfil.setBounds(10, 80, 130, 130);</span>
+
+<span class="nc" id="L148">        lblNombre.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L149">        lblNombre.setText(&quot;Nombre:&quot;);</span>
+<span class="nc" id="L150">        getContentPane().add(lblNombre);</span>
+<span class="nc" id="L151">        lblNombre.setBounds(150, 90, 230, 17);</span>
+
+<span class="nc" id="L153">        lblApellido.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L154">        lblApellido.setText(&quot;Apellidos:&quot;);</span>
+<span class="nc" id="L155">        getContentPane().add(lblApellido);</span>
+<span class="nc" id="L156">        lblApellido.setBounds(150, 120, 230, 20);</span>
+
+<span class="nc" id="L158">        lblNacionalidad.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L159">        lblNacionalidad.setText(&quot;Nacionalidad:&quot;);</span>
+<span class="nc" id="L160">        getContentPane().add(lblNacionalidad);</span>
+<span class="nc" id="L161">        lblNacionalidad.setBounds(150, 180, 230, 20);</span>
+
+<span class="nc" id="L163">        jLabel2.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L164">        jLabel2.setText(&quot;Preferencias:&quot;);</span>
+<span class="nc" id="L165">        getContentPane().add(jLabel2);</span>
+<span class="nc" id="L166">        jLabel2.setBounds(130, 230, 170, 20);</span>
+
+<span class="nc" id="L168">        jLabel3.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L169">        jLabel3.setText(&quot;Restricciones:&quot;);</span>
+<span class="nc" id="L170">        getContentPane().add(jLabel3);</span>
+<span class="nc" id="L171">        jLabel3.setBounds(120, 280, 210, 17);</span>
+
+<span class="nc" id="L173">        comboPreferencias.setModel(new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot; &quot; }));</span>
+<span class="nc" id="L174">        getContentPane().add(comboPreferencias);</span>
+<span class="nc" id="L175">        comboPreferencias.setBounds(10, 250, 370, 27);</span>
+
+<span class="nc" id="L177">        comboRestricciones.setModel(new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot; &quot; }));</span>
+<span class="nc" id="L178">        getContentPane().add(comboRestricciones);</span>
+<span class="nc" id="L179">        comboRestricciones.setBounds(10, 300, 370, 27);</span>
+
+<span class="nc" id="L181">        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);</span>
+<span class="nc" id="L182">        getContentPane().add(jSeparator1);</span>
+<span class="nc" id="L183">        jSeparator1.setBounds(380, 20, 12, 690);</span>
+
+<span class="nc" id="L185">        lblPlanAlimentacion.setFont(new java.awt.Font(&quot;Seravek&quot;, 1, 27)); // NOI18N</span>
+<span class="nc" id="L186">        lblPlanAlimentacion.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/planning (1).png&quot;))); // NOI18N</span>
+<span class="nc" id="L187">        lblPlanAlimentacion.setText(&quot;Plan de alimentacion&quot;);</span>
+<span class="nc" id="L188">        getContentPane().add(lblPlanAlimentacion);</span>
+<span class="nc" id="L189">        lblPlanAlimentacion.setBounds(610, 10, 370, 40);</span>
+<span class="nc" id="L190">        getContentPane().add(jSeparator2);</span>
+<span class="nc" id="L191">        jSeparator2.setBounds(400, 50, 700, 10);</span>
+
+<span class="nc" id="L193">        lblSeleccionDeAlimento.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L194">        lblSeleccionDeAlimento.setText(&quot;Seleccionar alimento:&quot;);</span>
+<span class="nc" id="L195">        getContentPane().add(lblSeleccionDeAlimento);</span>
+<span class="nc" id="L196">        lblSeleccionDeAlimento.setBounds(410, 60, 200, 30);</span>
+
+<span class="nc" id="L198">        comboAlimentos.setModel(new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot; &quot; }));</span>
+<span class="nc" id="L199">        comboAlimentos.addItemListener(new java.awt.event.ItemListener() {</span>
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+<span class="nc" id="L201">                comboAlimentosItemStateChanged(evt);</span>
+<span class="nc" id="L202">            }</span>
+        });
+<span class="nc" id="L204">        getContentPane().add(comboAlimentos);</span>
+<span class="nc" id="L205">        comboAlimentos.setBounds(580, 60, 430, 27);</span>
+
+<span class="nc" id="L207">        lstDomingo.setModel(new javax.swing.AbstractListModel&lt;Object&gt;() {</span>
+<span class="nc" id="L208">            String[] strings = { &quot; &quot; };</span>
+<span class="nc" id="L209">            public int getSize() { return strings.length; }</span>
+<span class="nc" id="L210">            public Object getElementAt(int i) { return strings[i]; }</span>
+        });
+<span class="nc" id="L212">        jScrollPane2.setViewportView(lstDomingo);</span>
+
+<span class="nc" id="L214">        getContentPane().add(jScrollPane2);</span>
+<span class="nc" id="L215">        jScrollPane2.setBounds(400, 650, 620, 70);</span>
+
+<span class="nc" id="L217">        lstLunes.setModel(new javax.swing.AbstractListModel&lt;Object&gt;() {</span>
+<span class="nc" id="L218">            String[] strings = { &quot; &quot; };</span>
+<span class="nc" id="L219">            public int getSize() { return strings.length; }</span>
+<span class="nc" id="L220">            public Object getElementAt(int i) { return strings[i]; }</span>
+        });
+<span class="nc" id="L222">        lstLunes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);</span>
+<span class="nc" id="L223">        lstLunes.setToolTipText(&quot;&quot;);</span>
+<span class="nc" id="L224">        jScrollPane3.setViewportView(lstLunes);</span>
+
+<span class="nc" id="L226">        getContentPane().add(jScrollPane3);</span>
+<span class="nc" id="L227">        jScrollPane3.setBounds(400, 110, 620, 70);</span>
+
+<span class="nc" id="L229">        lstMartes.setModel(new javax.swing.AbstractListModel&lt;Object&gt;() {</span>
+<span class="nc" id="L230">            String[] strings = { &quot; &quot; };</span>
+<span class="nc" id="L231">            public int getSize() { return strings.length; }</span>
+<span class="nc" id="L232">            public Object getElementAt(int i) { return strings[i]; }</span>
+        });
+<span class="nc" id="L234">        jScrollPane4.setViewportView(lstMartes);</span>
+
+<span class="nc" id="L236">        getContentPane().add(jScrollPane4);</span>
+<span class="nc" id="L237">        jScrollPane4.setBounds(400, 200, 620, 70);</span>
+
+<span class="nc" id="L239">        lstMiercoles.setModel(new javax.swing.AbstractListModel&lt;Object&gt;() {</span>
+<span class="nc" id="L240">            String[] strings = { &quot; &quot; };</span>
+<span class="nc" id="L241">            public int getSize() { return strings.length; }</span>
+<span class="nc" id="L242">            public Object getElementAt(int i) { return strings[i]; }</span>
+        });
+<span class="nc" id="L244">        jScrollPane5.setViewportView(lstMiercoles);</span>
+
+<span class="nc" id="L246">        getContentPane().add(jScrollPane5);</span>
+<span class="nc" id="L247">        jScrollPane5.setBounds(400, 290, 620, 70);</span>
+
+<span class="nc" id="L249">        jScrollPane6.setViewportView(lstJueves);</span>
+
+<span class="nc" id="L251">        getContentPane().add(jScrollPane6);</span>
+<span class="nc" id="L252">        jScrollPane6.setBounds(400, 380, 620, 70);</span>
+
+<span class="nc" id="L254">        jScrollPane7.setViewportView(lstViernes);</span>
+
+<span class="nc" id="L256">        getContentPane().add(jScrollPane7);</span>
+<span class="nc" id="L257">        jScrollPane7.setBounds(400, 470, 620, 70);</span>
+
+<span class="nc" id="L259">        jScrollPane8.setViewportView(lstSabado);</span>
+
+<span class="nc" id="L261">        getContentPane().add(jScrollPane8);</span>
+<span class="nc" id="L262">        jScrollPane8.setBounds(400, 560, 620, 70);</span>
+
+<span class="nc" id="L264">        btnDomingo.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/plus.png&quot;))); // NOI18N</span>
+<span class="nc" id="L265">        btnDomingo.setEnabled(false);</span>
+<span class="nc" id="L266">        btnDomingo.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L268">                btnDomingoActionPerformed(evt);</span>
+<span class="nc" id="L269">            }</span>
+        });
+<span class="nc" id="L271">        getContentPane().add(btnDomingo);</span>
+<span class="nc" id="L272">        btnDomingo.setBounds(1030, 660, 70, 40);</span>
+
+<span class="nc" id="L274">        btnLunes.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/plus.png&quot;))); // NOI18N</span>
+<span class="nc" id="L275">        btnLunes.setEnabled(false);</span>
+<span class="nc" id="L276">        btnLunes.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L278">                btnLunesActionPerformed(evt);</span>
+<span class="nc" id="L279">            }</span>
+        });
+<span class="nc" id="L281">        getContentPane().add(btnLunes);</span>
+<span class="nc" id="L282">        btnLunes.setBounds(1030, 130, 70, 40);</span>
+
+<span class="nc" id="L284">        btnMartes.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/plus.png&quot;))); // NOI18N</span>
+<span class="nc" id="L285">        btnMartes.setEnabled(false);</span>
+<span class="nc" id="L286">        btnMartes.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L288">                btnMartesActionPerformed(evt);</span>
+<span class="nc" id="L289">            }</span>
+        });
+<span class="nc" id="L291">        getContentPane().add(btnMartes);</span>
+<span class="nc" id="L292">        btnMartes.setBounds(1030, 220, 70, 40);</span>
+
+<span class="nc" id="L294">        btnMiercoles.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/plus.png&quot;))); // NOI18N</span>
+<span class="nc" id="L295">        btnMiercoles.setEnabled(false);</span>
+<span class="nc" id="L296">        btnMiercoles.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L298">                btnMiercolesActionPerformed(evt);</span>
+<span class="nc" id="L299">            }</span>
+        });
+<span class="nc" id="L301">        getContentPane().add(btnMiercoles);</span>
+<span class="nc" id="L302">        btnMiercoles.setBounds(1030, 310, 70, 40);</span>
+
+<span class="nc" id="L304">        btnJueves.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/plus.png&quot;))); // NOI18N</span>
+<span class="nc" id="L305">        btnJueves.setEnabled(false);</span>
+<span class="nc" id="L306">        btnJueves.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L308">                btnJuevesActionPerformed(evt);</span>
+<span class="nc" id="L309">            }</span>
+        });
+<span class="nc" id="L311">        getContentPane().add(btnJueves);</span>
+<span class="nc" id="L312">        btnJueves.setBounds(1030, 390, 70, 40);</span>
+
+<span class="nc" id="L314">        btnViernes.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/plus.png&quot;))); // NOI18N</span>
+<span class="nc" id="L315">        btnViernes.setEnabled(false);</span>
+<span class="nc" id="L316">        btnViernes.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L318">                btnViernesActionPerformed(evt);</span>
+<span class="nc" id="L319">            }</span>
+        });
+<span class="nc" id="L321">        getContentPane().add(btnViernes);</span>
+<span class="nc" id="L322">        btnViernes.setBounds(1030, 480, 70, 40);</span>
+
+<span class="nc" id="L324">        btnSabado.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/plus.png&quot;))); // NOI18N</span>
+<span class="nc" id="L325">        btnSabado.setEnabled(false);</span>
+<span class="nc" id="L326">        btnSabado.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L328">                btnSabadoActionPerformed(evt);</span>
+<span class="nc" id="L329">            }</span>
+        });
+<span class="nc" id="L331">        getContentPane().add(btnSabado);</span>
+<span class="nc" id="L332">        btnSabado.setBounds(1030, 570, 70, 40);</span>
+
+<span class="nc" id="L334">        jLabel1.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L335">        jLabel1.setText(&quot;Domingo&quot;);</span>
+<span class="nc" id="L336">        getContentPane().add(jLabel1);</span>
+<span class="nc" id="L337">        jLabel1.setBounds(400, 630, 270, 16);</span>
+
+<span class="nc" id="L339">        jLabel4.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L340">        jLabel4.setText(&quot;Lunes&quot;);</span>
+<span class="nc" id="L341">        getContentPane().add(jLabel4);</span>
+<span class="nc" id="L342">        jLabel4.setBounds(400, 90, 200, 16);</span>
+
+<span class="nc" id="L344">        jLabel5.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L345">        jLabel5.setText(&quot;Martes&quot;);</span>
+<span class="nc" id="L346">        getContentPane().add(jLabel5);</span>
+<span class="nc" id="L347">        jLabel5.setBounds(400, 180, 140, 16);</span>
+
+<span class="nc" id="L349">        jLabel6.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L350">        jLabel6.setText(&quot;Miercoles&quot;);</span>
+<span class="nc" id="L351">        getContentPane().add(jLabel6);</span>
+<span class="nc" id="L352">        jLabel6.setBounds(400, 270, 120, 16);</span>
+
+<span class="nc" id="L354">        jLabel7.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L355">        jLabel7.setText(&quot;Jueves&quot;);</span>
+<span class="nc" id="L356">        getContentPane().add(jLabel7);</span>
+<span class="nc" id="L357">        jLabel7.setBounds(400, 360, 190, 16);</span>
+
+<span class="nc" id="L359">        jLabel8.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L360">        jLabel8.setText(&quot;Viernes&quot;);</span>
+<span class="nc" id="L361">        getContentPane().add(jLabel8);</span>
+<span class="nc" id="L362">        jLabel8.setBounds(400, 450, 250, 16);</span>
+
+<span class="nc" id="L364">        jLabel9.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L365">        jLabel9.setText(&quot;Sabado&quot;);</span>
+<span class="nc" id="L366">        getContentPane().add(jLabel9);</span>
+<span class="nc" id="L367">        jLabel9.setBounds(400, 540, 280, 16);</span>
+
+<span class="nc" id="L369">        btnGuardar.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 11)); // NOI18N</span>
+<span class="nc" id="L370">        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/tack-save-button.png&quot;))); // NOI18N</span>
+<span class="nc" id="L371">        btnGuardar.setText(&quot;Guardar&quot;);</span>
+<span class="nc" id="L372">        btnGuardar.setEnabled(false);</span>
+<span class="nc" id="L373">        btnGuardar.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L375">                btnGuardarActionPerformed(evt);</span>
+<span class="nc" id="L376">            }</span>
+        });
+<span class="nc" id="L378">        getContentPane().add(btnGuardar);</span>
+<span class="nc" id="L379">        btnGuardar.setBounds(630, 729, 130, 40);</span>
+
+<span class="nc" id="L381">        lblDescripcion.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L382">        lblDescripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/contact-details.png&quot;))); // NOI18N</span>
+<span class="nc" id="L383">        lblDescripcion.setText(&quot;Descripcion de consulta:&quot;);</span>
+<span class="nc" id="L384">        getContentPane().add(lblDescripcion);</span>
+<span class="nc" id="L385">        lblDescripcion.setBounds(20, 370, 230, 17);</span>
+
+<span class="nc" id="L387">        txtMensajeInicial.setEditable(false);</span>
+<span class="nc" id="L388">        txtMensajeInicial.setColumns(20);</span>
+<span class="nc" id="L389">        txtMensajeInicial.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L390">        txtMensajeInicial.setForeground(new java.awt.Color(0, 102, 255));</span>
+<span class="nc" id="L391">        txtMensajeInicial.setRows(5);</span>
+<span class="nc" id="L392">        jScrollPane1.setViewportView(txtMensajeInicial);</span>
+
+<span class="nc" id="L394">        getContentPane().add(jScrollPane1);</span>
+<span class="nc" id="L395">        jScrollPane1.setBounds(10, 400, 360, 150);</span>
+
+<span class="nc" id="L397">        btnSalir.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L398">        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/sign-out-option.png&quot;))); // NOI18N</span>
+<span class="nc" id="L399">        btnSalir.setText(&quot;Salir&quot;);</span>
+<span class="nc" id="L400">        btnSalir.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L402">                btnSalirActionPerformed(evt);</span>
+<span class="nc" id="L403">            }</span>
+        });
+<span class="nc" id="L405">        getContentPane().add(btnSalir);</span>
+<span class="nc" id="L406">        btnSalir.setBounds(20, 730, 110, 40);</span>
+<span class="nc" id="L407">        getContentPane().add(jLabel10);</span>
+<span class="nc" id="L408">        jLabel10.setBounds(210, 340, 0, 0);</span>
+
+<span class="nc" id="L410">        txtEnvio.setColumns(20);</span>
+<span class="nc" id="L411">        txtEnvio.setRows(5);</span>
+<span class="nc" id="L412">        txtEnvio.addKeyListener(new java.awt.event.KeyAdapter() {</span>
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L414">                txtEnvioKeyReleased(evt);</span>
+<span class="nc" id="L415">            }</span>
+        });
+<span class="nc" id="L417">        jScrollPane9.setViewportView(txtEnvio);</span>
+
+<span class="nc" id="L419">        getContentPane().add(jScrollPane9);</span>
+<span class="nc" id="L420">        jScrollPane9.setBounds(10, 590, 360, 50);</span>
+
+<span class="nc" id="L422">        lblEnvio.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L423">        lblEnvio.setText(&quot;Enviar Mensaje:&quot;);</span>
+<span class="nc" id="L424">        getContentPane().add(lblEnvio);</span>
+<span class="nc" id="L425">        lblEnvio.setBounds(20, 566, 130, 20);</span>
+
+<span class="nc" id="L427">        btnEnviar.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L428">        btnEnviar.setText(&quot;Enviar&quot;);</span>
+<span class="nc" id="L429">        btnEnviar.setEnabled(false);</span>
+<span class="nc" id="L430">        btnEnviar.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L432">                btnEnviarActionPerformed(evt);</span>
+<span class="nc" id="L433">            }</span>
+        });
+<span class="nc" id="L435">        getContentPane().add(btnEnviar);</span>
+<span class="nc" id="L436">        btnEnviar.setBounds(270, 650, 100, 40);</span>
+
+<span class="nc" id="L438">        lblBackgorund.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/wallll.png&quot;))); // NOI18N</span>
+<span class="nc" id="L439">        getContentPane().add(lblBackgorund);</span>
+<span class="nc" id="L440">        lblBackgorund.setBounds(-37, -24, 1190, 870);</span>
+
+<span class="nc" id="L442">        pack();</span>
+<span class="nc" id="L443">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+<span class="nc" id="L446">        this.dispose();</span>
+<span class="nc" id="L447">        VentanaPanelProfesional ventana = new VentanaPanelProfesional(modelo);</span>
+<span class="nc" id="L448">        ventana.setVisible(true);</span>
+<span class="nc" id="L449">    }//GEN-LAST:event_formWindowClosing</span>
+
+    private void btnLunesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLunesActionPerformed
+<span class="nc bnc" id="L452" title="All 4 branches missed.">        if (!lunes.contains((Alimento) this.comboAlimentos.getSelectedItem()) &amp;&amp; lunes.size() &lt;= 8) {</span>
+<span class="nc" id="L453">            this.lunes.add((Alimento) this.comboAlimentos.getSelectedItem());</span>
+<span class="nc" id="L454">            this.lstLunes.setListData(lunes.toArray());</span>
+<span class="nc" id="L455">            btnGuardar.setEnabled(true);</span>
+        }
+<span class="nc" id="L457">    }//GEN-LAST:event_btnLunesActionPerformed</span>
+
+    private void btnMartesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMartesActionPerformed
+<span class="nc bnc" id="L460" title="All 4 branches missed.">        if (!martes.contains((Alimento) this.comboAlimentos.getSelectedItem()) &amp;&amp; martes.size() &lt;= 8) {</span>
+<span class="nc" id="L461">            this.martes.add((Alimento) this.comboAlimentos.getSelectedItem());</span>
+<span class="nc" id="L462">            this.lstMartes.setListData(martes.toArray());</span>
+<span class="nc" id="L463">            btnGuardar.setEnabled(true);</span>
+        }
+<span class="nc" id="L465">    }//GEN-LAST:event_btnMartesActionPerformed</span>
+
+    private void btnMiercolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMiercolesActionPerformed
+<span class="nc bnc" id="L468" title="All 4 branches missed.">        if (!miercoles.contains((Alimento) this.comboAlimentos.getSelectedItem()) &amp;&amp; miercoles.size() &lt;= 8) {</span>
+<span class="nc" id="L469">            this.miercoles.add((Alimento) this.comboAlimentos.getSelectedItem());</span>
+<span class="nc" id="L470">            this.lstMiercoles.setListData(miercoles.toArray());</span>
+<span class="nc" id="L471">            btnGuardar.setEnabled(true);</span>
+        }
+<span class="nc" id="L473">    }//GEN-LAST:event_btnMiercolesActionPerformed</span>
+
+    private void btnJuevesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJuevesActionPerformed
+<span class="nc bnc" id="L476" title="All 4 branches missed.">        if (!jueves.contains((Alimento) this.comboAlimentos.getSelectedItem()) &amp;&amp; jueves.size() &lt;= 8) {</span>
+<span class="nc" id="L477">            this.jueves.add((Alimento) this.comboAlimentos.getSelectedItem());</span>
+<span class="nc" id="L478">            this.lstJueves.setListData(jueves.toArray());</span>
+<span class="nc" id="L479">            btnGuardar.setEnabled(true);</span>
+        }
+<span class="nc" id="L481">    }//GEN-LAST:event_btnJuevesActionPerformed</span>
+
+    private void btnViernesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViernesActionPerformed
+<span class="nc bnc" id="L484" title="All 4 branches missed.">        if (!viernes.contains((Alimento) this.comboAlimentos.getSelectedItem()) &amp;&amp; viernes.size() &lt;= 8) {</span>
+<span class="nc" id="L485">            this.viernes.add((Alimento) this.comboAlimentos.getSelectedItem());</span>
+<span class="nc" id="L486">            this.lstViernes.setListData(viernes.toArray());</span>
+<span class="nc" id="L487">            btnGuardar.setEnabled(true);</span>
+        }
+<span class="nc" id="L489">    }//GEN-LAST:event_btnViernesActionPerformed</span>
+
+    private void btnSabadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSabadoActionPerformed
+<span class="nc bnc" id="L492" title="All 4 branches missed.">        if (!sabado.contains((Alimento) this.comboAlimentos.getSelectedItem()) &amp;&amp; sabado.size() &lt;= 8) {</span>
+<span class="nc" id="L493">            this.sabado.add((Alimento) this.comboAlimentos.getSelectedItem());</span>
+<span class="nc" id="L494">            this.lstSabado.setListData(sabado.toArray());</span>
+<span class="nc" id="L495">            btnGuardar.setEnabled(true);</span>
+        }
+<span class="nc" id="L497">    }//GEN-LAST:event_btnSabadoActionPerformed</span>
+
+    private void btnDomingoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDomingoActionPerformed
+<span class="nc bnc" id="L500" title="All 4 branches missed.">        if (!domingo.contains((Alimento) this.comboAlimentos.getSelectedItem()) &amp;&amp; domingo.size() &lt;= 8) {</span>
+<span class="nc" id="L501">            this.domingo.add((Alimento) this.comboAlimentos.getSelectedItem());</span>
+<span class="nc" id="L502">            this.lstDomingo.setListData(domingo.toArray());</span>
+<span class="nc" id="L503">            btnGuardar.setEnabled(true);</span>
+        }
+<span class="nc" id="L505">    }//GEN-LAST:event_btnDomingoActionPerformed</span>
+
+    public void habilitarBotones() {
+<span class="nc bnc" id="L508" title="All 2 branches missed.">        if (hayAlimentoCargado()) {</span>
+<span class="nc" id="L509">            this.btnDomingo.setEnabled(true);</span>
+<span class="nc" id="L510">            this.btnLunes.setEnabled(true);</span>
+<span class="nc" id="L511">            this.btnMartes.setEnabled(true);</span>
+<span class="nc" id="L512">            this.btnMiercoles.setEnabled(true);</span>
+<span class="nc" id="L513">            this.btnJueves.setEnabled(true);</span>
+<span class="nc" id="L514">            this.btnViernes.setEnabled(true);</span>
+<span class="nc" id="L515">            this.btnSabado.setEnabled(true);</span>
+        } else {
+<span class="nc" id="L517">            this.btnDomingo.setEnabled(false);</span>
+<span class="nc" id="L518">            this.btnLunes.setEnabled(false);</span>
+<span class="nc" id="L519">            this.btnMartes.setEnabled(false);</span>
+<span class="nc" id="L520">            this.btnMiercoles.setEnabled(false);</span>
+<span class="nc" id="L521">            this.btnJueves.setEnabled(false);</span>
+<span class="nc" id="L522">            this.btnViernes.setEnabled(false);</span>
+<span class="nc" id="L523">            this.btnSabado.setEnabled(false);</span>
+        }
+<span class="nc" id="L525">    }</span>
+
+    private void comboAlimentosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboAlimentosItemStateChanged
+<span class="nc" id="L528">        habilitarBotones();</span>
+<span class="nc" id="L529">    }//GEN-LAST:event_comboAlimentosItemStateChanged</span>
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+<span class="nc" id="L532">        String planDeAlimentacion = modelo.parsearListasAPlanDeAlimentacion(lunes, martes, miercoles, jueves, viernes, sabado, domingo);</span>
+<span class="nc" id="L533">        System.out.println(planDeAlimentacion);</span>
+<span class="nc" id="L534">        DateFormat dateFormat = new SimpleDateFormat(&quot;dd/MM/yyyy HH:mm:ss&quot;);</span>
+<span class="nc" id="L535">        Date date = new Date();</span>
+<span class="nc" id="L536">        this.consultaUsuario.agregarIncidencia(planDeAlimentacion, dateFormat.format(date), profesionalActivo);</span>
+<span class="nc" id="L537">        this.txtMensajeInicial.setText(consultaUsuario.toString());</span>
+<span class="nc" id="L538">    }//GEN-LAST:event_btnGuardarActionPerformed</span>
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+<span class="nc" id="L541">        this.dispose();</span>
+<span class="nc" id="L542">        VentanaPanelProfesional ventana = new VentanaPanelProfesional(modelo);</span>
+<span class="nc" id="L543">        ventana.setVisible(true);</span>
+<span class="nc" id="L544">    }//GEN-LAST:event_btnSalirActionPerformed</span>
+
+    private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
+<span class="nc" id="L547">        DateFormat dateFormat = new SimpleDateFormat(&quot;dd/MM/yyyy HH:mm:ss&quot;);</span>
+<span class="nc" id="L548">        Date date = new Date();</span>
+<span class="nc" id="L549">        consultaUsuario.agregarIncidencia(this.txtEnvio.getText(), dateFormat.format(date), profesionalActivo);</span>
+<span class="nc" id="L550">        this.txtMensajeInicial.setText(consultaUsuario.toString());</span>
+<span class="nc" id="L551">        this.txtEnvio.setText(&quot;&quot;);</span>
+<span class="nc" id="L552">        this.btnEnviar.setEnabled(false);</span>
+<span class="nc" id="L553">    }//GEN-LAST:event_btnEnviarActionPerformed</span>
+
+    private void txtEnvioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEnvioKeyReleased
+<span class="nc bnc" id="L556" title="All 2 branches missed.">        if (!this.txtEnvio.getText().isEmpty()) {</span>
+<span class="nc" id="L557">            this.btnEnviar.setEnabled(true);</span>
+        } else {
+<span class="nc" id="L559">            this.btnEnviar.setEnabled(false);</span>
+        }
+        // TODO add your handling code here:
+<span class="nc" id="L562">    }//GEN-LAST:event_txtEnvioKeyReleased</span>
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDomingo;
+    private javax.swing.JButton btnEnviar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnJueves;
+    private javax.swing.JButton btnLunes;
+    private javax.swing.JButton btnMartes;
+    private javax.swing.JButton btnMiercoles;
+    private javax.swing.JButton btnSabado;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnViernes;
+    private javax.swing.JComboBox&lt;Object&gt; comboAlimentos;
+    private javax.swing.JComboBox&lt;String&gt; comboPreferencias;
+    private javax.swing.JComboBox&lt;String&gt; comboRestricciones;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblApellido;
+    private javax.swing.JLabel lblBackgorund;
+    private javax.swing.JLabel lblDescripcion;
+    private javax.swing.JLabel lblEnvio;
+    private javax.swing.JLabel lblFotoPerfil;
+    private javax.swing.JLabel lblInformacion;
+    private javax.swing.JLabel lblNacimiento;
+    private javax.swing.JLabel lblNacionalidad;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblPlanAlimentacion;
+    private javax.swing.JLabel lblSeleccionDeAlimento;
+    private javax.swing.JList&lt;Object&gt; lstDomingo;
+    private javax.swing.JList&lt;Object&gt; lstJueves;
+    private javax.swing.JList&lt;Object&gt; lstLunes;
+    private javax.swing.JList&lt;Object&gt; lstMartes;
+    private javax.swing.JList&lt;Object&gt; lstMiercoles;
+    private javax.swing.JList&lt;Object&gt; lstSabado;
+    private javax.swing.JList&lt;Object&gt; lstViernes;
+    private javax.swing.JTextArea txtEnvio;
+    private javax.swing.JTextArea txtMensajeInicial;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
