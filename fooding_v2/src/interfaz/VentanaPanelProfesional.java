@@ -26,7 +26,6 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
         if (!profesionalActivo.getPathPerfil().equals("/imagenes/perfil_defecto.png")) {
             this.lblFotoPerfil.setIcon(new ImageIcon(profesionalActivo.getPathPerfil()));
         }
-        this.lblPlanesPendientes.setText(profesionalActivo.getTituloProfesional());
         profesionalActivo = modelo.obtenerSesionActivaProfesional();
         listaActual = new ArrayList<>();
         listaActual = profesionalActivo.getInbox();
@@ -42,9 +41,6 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         lblFotoPerfil = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        lblNacionalidad = new javax.swing.JLabel();
-        lblPlanesPendientes = new javax.swing.JLabel();
-        lblConsultasPendientes = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         comboCategoria = new javax.swing.JComboBox<>();
@@ -96,24 +92,6 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator2);
         jSeparator2.setBounds(170, 70, 10, 320);
-
-        lblNacionalidad.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblNacionalidad.setForeground(new java.awt.Color(255, 153, 0));
-        lblNacionalidad.setText("xxx");
-        getContentPane().add(lblNacionalidad);
-        lblNacionalidad.setBounds(30, 230, 130, 20);
-
-        lblPlanesPendientes.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblPlanesPendientes.setForeground(new java.awt.Color(255, 153, 0));
-        lblPlanesPendientes.setText("yyy");
-        getContentPane().add(lblPlanesPendientes);
-        lblPlanesPendientes.setBounds(31, 260, 130, 16);
-
-        lblConsultasPendientes.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        lblConsultasPendientes.setForeground(new java.awt.Color(255, 153, 0));
-        lblConsultasPendientes.setText("zzz");
-        getContentPane().add(lblConsultasPendientes);
-        lblConsultasPendientes.setBounds(31, 290, 130, 16);
 
         btnSalir.setFont(new java.awt.Font("Lucida Grande", 1, 11)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sign-out-option.png"))); // NOI18N
@@ -413,13 +391,10 @@ public class VentanaPanelProfesional extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel lblBBienvenido;
     private javax.swing.JLabel lblCategoria;
-    private javax.swing.JLabel lblConsultasPendientes;
     private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblFotoPerfil;
-    private javax.swing.JLabel lblNacionalidad;
     private javax.swing.JLabel lblNombreProfesional;
     private javax.swing.JLabel lblPanel;
-    private javax.swing.JLabel lblPlanesPendientes;
     private javax.swing.JList<Object> lstInbox;
     // End of variables declaration//GEN-END:variables
 }
