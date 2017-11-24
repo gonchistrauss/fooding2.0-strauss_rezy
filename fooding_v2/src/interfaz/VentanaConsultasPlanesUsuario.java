@@ -47,7 +47,6 @@ public class VentanaConsultasPlanesUsuario extends javax.swing.JDialog {
         lblInformacion = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         lblApellido = new javax.swing.JLabel();
-        lblNacionalidad = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
         lblConsulta = new javax.swing.JLabel();
@@ -72,6 +71,7 @@ public class VentanaConsultasPlanesUsuario extends javax.swing.JDialog {
         getContentPane().setLayout(null);
 
         btnSalir.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sign-out-option.png"))); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,7 +79,7 @@ public class VentanaConsultasPlanesUsuario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnSalir);
-        btnSalir.setBounds(10, 780, 110, 40);
+        btnSalir.setBounds(10, 780, 140, 50);
 
         lblTitulo.setFont(new java.awt.Font("Seravek", 1, 27)); // NOI18N
         lblTitulo.setText("Mis consultas / Mis planes");
@@ -120,7 +120,7 @@ public class VentanaConsultasPlanesUsuario extends javax.swing.JDialog {
         jSeparator4.setBounds(260, 390, 12, 430);
 
         lblNacimiento.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        lblNacimiento.setText("Nacimiento:");
+        lblNacimiento.setText("Nacimiento: N/A");
         getContentPane().add(lblNacimiento);
         lblNacimiento.setBounds(10, 680, 230, 20);
 
@@ -135,19 +135,14 @@ public class VentanaConsultasPlanesUsuario extends javax.swing.JDialog {
         lblInformacion.setBounds(50, 390, 230, 40);
 
         lblNombre.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        lblNombre.setText("Nombre:");
+        lblNombre.setText("Nombre: N/A");
         getContentPane().add(lblNombre);
         lblNombre.setBounds(10, 600, 230, 17);
 
         lblApellido.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        lblApellido.setText("Apellidos:");
+        lblApellido.setText("Apellidos: N/A");
         getContentPane().add(lblApellido);
         lblApellido.setBounds(10, 640, 230, 20);
-
-        lblNacionalidad.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
-        lblNacionalidad.setText("Nacionalidad:");
-        getContentPane().add(lblNacionalidad);
-        lblNacionalidad.setBounds(10, 720, 230, 20);
         getContentPane().add(jSeparator5);
         jSeparator5.setBounds(10, 430, 250, 12);
         getContentPane().add(jSeparator7);
@@ -183,6 +178,7 @@ public class VentanaConsultasPlanesUsuario extends javax.swing.JDialog {
         jScrollPane3.setBounds(280, 700, 610, 84);
 
         btnEnviar.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/send.png"))); // NOI18N
         btnEnviar.setText("Enviar");
         btnEnviar.setEnabled(false);
         btnEnviar.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +187,7 @@ public class VentanaConsultasPlanesUsuario extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnEnviar);
-        btnEnviar.setBounds(800, 790, 90, 40);
+        btnEnviar.setBounds(770, 790, 120, 40);
 
         lstInbox.setModel(new javax.swing.AbstractListModel<Object>() {
             String[] strings = { " " };
@@ -249,7 +245,6 @@ public class VentanaConsultasPlanesUsuario extends javax.swing.JDialog {
                 if (consulta.getProfesional() != null) {
                     this.lblNombre.setText(consulta.getProfesional().getNombre());
                     this.lblApellido.setText(consulta.getProfesional().getApellidos());
-                    this.lblNacionalidad.setText(consulta.getProfesional().getPaisEstudio().toString());
                     this.lblNacimiento.setText(consulta.getProfesional().getFechaDeGraduacion().toString());
 
                 }
@@ -311,7 +306,6 @@ public class VentanaConsultasPlanesUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel lblInbox;
     private javax.swing.JLabel lblInformacion;
     private javax.swing.JLabel lblNacimiento;
-    private javax.swing.JLabel lblNacionalidad;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblResponder;
     private javax.swing.JLabel lblTitulo;
