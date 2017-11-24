@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>VentanaPanelUsuario.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;fooding_v2&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">interfaz</a> &gt; <span class="el_source">VentanaPanelUsuario.java</span></div><h1>VentanaPanelUsuario.java</h1><pre class="source lang-java linenums">package interfaz;
+
+import dominio.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+
+public class VentanaPanelUsuario extends javax.swing.JDialog {
+
+    private Sistema modelo;
+    private Usuario usuarioActivo;
+
+<span class="nc" id="L14">    public VentanaPanelUsuario(Sistema miSis) {</span>
+<span class="nc" id="L15">        initComponents();</span>
+<span class="nc" id="L16">        modelo = miSis;</span>
+<span class="nc" id="L17">        this.setModal(true);</span>
+<span class="nc" id="L18">        this.setLocationRelativeTo(null);</span>
+<span class="nc" id="L19">        usuarioActivo = modelo.obtenerSesionActivaUsuario();</span>
+<span class="nc" id="L20">        this.lblNombreUsuario.setText(usuarioActivo.getNombre() + &quot; &quot; + usuarioActivo.getApellidos());</span>
+<span class="nc bnc" id="L21" title="All 2 branches missed.">        if (!usuarioActivo.getPathPerfil().equals(&quot;/imagenes/perfil_defecto.png&quot;)) {</span>
+<span class="nc" id="L22">            this.lblFotoPerfil.setIcon(new ImageIcon(usuarioActivo.getPathPerfil()));</span>
+        }
+<span class="nc" id="L24">        this.lblPais.setText(usuarioActivo.getNacionalidad().getCountry());</span>
+<span class="nc" id="L25">        DateFormat date = new SimpleDateFormat(&quot;dd-MM-yyyy&quot;);</span>
+<span class="nc" id="L26">        this.lblNacimiento.setText(date.format(usuarioActivo.getFechaDeNacimiento()));</span>
+<span class="nc" id="L27">        this.lblConsultas.setText(&quot;Consultas: &quot; + usuarioActivo.getConsultas().size());</span>
+<span class="nc" id="L28">    }</span>
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L34">        btnConsultaDirecta = new javax.swing.JButton();</span>
+<span class="nc" id="L35">        btnIngesta = new javax.swing.JButton();</span>
+<span class="nc" id="L36">        btnConsultas = new javax.swing.JButton();</span>
+<span class="nc" id="L37">        lblBBienvenido = new javax.swing.JLabel();</span>
+<span class="nc" id="L38">        btnSalir = new javax.swing.JButton();</span>
+<span class="nc" id="L39">        lblDeseo = new javax.swing.JLabel();</span>
+<span class="nc" id="L40">        jSeparator1 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L41">        lblNombreUsuario = new javax.swing.JLabel();</span>
+<span class="nc" id="L42">        jSeparator2 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L43">        lblFotoPerfil = new javax.swing.JLabel();</span>
+<span class="nc" id="L44">        lblPais = new javax.swing.JLabel();</span>
+<span class="nc" id="L45">        lblNacimiento = new javax.swing.JLabel();</span>
+<span class="nc" id="L46">        lblConsultas = new javax.swing.JLabel();</span>
+<span class="nc" id="L47">        lblBackground = new javax.swing.JLabel();</span>
+
+<span class="nc" id="L49">        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);</span>
+<span class="nc" id="L50">        setTitle(&quot;Panel de usuario&quot;);</span>
+<span class="nc" id="L51">        setMinimumSize(new java.awt.Dimension(502, 446));</span>
+<span class="nc" id="L52">        setPreferredSize(new java.awt.Dimension(502, 446));</span>
+<span class="nc" id="L53">        setResizable(false);</span>
+<span class="nc" id="L54">        setSize(new java.awt.Dimension(502, 446));</span>
+<span class="nc" id="L55">        addWindowListener(new java.awt.event.WindowAdapter() {</span>
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+<span class="nc" id="L57">                formWindowClosing(evt);</span>
+<span class="nc" id="L58">            }</span>
+        });
+<span class="nc" id="L60">        getContentPane().setLayout(null);</span>
+
+<span class="nc" id="L62">        btnConsultaDirecta.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 11)); // NOI18N</span>
+<span class="nc" id="L63">        btnConsultaDirecta.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/list.png&quot;))); // NOI18N</span>
+<span class="nc" id="L64">        btnConsultaDirecta.setText(&quot;Consulta / Plan&quot;);</span>
+<span class="nc" id="L65">        btnConsultaDirecta.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L67">                btnConsultaDirectaActionPerformed(evt);</span>
+<span class="nc" id="L68">            }</span>
+        });
+<span class="nc" id="L70">        getContentPane().add(btnConsultaDirecta);</span>
+<span class="nc" id="L71">        btnConsultaDirecta.setBounds(220, 110, 220, 40);</span>
+
+<span class="nc" id="L73">        btnIngesta.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L74">        btnIngesta.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/calendar.png&quot;))); // NOI18N</span>
+<span class="nc" id="L75">        btnIngesta.setText(&quot;Ingesta diaria&quot;);</span>
+<span class="nc" id="L76">        btnIngesta.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L78">                btnIngestaActionPerformed(evt);</span>
+<span class="nc" id="L79">            }</span>
+        });
+<span class="nc" id="L81">        getContentPane().add(btnIngesta);</span>
+<span class="nc" id="L82">        btnIngesta.setBounds(220, 180, 220, 40);</span>
+
+<span class="nc" id="L84">        btnConsultas.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L85">        btnConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/planning.png&quot;))); // NOI18N</span>
+<span class="nc" id="L86">        btnConsultas.setText(&quot;Mis consultas / planes&quot;);</span>
+<span class="nc" id="L87">        btnConsultas.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L89">                btnConsultasActionPerformed(evt);</span>
+<span class="nc" id="L90">            }</span>
+        });
+<span class="nc" id="L92">        getContentPane().add(btnConsultas);</span>
+<span class="nc" id="L93">        btnConsultas.setBounds(220, 250, 220, 40);</span>
+
+<span class="nc" id="L95">        lblBBienvenido.setFont(new java.awt.Font(&quot;Seravek&quot;, 1, 27)); // NOI18N</span>
+<span class="nc" id="L96">        lblBBienvenido.setText(&quot;Bienvenido, &quot;);</span>
+<span class="nc" id="L97">        getContentPane().add(lblBBienvenido);</span>
+<span class="nc" id="L98">        lblBBienvenido.setBounds(70, 10, 170, 30);</span>
+
+<span class="nc" id="L100">        btnSalir.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 11)); // NOI18N</span>
+<span class="nc" id="L101">        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/sign-out-option.png&quot;))); // NOI18N</span>
+<span class="nc" id="L102">        btnSalir.setText(&quot;Salir&quot;);</span>
+<span class="nc" id="L103">        btnSalir.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L105">                btnSalirActionPerformed(evt);</span>
+<span class="nc" id="L106">            }</span>
+        });
+<span class="nc" id="L108">        getContentPane().add(btnSalir);</span>
+<span class="nc" id="L109">        btnSalir.setBounds(220, 320, 220, 40);</span>
+
+<span class="nc" id="L111">        lblDeseo.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L112">        lblDeseo.setText(&quot;Que deseas hacer?&quot;);</span>
+<span class="nc" id="L113">        getContentPane().add(lblDeseo);</span>
+<span class="nc" id="L114">        lblDeseo.setBounds(250, 70, 180, 30);</span>
+<span class="nc" id="L115">        getContentPane().add(jSeparator1);</span>
+<span class="nc" id="L116">        jSeparator1.setBounds(30, 50, 450, 12);</span>
+
+<span class="nc" id="L118">        lblNombreUsuario.setFont(new java.awt.Font(&quot;Seravek&quot;, 1, 24)); // NOI18N</span>
+<span class="nc" id="L119">        lblNombreUsuario.setForeground(new java.awt.Color(0, 204, 0));</span>
+<span class="nc" id="L120">        lblNombreUsuario.setText(&quot;Gonzalo Strauss&quot;);</span>
+<span class="nc" id="L121">        getContentPane().add(lblNombreUsuario);</span>
+<span class="nc" id="L122">        lblNombreUsuario.setBounds(220, 10, 270, 30);</span>
+
+<span class="nc" id="L124">        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);</span>
+<span class="nc" id="L125">        getContentPane().add(jSeparator2);</span>
+<span class="nc" id="L126">        jSeparator2.setBounds(170, 70, 10, 290);</span>
+
+<span class="nc" id="L128">        lblFotoPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/perfil_defecto.png&quot;))); // NOI18N</span>
+<span class="nc" id="L129">        getContentPane().add(lblFotoPerfil);</span>
+<span class="nc" id="L130">        lblFotoPerfil.setBounds(30, 80, 130, 130);</span>
+
+<span class="nc" id="L132">        lblPais.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L133">        lblPais.setForeground(new java.awt.Color(0, 153, 255));</span>
+<span class="nc" id="L134">        lblPais.setText(&quot;xxx&quot;);</span>
+<span class="nc" id="L135">        getContentPane().add(lblPais);</span>
+<span class="nc" id="L136">        lblPais.setBounds(30, 230, 130, 20);</span>
+
+<span class="nc" id="L138">        lblNacimiento.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L139">        lblNacimiento.setForeground(new java.awt.Color(0, 153, 255));</span>
+<span class="nc" id="L140">        lblNacimiento.setText(&quot;yyy&quot;);</span>
+<span class="nc" id="L141">        getContentPane().add(lblNacimiento);</span>
+<span class="nc" id="L142">        lblNacimiento.setBounds(31, 260, 130, 16);</span>
+
+<span class="nc" id="L144">        lblConsultas.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L145">        lblConsultas.setForeground(new java.awt.Color(0, 153, 255));</span>
+<span class="nc" id="L146">        lblConsultas.setText(&quot;zzz&quot;);</span>
+<span class="nc" id="L147">        getContentPane().add(lblConsultas);</span>
+<span class="nc" id="L148">        lblConsultas.setBounds(31, 290, 130, 16);</span>
+
+<span class="nc" id="L150">        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/wall_raro.jpg&quot;))); // NOI18N</span>
+<span class="nc" id="L151">        getContentPane().add(lblBackground);</span>
+<span class="nc" id="L152">        lblBackground.setBounds(-360, 0, 900, 610);</span>
+
+<span class="nc" id="L154">        pack();</span>
+<span class="nc" id="L155">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+<span class="nc" id="L158">        this.usuarioActivo.setSesionActiva(false);</span>
+<span class="nc" id="L159">        this.dispose();</span>
+<span class="nc" id="L160">        MenuPrincipal ventana = new MenuPrincipal(modelo);</span>
+<span class="nc" id="L161">        ventana.setVisible(true);</span>
+<span class="nc" id="L162">    }//GEN-LAST:event_formWindowClosing</span>
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+<span class="nc" id="L165">        this.usuarioActivo.setSesionActiva(false);</span>
+<span class="nc" id="L166">        this.dispose();</span>
+<span class="nc" id="L167">        MenuPrincipal ventana = new MenuPrincipal(modelo);</span>
+<span class="nc" id="L168">        ventana.setVisible(true);</span>
+<span class="nc" id="L169">    }//GEN-LAST:event_btnSalirActionPerformed</span>
+
+    private void btnConsultaDirectaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaDirectaActionPerformed
+<span class="nc" id="L172">        this.dispose();</span>
+<span class="nc" id="L173">        VentanaConsulta ventana = new VentanaConsulta(modelo);</span>
+<span class="nc" id="L174">        ventana.setVisible(true);</span>
+<span class="nc" id="L175">    }//GEN-LAST:event_btnConsultaDirectaActionPerformed</span>
+
+    private void btnIngestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngestaActionPerformed
+<span class="nc" id="L178">        this.dispose();</span>
+<span class="nc" id="L179">        VentanaIngesta ventana = new VentanaIngesta(modelo);</span>
+<span class="nc" id="L180">        ventana.setVisible(true);</span>
+<span class="nc" id="L181">    }//GEN-LAST:event_btnIngestaActionPerformed</span>
+
+    private void btnConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultasActionPerformed
+<span class="nc" id="L184">        this.dispose();</span>
+<span class="nc" id="L185">        VentanaConsultasPlanesUsuario ventana = new VentanaConsultasPlanesUsuario(modelo);</span>
+<span class="nc" id="L186">        ventana.setVisible(true);</span>
+<span class="nc" id="L187">    }//GEN-LAST:event_btnConsultasActionPerformed</span>
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConsultaDirecta;
+    private javax.swing.JButton btnConsultas;
+    private javax.swing.JButton btnIngesta;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblBBienvenido;
+    private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblConsultas;
+    private javax.swing.JLabel lblDeseo;
+    private javax.swing.JLabel lblFotoPerfil;
+    private javax.swing.JLabel lblNacimiento;
+    private javax.swing.JLabel lblNombreUsuario;
+    private javax.swing.JLabel lblPais;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

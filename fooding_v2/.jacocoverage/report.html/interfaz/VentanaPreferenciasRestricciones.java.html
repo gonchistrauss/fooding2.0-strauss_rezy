@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>VentanaPreferenciasRestricciones.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;fooding_v2&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">interfaz</a> &gt; <span class="el_source">VentanaPreferenciasRestricciones.java</span></div><h1>VentanaPreferenciasRestricciones.java</h1><pre class="source lang-java linenums">package interfaz;
+
+import dominio.Alimento;
+import dominio.Sistema;
+import java.util.ArrayList;
+
+public class VentanaPreferenciasRestricciones extends javax.swing.JDialog {
+
+    private Sistema modelo;
+    private ArrayList&lt;Alimento&gt; listaPreferencias;
+    private ArrayList&lt;Alimento&gt; listaRestricciones;
+
+<span class="nc" id="L13">    public VentanaPreferenciasRestricciones(Sistema miSis, ArrayList&lt;Alimento&gt; preferencias, ArrayList&lt;Alimento&gt; restricciones) {</span>
+<span class="nc" id="L14">        initComponents();</span>
+<span class="nc" id="L15">        modelo = miSis;</span>
+<span class="nc" id="L16">        this.setModal(true);</span>
+<span class="nc" id="L17">        this.setLocationRelativeTo(null);</span>
+<span class="nc" id="L18">        this.lblTituloRestricciones.setVisible(false);</span>
+<span class="nc" id="L19">        this.btnPreferencias.setVisible(false);</span>
+<span class="nc" id="L20">        this.lstTodos.setListData(modelo.getListaAlimentos().toArray());</span>
+<span class="nc" id="L21">        listaPreferencias = preferencias;</span>
+<span class="nc" id="L22">        listaRestricciones = restricciones;</span>
+<span class="nc" id="L23">        this.lstMisAlimentos.setListData(listaPreferencias.toArray());</span>
+
+<span class="nc" id="L25">    }</span>
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L31">        jSeparator1 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L32">        btnVolver = new javax.swing.JButton();</span>
+<span class="nc" id="L33">        btnRestricciones = new javax.swing.JButton();</span>
+<span class="nc" id="L34">        btnPreferencias = new javax.swing.JButton();</span>
+<span class="nc" id="L35">        jScrollPane1 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L36">        lstMisAlimentos = new javax.swing.JList&lt;&gt;();</span>
+<span class="nc" id="L37">        jScrollPane2 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L38">        lstTodos = new javax.swing.JList&lt;&gt;();</span>
+<span class="nc" id="L39">        btnAgregar = new javax.swing.JButton();</span>
+<span class="nc" id="L40">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L41">        jLabel2 = new javax.swing.JLabel();</span>
+<span class="nc" id="L42">        jSeparator2 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L43">        lblTituloPreferencias = new javax.swing.JLabel();</span>
+<span class="nc" id="L44">        lblTituloRestricciones = new javax.swing.JLabel();</span>
+<span class="nc" id="L45">        lblBackground = new javax.swing.JLabel();</span>
+
+<span class="nc" id="L47">        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);</span>
+<span class="nc" id="L48">        setTitle(&quot;Seleccion de preferencias y restricciones&quot;);</span>
+<span class="nc" id="L49">        setMinimumSize(new java.awt.Dimension(680, 510));</span>
+<span class="nc" id="L50">        setPreferredSize(new java.awt.Dimension(680, 510));</span>
+<span class="nc" id="L51">        setSize(new java.awt.Dimension(680, 510));</span>
+<span class="nc" id="L52">        getContentPane().setLayout(null);</span>
+<span class="nc" id="L53">        getContentPane().add(jSeparator1);</span>
+<span class="nc" id="L54">        jSeparator1.setBounds(20, 380, 640, 12);</span>
+
+<span class="nc" id="L56">        btnVolver.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L57">        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/exit.png&quot;))); // NOI18N</span>
+<span class="nc" id="L58">        btnVolver.setText(&quot;Salir&quot;);</span>
+<span class="nc" id="L59">        btnVolver.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L61">                btnVolverActionPerformed(evt);</span>
+<span class="nc" id="L62">            }</span>
+        });
+<span class="nc" id="L64">        getContentPane().add(btnVolver);</span>
+<span class="nc" id="L65">        btnVolver.setBounds(20, 400, 130, 50);</span>
+
+<span class="nc" id="L67">        btnRestricciones.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L68">        btnRestricciones.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/right-arrow (1).png&quot;))); // NOI18N</span>
+<span class="nc" id="L69">        btnRestricciones.setText(&quot;Restricciones&quot;);</span>
+<span class="nc" id="L70">        btnRestricciones.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L72">                btnRestriccionesActionPerformed(evt);</span>
+<span class="nc" id="L73">            }</span>
+        });
+<span class="nc" id="L75">        getContentPane().add(btnRestricciones);</span>
+<span class="nc" id="L76">        btnRestricciones.setBounds(520, 400, 140, 50);</span>
+
+<span class="nc" id="L78">        btnPreferencias.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L79">        btnPreferencias.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/left-arrow (1).png&quot;))); // NOI18N</span>
+<span class="nc" id="L80">        btnPreferencias.setText(&quot;Preferencias&quot;);</span>
+<span class="nc" id="L81">        btnPreferencias.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L83">                btnPreferenciasActionPerformed(evt);</span>
+<span class="nc" id="L84">            }</span>
+        });
+<span class="nc" id="L86">        getContentPane().add(btnPreferencias);</span>
+<span class="nc" id="L87">        btnPreferencias.setBounds(520, 400, 140, 50);</span>
+
+<span class="nc" id="L89">        jScrollPane1.setViewportView(lstMisAlimentos);</span>
+
+<span class="nc" id="L91">        getContentPane().add(jScrollPane1);</span>
+<span class="nc" id="L92">        jScrollPane1.setBounds(380, 90, 270, 270);</span>
+
+<span class="nc" id="L94">        jScrollPane2.setViewportView(lstTodos);</span>
+
+<span class="nc" id="L96">        getContentPane().add(jScrollPane2);</span>
+<span class="nc" id="L97">        jScrollPane2.setBounds(20, 90, 270, 270);</span>
+
+<span class="nc" id="L99">        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/plus (2).png&quot;))); // NOI18N</span>
+<span class="nc" id="L100">        btnAgregar.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L102">                btnAgregarActionPerformed(evt);</span>
+<span class="nc" id="L103">            }</span>
+        });
+<span class="nc" id="L105">        getContentPane().add(btnAgregar);</span>
+<span class="nc" id="L106">        btnAgregar.setBounds(310, 200, 60, 50);</span>
+
+<span class="nc" id="L108">        jLabel1.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L109">        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/buffet.png&quot;))); // NOI18N</span>
+<span class="nc" id="L110">        jLabel1.setText(&quot;Todos los alimentos&quot;);</span>
+<span class="nc" id="L111">        getContentPane().add(jLabel1);</span>
+<span class="nc" id="L112">        jLabel1.setBounds(30, 70, 170, 16);</span>
+
+<span class="nc" id="L114">        jLabel2.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L115">        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/ice-bucket.png&quot;))); // NOI18N</span>
+<span class="nc" id="L116">        jLabel2.setText(&quot;Mis Alimentos&quot;);</span>
+<span class="nc" id="L117">        getContentPane().add(jLabel2);</span>
+<span class="nc" id="L118">        jLabel2.setBounds(390, 66, 130, 20);</span>
+<span class="nc" id="L119">        getContentPane().add(jSeparator2);</span>
+<span class="nc" id="L120">        jSeparator2.setBounds(20, 40, 630, 12);</span>
+
+<span class="nc" id="L122">        lblTituloPreferencias.setFont(new java.awt.Font(&quot;Seravek&quot;, 1, 27)); // NOI18N</span>
+<span class="nc" id="L123">        lblTituloPreferencias.setText(&quot;Preferencias&quot;);</span>
+<span class="nc" id="L124">        getContentPane().add(lblTituloPreferencias);</span>
+<span class="nc" id="L125">        lblTituloPreferencias.setBounds(270, 10, 190, 34);</span>
+
+<span class="nc" id="L127">        lblTituloRestricciones.setFont(new java.awt.Font(&quot;Seravek&quot;, 1, 27)); // NOI18N</span>
+<span class="nc" id="L128">        lblTituloRestricciones.setText(&quot;Restricciones&quot;);</span>
+<span class="nc" id="L129">        getContentPane().add(lblTituloRestricciones);</span>
+<span class="nc" id="L130">        lblTituloRestricciones.setBounds(270, 10, 190, 34);</span>
+
+<span class="nc" id="L132">        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/wall_green.jpg&quot;))); // NOI18N</span>
+<span class="nc" id="L133">        getContentPane().add(lblBackground);</span>
+<span class="nc" id="L134">        lblBackground.setBounds(-240, -10, 1020, 560);</span>
+
+<span class="nc" id="L136">        pack();</span>
+<span class="nc" id="L137">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void btnRestriccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestriccionesActionPerformed
+<span class="nc" id="L140">        this.lblTituloPreferencias.setVisible(false);</span>
+<span class="nc" id="L141">        this.lblTituloRestricciones.setVisible(true);</span>
+<span class="nc" id="L142">        this.btnPreferencias.setVisible(true);</span>
+<span class="nc" id="L143">        this.btnRestricciones.setVisible(false);</span>
+<span class="nc" id="L144">        this.lstMisAlimentos.setListData(this.listaRestricciones.toArray());</span>
+<span class="nc" id="L145">    }//GEN-LAST:event_btnRestriccionesActionPerformed</span>
+
+    private void btnPreferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreferenciasActionPerformed
+<span class="nc" id="L148">        this.lblTituloPreferencias.setVisible(true);</span>
+<span class="nc" id="L149">        this.lblTituloRestricciones.setVisible(false);</span>
+<span class="nc" id="L150">        this.btnPreferencias.setVisible(false);</span>
+<span class="nc" id="L151">        this.btnRestricciones.setVisible(true);</span>
+<span class="nc" id="L152">        this.lstMisAlimentos.setListData(this.listaPreferencias.toArray());</span>
+<span class="nc" id="L153">    }//GEN-LAST:event_btnPreferenciasActionPerformed</span>
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+<span class="nc" id="L156">        this.dispose();</span>
+<span class="nc" id="L157">    }//GEN-LAST:event_btnVolverActionPerformed</span>
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+<span class="nc bnc" id="L160" title="All 2 branches missed.">        if (this.lstTodos.getSelectedIndex() &gt;= 0) {</span>
+<span class="nc" id="L161">            Alimento alimento = modelo.getListaAlimentos().get(this.lstTodos.getSelectedIndex());</span>
+<span class="nc bnc" id="L162" title="All 2 branches missed.">            if (this.lblTituloPreferencias.isVisible()) {</span>
+<span class="nc bnc" id="L163" title="All 2 branches missed.">                if (!listaPreferencias.contains(alimento)) {</span>
+<span class="nc" id="L164">                    this.listaPreferencias.add(alimento);</span>
+<span class="nc" id="L165">                    this.lstMisAlimentos.setListData(this.listaPreferencias.toArray());</span>
+                }
+<span class="nc bnc" id="L167" title="All 2 branches missed.">            } else if (this.lblTituloRestricciones.isVisible()) {</span>
+<span class="nc bnc" id="L168" title="All 2 branches missed.">                if (!listaRestricciones.contains(alimento)) {</span>
+<span class="nc" id="L169">                    this.listaRestricciones.add(alimento);</span>
+<span class="nc" id="L170">                    this.lstMisAlimentos.setListData(this.listaRestricciones.toArray());</span>
+                }
+            }
+        }
+<span class="nc" id="L174">    }//GEN-LAST:event_btnAgregarActionPerformed</span>
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnPreferencias;
+    private javax.swing.JButton btnRestricciones;
+    private javax.swing.JButton btnVolver;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblTituloPreferencias;
+    private javax.swing.JLabel lblTituloRestricciones;
+    private javax.swing.JList&lt;Object&gt; lstMisAlimentos;
+    private javax.swing.JList&lt;Object&gt; lstTodos;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

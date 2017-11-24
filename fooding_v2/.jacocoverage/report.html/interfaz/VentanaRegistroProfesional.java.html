@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>VentanaRegistroProfesional.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;fooding_v2&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">interfaz</a> &gt; <span class="el_source">VentanaRegistroProfesional.java</span></div><h1>VentanaRegistroProfesional.java</h1><pre class="source lang-java linenums">package interfaz;
+
+import dominio.Sistema;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import utils.*;
+
+public class VentanaRegistroProfesional extends javax.swing.JDialog {
+
+    private Sistema modelo;
+    private FileNameExtensionFilter filter;
+    private ImageIcon perfil;
+    private String profilePath;
+
+<span class="nc" id="L18">    public VentanaRegistroProfesional(Sistema miSis) {</span>
+<span class="nc" id="L19">        initComponents();</span>
+<span class="nc" id="L20">        this.setModal(true);</span>
+<span class="nc" id="L21">        this.setLocationRelativeTo(null);</span>
+<span class="nc" id="L22">        modelo = miSis;</span>
+<span class="nc" id="L23">        this.comboPaises.setModel(new DefaultComboBoxModel(Herramientas.obtenerpaises()));</span>
+<span class="nc" id="L24">        this.dateFechaGraduacion.setDateFormatString(&quot;dd/MM/yyyy&quot;);</span>
+<span class="nc" id="L25">        this.dateNacimiento.setDateFormatString(&quot;dd/MM/yyyy&quot;);</span>
+<span class="nc" id="L26">        profilePath = &quot;/imagenes/perfil_defecto.png&quot;;</span>
+<span class="nc" id="L27">    }</span>
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L33">        separador1 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L34">        lblTitulo = new javax.swing.JLabel();</span>
+<span class="nc" id="L35">        lblFotoPerfil = new javax.swing.JLabel();</span>
+<span class="nc" id="L36">        lblNombre = new javax.swing.JLabel();</span>
+<span class="nc" id="L37">        txtCampoNombre = new javax.swing.JTextField();</span>
+<span class="nc" id="L38">        lblApellido = new javax.swing.JLabel();</span>
+<span class="nc" id="L39">        txtApellido = new javax.swing.JTextField();</span>
+<span class="nc" id="L40">        btnImportar = new javax.swing.JButton();</span>
+<span class="nc" id="L41">        lblNacimiento = new javax.swing.JLabel();</span>
+<span class="nc" id="L42">        dateNacimiento = new com.toedter.calendar.JDateChooser();</span>
+<span class="nc" id="L43">        lblProfesionales = new javax.swing.JLabel();</span>
+<span class="nc" id="L44">        separador2 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L45">        lblPersonales = new javax.swing.JLabel();</span>
+<span class="nc" id="L46">        lblTituloProfesional = new javax.swing.JLabel();</span>
+<span class="nc" id="L47">        txtTituloProfesional = new javax.swing.JTextField();</span>
+<span class="nc" id="L48">        lblGraduacion = new javax.swing.JLabel();</span>
+<span class="nc" id="L49">        dateFechaGraduacion = new com.toedter.calendar.JDateChooser();</span>
+<span class="nc" id="L50">        lblPais = new javax.swing.JLabel();</span>
+<span class="nc" id="L51">        comboPaises = new javax.swing.JComboBox&lt;&gt;();</span>
+<span class="nc" id="L52">        btnRegistroProfesional = new javax.swing.JButton();</span>
+<span class="nc" id="L53">        separador3 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L54">        lblFotoProfesional = new javax.swing.JLabel();</span>
+<span class="nc" id="L55">        btnVolver = new javax.swing.JButton();</span>
+<span class="nc" id="L56">        lblBackground = new javax.swing.JLabel();</span>
+
+<span class="nc" id="L58">        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);</span>
+<span class="nc" id="L59">        setTitle(&quot;Registro de profesional&quot;);</span>
+<span class="nc" id="L60">        setMinimumSize(new java.awt.Dimension(647, 541));</span>
+<span class="nc" id="L61">        setPreferredSize(new java.awt.Dimension(647, 541));</span>
+<span class="nc" id="L62">        setResizable(false);</span>
+<span class="nc" id="L63">        setSize(new java.awt.Dimension(647, 541));</span>
+<span class="nc" id="L64">        addWindowListener(new java.awt.event.WindowAdapter() {</span>
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+<span class="nc" id="L66">                formWindowClosing(evt);</span>
+<span class="nc" id="L67">            }</span>
+        });
+<span class="nc" id="L69">        getContentPane().setLayout(null);</span>
+<span class="nc" id="L70">        getContentPane().add(separador1);</span>
+<span class="nc" id="L71">        separador1.setBounds(10, 50, 600, 12);</span>
+
+<span class="nc" id="L73">        lblTitulo.setFont(new java.awt.Font(&quot;Seravek&quot;, 1, 27)); // NOI18N</span>
+<span class="nc" id="L74">        lblTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/id-card (1).png&quot;))); // NOI18N</span>
+<span class="nc" id="L75">        lblTitulo.setText(&quot;Registro de profesional&quot;);</span>
+<span class="nc" id="L76">        getContentPane().add(lblTitulo);</span>
+<span class="nc" id="L77">        lblTitulo.setBounds(170, 0, 320, 64);</span>
+
+<span class="nc" id="L79">        lblFotoPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/perfil_defecto.png&quot;))); // NOI18N</span>
+<span class="nc" id="L80">        getContentPane().add(lblFotoPerfil);</span>
+<span class="nc" id="L81">        lblFotoPerfil.setBounds(30, 90, 130, 130);</span>
+
+<span class="nc" id="L83">        lblNombre.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L84">        lblNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/man-user.png&quot;))); // NOI18N</span>
+<span class="nc" id="L85">        lblNombre.setText(&quot;Nombre:&quot;);</span>
+<span class="nc" id="L86">        getContentPane().add(lblNombre);</span>
+<span class="nc" id="L87">        lblNombre.setBounds(170, 100, 90, 24);</span>
+<span class="nc" id="L88">        getContentPane().add(txtCampoNombre);</span>
+<span class="nc" id="L89">        txtCampoNombre.setBounds(290, 90, 270, 40);</span>
+
+<span class="nc" id="L91">        lblApellido.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L92">        lblApellido.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/man-user.png&quot;))); // NOI18N</span>
+<span class="nc" id="L93">        lblApellido.setText(&quot;Apellido:&quot;);</span>
+<span class="nc" id="L94">        getContentPane().add(lblApellido);</span>
+<span class="nc" id="L95">        lblApellido.setBounds(170, 160, 90, 24);</span>
+<span class="nc" id="L96">        getContentPane().add(txtApellido);</span>
+<span class="nc" id="L97">        txtApellido.setBounds(290, 150, 270, 40);</span>
+
+<span class="nc" id="L99">        btnImportar.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 0, 11)); // NOI18N</span>
+<span class="nc" id="L100">        btnImportar.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/export.png&quot;))); // NOI18N</span>
+<span class="nc" id="L101">        btnImportar.setText(&quot;Importar&quot;);</span>
+<span class="nc" id="L102">        btnImportar.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L104">                btnImportarActionPerformed(evt);</span>
+<span class="nc" id="L105">            }</span>
+        });
+<span class="nc" id="L107">        getContentPane().add(btnImportar);</span>
+<span class="nc" id="L108">        btnImportar.setBounds(30, 210, 130, 28);</span>
+
+<span class="nc" id="L110">        lblNacimiento.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L111">        lblNacimiento.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/calendar-page-empty.png&quot;))); // NOI18N</span>
+<span class="nc" id="L112">        lblNacimiento.setText(&quot;Nacimiento:&quot;);</span>
+<span class="nc" id="L113">        getContentPane().add(lblNacimiento);</span>
+<span class="nc" id="L114">        lblNacimiento.setBounds(170, 220, 120, 24);</span>
+
+<span class="nc" id="L116">        dateNacimiento.setOpaque(false);</span>
+<span class="nc" id="L117">        getContentPane().add(dateNacimiento);</span>
+<span class="nc" id="L118">        dateNacimiento.setBounds(290, 210, 270, 40);</span>
+
+<span class="nc" id="L120">        lblProfesionales.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L121">        lblProfesionales.setText(&quot;Datos profesionales:&quot;);</span>
+<span class="nc" id="L122">        getContentPane().add(lblProfesionales);</span>
+<span class="nc" id="L123">        lblProfesionales.setBounds(270, 280, 160, 17);</span>
+<span class="nc" id="L124">        getContentPane().add(separador2);</span>
+<span class="nc" id="L125">        separador2.setBounds(20, 270, 590, 10);</span>
+
+<span class="nc" id="L127">        lblPersonales.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L128">        lblPersonales.setText(&quot;Datos personales:&quot;);</span>
+<span class="nc" id="L129">        getContentPane().add(lblPersonales);</span>
+<span class="nc" id="L130">        lblPersonales.setBounds(260, 60, 130, 17);</span>
+
+<span class="nc" id="L132">        lblTituloProfesional.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L133">        lblTituloProfesional.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/diploma.png&quot;))); // NOI18N</span>
+<span class="nc" id="L134">        lblTituloProfesional.setText(&quot;Titulo:&quot;);</span>
+<span class="nc" id="L135">        getContentPane().add(lblTituloProfesional);</span>
+<span class="nc" id="L136">        lblTituloProfesional.setBounds(170, 310, 90, 24);</span>
+<span class="nc" id="L137">        getContentPane().add(txtTituloProfesional);</span>
+<span class="nc" id="L138">        txtTituloProfesional.setBounds(290, 300, 270, 40);</span>
+
+<span class="nc" id="L140">        lblGraduacion.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L141">        lblGraduacion.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/graduation-hat-and-diploma.png&quot;))); // NOI18N</span>
+<span class="nc" id="L142">        lblGraduacion.setText(&quot;Graduacion:&quot;);</span>
+<span class="nc" id="L143">        getContentPane().add(lblGraduacion);</span>
+<span class="nc" id="L144">        lblGraduacion.setBounds(170, 370, 120, 24);</span>
+
+<span class="nc" id="L146">        dateFechaGraduacion.setOpaque(false);</span>
+<span class="nc" id="L147">        getContentPane().add(dateFechaGraduacion);</span>
+<span class="nc" id="L148">        dateFechaGraduacion.setBounds(290, 360, 270, 40);</span>
+
+<span class="nc" id="L150">        lblPais.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L151">        lblPais.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/international-delivery.png&quot;))); // NOI18N</span>
+<span class="nc" id="L152">        lblPais.setText(&quot;País:&quot;);</span>
+<span class="nc" id="L153">        getContentPane().add(lblPais);</span>
+<span class="nc" id="L154">        lblPais.setBounds(170, 420, 80, 24);</span>
+
+<span class="nc" id="L156">        comboPaises.setModel(new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot; &quot; }));</span>
+<span class="nc" id="L157">        getContentPane().add(comboPaises);</span>
+<span class="nc" id="L158">        comboPaises.setBounds(290, 410, 270, 40);</span>
+
+<span class="nc" id="L160">        btnRegistroProfesional.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L161">        btnRegistroProfesional.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/businessman.png&quot;))); // NOI18N</span>
+<span class="nc" id="L162">        btnRegistroProfesional.setText(&quot;Registrar&quot;);</span>
+<span class="nc" id="L163">        btnRegistroProfesional.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L165">                btnRegistroProfesionalActionPerformed(evt);</span>
+<span class="nc" id="L166">            }</span>
+        });
+<span class="nc" id="L168">        getContentPane().add(btnRegistroProfesional);</span>
+<span class="nc" id="L169">        btnRegistroProfesional.setBounds(250, 460, 190, 50);</span>
+<span class="nc" id="L170">        getContentPane().add(separador3);</span>
+<span class="nc" id="L171">        separador3.setBounds(20, 450, 610, 12);</span>
+
+<span class="nc" id="L173">        lblFotoProfesional.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/magnifying-lens-as-head-of-business-professional (1).png&quot;))); // NOI18N</span>
+<span class="nc" id="L174">        getContentPane().add(lblFotoProfesional);</span>
+<span class="nc" id="L175">        lblFotoProfesional.setBounds(30, 280, 130, 160);</span>
+
+<span class="nc" id="L177">        btnVolver.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 11)); // NOI18N</span>
+<span class="nc" id="L178">        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/left-arrow.png&quot;))); // NOI18N</span>
+<span class="nc" id="L179">        btnVolver.setText(&quot;Volver&quot;);</span>
+<span class="nc" id="L180">        btnVolver.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L182">                btnVolverActionPerformed(evt);</span>
+<span class="nc" id="L183">            }</span>
+        });
+<span class="nc" id="L185">        getContentPane().add(btnVolver);</span>
+<span class="nc" id="L186">        btnVolver.setBounds(20, 460, 97, 50);</span>
+
+<span class="nc" id="L188">        lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/chainimage-free-foods-and-drinks-powerpoint-backgroundswallpapers-download-ppt.jpg&quot;))); // NOI18N</span>
+<span class="nc" id="L189">        getContentPane().add(lblBackground);</span>
+<span class="nc" id="L190">        lblBackground.setBounds(-20, -410, 790, 980);</span>
+
+<span class="nc" id="L192">        pack();</span>
+<span class="nc" id="L193">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void btnImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarActionPerformed
+<span class="nc" id="L196">        JFileChooser chooser = new JFileChooser();</span>
+<span class="nc" id="L197">        chooser.setFileFilter(filter);</span>
+<span class="nc" id="L198">        int opcion = chooser.showOpenDialog(this);</span>
+<span class="nc bnc" id="L199" title="All 2 branches missed.">        if (opcion == JFileChooser.APPROVE_OPTION) {</span>
+<span class="nc" id="L200">            ImageIcon icono = new ImageIcon(chooser.getSelectedFile().getAbsolutePath());</span>
+<span class="nc" id="L201">            perfil = icono;</span>
+<span class="nc" id="L202">            lblFotoPerfil.setIcon(perfil);</span>
+<span class="nc" id="L203">            profilePath = chooser.getSelectedFile().getAbsolutePath();</span>
+        }
+<span class="nc" id="L205">    }//GEN-LAST:event_btnImportarActionPerformed</span>
+
+    private void btnRegistroProfesionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroProfesionalActionPerformed
+<span class="nc bnc" id="L208" title="All 2 branches missed.">        if (datosVerificados()) {</span>
+<span class="nc" id="L209">            modelo.agregarProfesional(txtCampoNombre.getText(), this.txtApellido.getText(), this.dateNacimiento.getDate(), profilePath, this.txtTituloProfesional.getText(), this.comboPaises.getSelectedItem().toString(), this.dateFechaGraduacion.getDate());</span>
+<span class="nc" id="L210">            JOptionPane.showMessageDialog(null, &quot;Profesional registrado exitosamente.&quot;, &quot;Mensaje&quot;, 0, new ImageIcon(getClass().getResource(&quot;/imagenes/businessman.png&quot;)));</span>
+<span class="nc" id="L211">            this.setVisible(false);</span>
+<span class="nc" id="L212">            MenuPrincipal ventana = new MenuPrincipal(modelo);</span>
+<span class="nc" id="L213">            ventana.setVisible(true);</span>
+        }
+<span class="nc" id="L215">    }//GEN-LAST:event_btnRegistroProfesionalActionPerformed</span>
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+<span class="nc" id="L218">        MenuPrincipal ventana = new MenuPrincipal(modelo);</span>
+<span class="nc" id="L219">        ventana.setVisible(true);</span>
+<span class="nc" id="L220">    }//GEN-LAST:event_formWindowClosing</span>
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+<span class="nc" id="L223">        this.dispose();</span>
+<span class="nc" id="L224">        MenuPrincipal ventana = new MenuPrincipal(modelo);</span>
+<span class="nc" id="L225">        ventana.setVisible(true);</span>
+<span class="nc" id="L226">    }//GEN-LAST:event_btnVolverActionPerformed</span>
+
+    private boolean datosVerificados() {
+<span class="nc" id="L229">        return true;</span>
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnImportar;
+    private javax.swing.JButton btnRegistroProfesional;
+    private javax.swing.JButton btnVolver;
+    private javax.swing.JComboBox&lt;String&gt; comboPaises;
+    private com.toedter.calendar.JDateChooser dateFechaGraduacion;
+    private com.toedter.calendar.JDateChooser dateNacimiento;
+    private javax.swing.JLabel lblApellido;
+    private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblFotoPerfil;
+    private javax.swing.JLabel lblFotoProfesional;
+    private javax.swing.JLabel lblGraduacion;
+    private javax.swing.JLabel lblNacimiento;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblPais;
+    private javax.swing.JLabel lblPersonales;
+    private javax.swing.JLabel lblProfesionales;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTituloProfesional;
+    private javax.swing.JSeparator separador1;
+    private javax.swing.JSeparator separador2;
+    private javax.swing.JSeparator separador3;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtCampoNombre;
+    private javax.swing.JTextField txtTituloProfesional;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

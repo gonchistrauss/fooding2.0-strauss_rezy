@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>VentanaConsultasPlanesUsuario.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;fooding_v2&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">interfaz</a> &gt; <span class="el_source">VentanaConsultasPlanesUsuario.java</span></div><h1>VentanaConsultasPlanesUsuario.java</h1><pre class="source lang-java linenums">package interfaz;
+
+import dominio.Consulta;
+import dominio.Sistema;
+import dominio.Usuario;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import utils.Tipos;
+import utils.Tipos.Estado;
+
+public class VentanaConsultasPlanesUsuario extends javax.swing.JDialog {
+
+    private Sistema modelo;
+    private Usuario usuarioActivo;
+    private ArrayList&lt;Consulta&gt; listaActual;
+
+<span class="nc" id="L19">    public VentanaConsultasPlanesUsuario(Sistema miSis) {</span>
+<span class="nc" id="L20">        initComponents();</span>
+<span class="nc" id="L21">        modelo = miSis;</span>
+<span class="nc" id="L22">        listaActual = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L23">        usuarioActivo = modelo.obtenerSesionActivaUsuario();</span>
+<span class="nc" id="L24">        this.setLocationRelativeTo(null);</span>
+<span class="nc" id="L25">        this.setModal(true);</span>
+<span class="nc" id="L26">        agregaBotonesAlGrupo();</span>
+<span class="nc" id="L27">    }</span>
+
+    @SuppressWarnings(&quot;unchecked&quot;)
+    // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+<span class="nc" id="L33">        btnGroup = new javax.swing.ButtonGroup();</span>
+<span class="nc" id="L34">        jSeparator3 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L35">        jSeparator6 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L36">        btnSalir = new javax.swing.JButton();</span>
+<span class="nc" id="L37">        lblTitulo = new javax.swing.JLabel();</span>
+<span class="nc" id="L38">        jSeparator1 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L39">        rbtnPlanes = new javax.swing.JRadioButton();</span>
+<span class="nc" id="L40">        rbtnConsultas = new javax.swing.JRadioButton();</span>
+<span class="nc" id="L41">        jSeparator2 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L42">        lblInbox = new javax.swing.JLabel();</span>
+<span class="nc" id="L43">        jSeparator4 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L44">        lblNacimiento = new javax.swing.JLabel();</span>
+<span class="nc" id="L45">        lblFotoPerfil = new javax.swing.JLabel();</span>
+<span class="nc" id="L46">        lblInformacion = new javax.swing.JLabel();</span>
+<span class="nc" id="L47">        lblNombre = new javax.swing.JLabel();</span>
+<span class="nc" id="L48">        lblApellido = new javax.swing.JLabel();</span>
+<span class="nc" id="L49">        lblNacionalidad = new javax.swing.JLabel();</span>
+<span class="nc" id="L50">        jSeparator5 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L51">        jSeparator7 = new javax.swing.JSeparator();</span>
+<span class="nc" id="L52">        lblConsulta = new javax.swing.JLabel();</span>
+<span class="nc" id="L53">        jScrollPane2 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L54">        txtConsulta = new javax.swing.JTextArea();</span>
+<span class="nc" id="L55">        jScrollPane3 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L56">        txtMensaje = new javax.swing.JTextArea();</span>
+<span class="nc" id="L57">        btnEnviar = new javax.swing.JButton();</span>
+<span class="nc" id="L58">        jScrollPane4 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L59">        lstInbox = new javax.swing.JList&lt;&gt;();</span>
+<span class="nc" id="L60">        lblResponder = new javax.swing.JLabel();</span>
+
+<span class="nc" id="L62">        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);</span>
+<span class="nc" id="L63">        setMinimumSize(new java.awt.Dimension(926, 856));</span>
+<span class="nc" id="L64">        setResizable(false);</span>
+<span class="nc" id="L65">        setSize(new java.awt.Dimension(926, 856));</span>
+<span class="nc" id="L66">        addWindowListener(new java.awt.event.WindowAdapter() {</span>
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+<span class="nc" id="L68">                formWindowClosing(evt);</span>
+<span class="nc" id="L69">            }</span>
+        });
+<span class="nc" id="L71">        getContentPane().setLayout(null);</span>
+
+<span class="nc" id="L73">        btnSalir.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L74">        btnSalir.setText(&quot;Salir&quot;);</span>
+<span class="nc" id="L75">        btnSalir.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L77">                btnSalirActionPerformed(evt);</span>
+<span class="nc" id="L78">            }</span>
+        });
+<span class="nc" id="L80">        getContentPane().add(btnSalir);</span>
+<span class="nc" id="L81">        btnSalir.setBounds(10, 780, 110, 40);</span>
+
+<span class="nc" id="L83">        lblTitulo.setFont(new java.awt.Font(&quot;Seravek&quot;, 1, 27)); // NOI18N</span>
+<span class="nc" id="L84">        lblTitulo.setText(&quot;Mis consultas / Mis planes&quot;);</span>
+<span class="nc" id="L85">        getContentPane().add(lblTitulo);</span>
+<span class="nc" id="L86">        lblTitulo.setBounds(300, 0, 400, 60);</span>
+<span class="nc" id="L87">        getContentPane().add(jSeparator1);</span>
+<span class="nc" id="L88">        jSeparator1.setBounds(20, 50, 860, 10);</span>
+
+<span class="nc" id="L90">        rbtnPlanes.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L91">        rbtnPlanes.setText(&quot;PLANES DE ALIMENTACION&quot;);</span>
+<span class="nc" id="L92">        rbtnPlanes.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L94">                rbtnPlanesActionPerformed(evt);</span>
+<span class="nc" id="L95">            }</span>
+        });
+<span class="nc" id="L97">        getContentPane().add(rbtnPlanes);</span>
+<span class="nc" id="L98">        rbtnPlanes.setBounds(170, 60, 290, 30);</span>
+
+<span class="nc" id="L100">        rbtnConsultas.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L101">        rbtnConsultas.setText(&quot;CONSULTAS DIRECTAS&quot;);</span>
+<span class="nc" id="L102">        rbtnConsultas.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L104">                rbtnConsultasActionPerformed(evt);</span>
+<span class="nc" id="L105">            }</span>
+        });
+<span class="nc" id="L107">        getContentPane().add(rbtnConsultas);</span>
+<span class="nc" id="L108">        rbtnConsultas.setBounds(510, 60, 230, 30);</span>
+<span class="nc" id="L109">        getContentPane().add(jSeparator2);</span>
+<span class="nc" id="L110">        jSeparator2.setBounds(20, 90, 860, 12);</span>
+
+<span class="nc" id="L112">        lblInbox.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L113">        lblInbox.setText(&quot;Inbox&quot;);</span>
+<span class="nc" id="L114">        getContentPane().add(lblInbox);</span>
+<span class="nc" id="L115">        lblInbox.setBounds(420, 110, 90, 30);</span>
+
+<span class="nc" id="L117">        jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);</span>
+<span class="nc" id="L118">        getContentPane().add(jSeparator4);</span>
+<span class="nc" id="L119">        jSeparator4.setBounds(260, 390, 12, 430);</span>
+
+<span class="nc" id="L121">        lblNacimiento.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L122">        lblNacimiento.setText(&quot;Nacimiento:&quot;);</span>
+<span class="nc" id="L123">        getContentPane().add(lblNacimiento);</span>
+<span class="nc" id="L124">        lblNacimiento.setBounds(10, 680, 230, 20);</span>
+
+<span class="nc" id="L126">        lblFotoPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/perfil_defecto.png&quot;))); // NOI18N</span>
+<span class="nc" id="L127">        getContentPane().add(lblFotoPerfil);</span>
+<span class="nc" id="L128">        lblFotoPerfil.setBounds(60, 450, 130, 130);</span>
+
+<span class="nc" id="L130">        lblInformacion.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 24)); // NOI18N</span>
+<span class="nc" id="L131">        lblInformacion.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/imagenes/business-card-of-a-man-with-contact-info.png&quot;))); // NOI18N</span>
+<span class="nc" id="L132">        lblInformacion.setText(&quot;Profesional&quot;);</span>
+<span class="nc" id="L133">        getContentPane().add(lblInformacion);</span>
+<span class="nc" id="L134">        lblInformacion.setBounds(50, 390, 230, 40);</span>
+
+<span class="nc" id="L136">        lblNombre.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L137">        lblNombre.setText(&quot;Nombre:&quot;);</span>
+<span class="nc" id="L138">        getContentPane().add(lblNombre);</span>
+<span class="nc" id="L139">        lblNombre.setBounds(10, 600, 230, 17);</span>
+
+<span class="nc" id="L141">        lblApellido.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L142">        lblApellido.setText(&quot;Apellidos:&quot;);</span>
+<span class="nc" id="L143">        getContentPane().add(lblApellido);</span>
+<span class="nc" id="L144">        lblApellido.setBounds(10, 640, 230, 20);</span>
+
+<span class="nc" id="L146">        lblNacionalidad.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L147">        lblNacionalidad.setText(&quot;Nacionalidad:&quot;);</span>
+<span class="nc" id="L148">        getContentPane().add(lblNacionalidad);</span>
+<span class="nc" id="L149">        lblNacionalidad.setBounds(10, 720, 230, 20);</span>
+<span class="nc" id="L150">        getContentPane().add(jSeparator5);</span>
+<span class="nc" id="L151">        jSeparator5.setBounds(10, 430, 250, 12);</span>
+<span class="nc" id="L152">        getContentPane().add(jSeparator7);</span>
+<span class="nc" id="L153">        jSeparator7.setBounds(280, 430, 610, 20);</span>
+
+<span class="nc" id="L155">        lblConsulta.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 27)); // NOI18N</span>
+<span class="nc" id="L156">        lblConsulta.setText(&quot;Visualización&quot;);</span>
+<span class="nc" id="L157">        lblConsulta.setToolTipText(&quot;&quot;);</span>
+<span class="nc" id="L158">        getContentPane().add(lblConsulta);</span>
+<span class="nc" id="L159">        lblConsulta.setBounds(500, 390, 190, 50);</span>
+
+<span class="nc" id="L161">        txtConsulta.setEditable(false);</span>
+<span class="nc" id="L162">        txtConsulta.setColumns(20);</span>
+<span class="nc" id="L163">        txtConsulta.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 0, 14)); // NOI18N</span>
+<span class="nc" id="L164">        txtConsulta.setForeground(new java.awt.Color(0, 102, 255));</span>
+<span class="nc" id="L165">        txtConsulta.setRows(5);</span>
+<span class="nc" id="L166">        jScrollPane2.setViewportView(txtConsulta);</span>
+
+<span class="nc" id="L168">        getContentPane().add(jScrollPane2);</span>
+<span class="nc" id="L169">        jScrollPane2.setBounds(280, 440, 610, 230);</span>
+
+<span class="nc" id="L171">        txtMensaje.setColumns(20);</span>
+<span class="nc" id="L172">        txtMensaje.setRows(5);</span>
+<span class="nc" id="L173">        txtMensaje.setEnabled(false);</span>
+<span class="nc" id="L174">        txtMensaje.addKeyListener(new java.awt.event.KeyAdapter() {</span>
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+<span class="nc" id="L176">                txtMensajeKeyReleased(evt);</span>
+<span class="nc" id="L177">            }</span>
+        });
+<span class="nc" id="L179">        jScrollPane3.setViewportView(txtMensaje);</span>
+
+<span class="nc" id="L181">        getContentPane().add(jScrollPane3);</span>
+<span class="nc" id="L182">        jScrollPane3.setBounds(280, 700, 610, 84);</span>
+
+<span class="nc" id="L184">        btnEnviar.setFont(new java.awt.Font(&quot;Lucida Grande&quot;, 1, 13)); // NOI18N</span>
+<span class="nc" id="L185">        btnEnviar.setText(&quot;Enviar&quot;);</span>
+<span class="nc" id="L186">        btnEnviar.setEnabled(false);</span>
+<span class="nc" id="L187">        btnEnviar.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L189">                btnEnviarActionPerformed(evt);</span>
+<span class="nc" id="L190">            }</span>
+        });
+<span class="nc" id="L192">        getContentPane().add(btnEnviar);</span>
+<span class="nc" id="L193">        btnEnviar.setBounds(800, 790, 90, 40);</span>
+
+<span class="nc" id="L195">        lstInbox.setModel(new javax.swing.AbstractListModel&lt;Object&gt;() {</span>
+<span class="nc" id="L196">            String[] strings = { &quot; &quot; };</span>
+<span class="nc" id="L197">            public int getSize() { return strings.length; }</span>
+<span class="nc" id="L198">            public Object getElementAt(int i) { return strings[i]; }</span>
+        });
+<span class="nc" id="L200">        lstInbox.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);</span>
+<span class="nc" id="L201">        lstInbox.addListSelectionListener(new javax.swing.event.ListSelectionListener() {</span>
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+<span class="nc" id="L203">                lstInboxValueChanged(evt);</span>
+<span class="nc" id="L204">            }</span>
+        });
+<span class="nc" id="L206">        jScrollPane4.setViewportView(lstInbox);</span>
+
+<span class="nc" id="L208">        getContentPane().add(jScrollPane4);</span>
+<span class="nc" id="L209">        jScrollPane4.setBounds(20, 140, 860, 210);</span>
+
+<span class="nc" id="L211">        lblResponder.setFont(new java.awt.Font(&quot;Malayalam Sangam MN&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L212">        lblResponder.setText(&quot;Mensaje:&quot;);</span>
+<span class="nc" id="L213">        getContentPane().add(lblResponder);</span>
+<span class="nc" id="L214">        lblResponder.setBounds(280, 680, 100, 24);</span>
+
+<span class="nc" id="L216">        pack();</span>
+<span class="nc" id="L217">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+<span class="nc" id="L220">        this.dispose();</span>
+<span class="nc" id="L221">        VentanaPanelUsuario ventana = new VentanaPanelUsuario(modelo);</span>
+<span class="nc" id="L222">        ventana.setVisible(true);</span>
+<span class="nc" id="L223">    }//GEN-LAST:event_formWindowClosing</span>
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+<span class="nc" id="L226">        this.dispose();</span>
+<span class="nc" id="L227">        VentanaPanelUsuario ventana = new VentanaPanelUsuario(modelo);</span>
+<span class="nc" id="L228">        ventana.setVisible(true);</span>
+<span class="nc" id="L229">    }//GEN-LAST:event_btnSalirActionPerformed</span>
+
+    private void rbtnPlanesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnPlanesActionPerformed
+<span class="nc" id="L232">        listaActual = modelo.filtrarPorPlan(usuarioActivo.getConsultas());</span>
+<span class="nc" id="L233">        this.lstInbox.setListData(modelo.consultasPorDescripcion(listaActual).toArray());</span>
+<span class="nc" id="L234">    }//GEN-LAST:event_rbtnPlanesActionPerformed</span>
+
+    private void rbtnConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnConsultasActionPerformed
+<span class="nc" id="L237">        listaActual = modelo.filtrarPorDirecta(usuarioActivo.getConsultas());</span>
+<span class="nc" id="L238">        this.lstInbox.setListData(modelo.consultasPorDescripcion(listaActual).toArray());</span>
+<span class="nc" id="L239">    }//GEN-LAST:event_rbtnConsultasActionPerformed</span>
+
+    private void lstInboxValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstInboxValueChanged
+<span class="nc bnc" id="L242" title="All 2 branches missed.">        if (!evt.getValueIsAdjusting()) {</span>
+<span class="nc" id="L243">            this.btnEnviar.setEnabled(false);</span>
+<span class="nc" id="L244">            this.txtMensaje.setText(&quot;&quot;);</span>
+<span class="nc" id="L245">            int index = this.lstInbox.getSelectedIndex();</span>
+<span class="nc bnc" id="L246" title="All 4 branches missed.">            if (index &gt;= 0 &amp;&amp; !listaActual.isEmpty()) {</span>
+<span class="nc" id="L247">                Consulta consulta = listaActual.get(index);</span>
+<span class="nc" id="L248">                this.txtConsulta.setText(consulta.toString());</span>
+<span class="nc bnc" id="L249" title="All 2 branches missed.">                if (consulta.getEstado() != Estado.COMPLETADO) {</span>
+<span class="nc" id="L250">                    this.txtMensaje.setEnabled(true);</span>
+                } else {
+<span class="nc" id="L252">                    this.txtMensaje.setEnabled(false);</span>
+<span class="nc" id="L253">                    this.txtMensaje.setText(&quot;La consulta ha finalizado.&quot;);</span>
+                }
+<span class="nc" id="L255">            } else {</span>
+<span class="nc" id="L256">                this.txtMensaje.setEnabled(false);</span>
+<span class="nc" id="L257">                this.btnEnviar.setEnabled(false);</span>
+            }
+        }
+<span class="nc" id="L260">    }//GEN-LAST:event_lstInboxValueChanged</span>
+
+    private void txtMensajeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMensajeKeyReleased
+<span class="nc bnc" id="L263" title="All 2 branches missed.">        if (!this.txtMensaje.getText().isEmpty()) {</span>
+<span class="nc" id="L264">            this.btnEnviar.setEnabled(true);</span>
+        } else {
+<span class="nc" id="L266">            this.btnEnviar.setEnabled(false);</span>
+        }
+<span class="nc" id="L268">    }//GEN-LAST:event_txtMensajeKeyReleased</span>
+
+    private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
+<span class="nc" id="L271">        DateFormat dateFormat = new SimpleDateFormat(&quot;dd/MM/yyyy HH:mm:ss&quot;);</span>
+<span class="nc" id="L272">        Date date = new Date();</span>
+<span class="nc" id="L273">        int index = this.lstInbox.getSelectedIndex();</span>
+<span class="nc" id="L274">        Consulta consultaUsuario = listaActual.get(index);</span>
+<span class="nc" id="L275">        consultaUsuario.agregarIncidencia(this.txtMensaje.getText(), dateFormat.format(date), usuarioActivo);</span>
+<span class="nc" id="L276">        this.txtConsulta.setText(consultaUsuario.toString());</span>
+<span class="nc" id="L277">        this.txtMensaje.setText(&quot;&quot;);</span>
+<span class="nc" id="L278">        this.btnEnviar.setEnabled(false);</span>
+<span class="nc" id="L279">    }//GEN-LAST:event_btnEnviarActionPerformed</span>
+
+    public void agregaBotonesAlGrupo() {
+<span class="nc" id="L282">        btnGroup.add(this.rbtnConsultas);</span>
+<span class="nc" id="L283">        btnGroup.add(this.rbtnPlanes);</span>
+<span class="nc" id="L284">    }</span>
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEnviar;
+    private javax.swing.ButtonGroup btnGroup;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JLabel lblApellido;
+    private javax.swing.JLabel lblConsulta;
+    private javax.swing.JLabel lblFotoPerfil;
+    private javax.swing.JLabel lblInbox;
+    private javax.swing.JLabel lblInformacion;
+    private javax.swing.JLabel lblNacimiento;
+    private javax.swing.JLabel lblNacionalidad;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblResponder;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JList&lt;Object&gt; lstInbox;
+    private javax.swing.JRadioButton rbtnConsultas;
+    private javax.swing.JRadioButton rbtnPlanes;
+    private javax.swing.JTextArea txtConsulta;
+    private javax.swing.JTextArea txtMensaje;
+    // End of variables declaration//GEN-END:variables
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
