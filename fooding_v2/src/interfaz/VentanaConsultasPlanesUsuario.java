@@ -24,6 +24,7 @@ public class VentanaConsultasPlanesUsuario extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         this.setModal(true);
         agregaBotonesAlGrupo();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -245,6 +246,13 @@ public class VentanaConsultasPlanesUsuario extends javax.swing.JDialog {
             int index = this.lstInbox.getSelectedIndex();
             if (index >= 0 && !listaActual.isEmpty()) {
                 Consulta consulta = listaActual.get(index);
+                if (consulta.getProfesional() != null) {
+                    this.lblNombre.setText(consulta.getProfesional().getNombre());
+                    this.lblApellido.setText(consulta.getProfesional().getApellidos());
+                    this.lblNacionalidad.setText(consulta.getProfesional().getPaisEstudio().toString());
+                    this.lblNacimiento.setText(consulta.getProfesional().getFechaDeGraduacion().toString());
+
+                }
                 this.txtConsulta.setText(consulta.toString());
                 if (consulta.getEstado() != Estado.COMPLETADO) {
                     this.txtMensaje.setEnabled(true);
